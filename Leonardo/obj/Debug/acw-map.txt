@@ -1,0 +1,8 @@
+Leonardo.Game, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.Game
+Leonardo.Game, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.Game
+Leonardo.Game;md5fef12874a7007ce33bb07b59ba6322ab.Game
+leonardo.Game;md5fef12874a7007ce33bb07b59ba6322ab.Game
+Leonardo.MainActivity, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
+Leonardo.MainActivity, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
+Leonardo.MainActivity;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
+leonardo.MainActivity;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity

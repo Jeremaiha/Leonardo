@@ -1,0 +1,14 @@
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.pdb
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo.apk
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo-Signed.apk
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.csprojResolveAssemblyReference.cache
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.pdb
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\android\bin\Leonardo.Leonardo.apk
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\main.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\values\strings.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\icon.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\R.cs.flag
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
