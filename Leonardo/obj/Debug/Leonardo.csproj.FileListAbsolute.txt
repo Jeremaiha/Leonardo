@@ -12,3 +12,5 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\icon.pn
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\R.cs.flag
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signin.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signup.xml
