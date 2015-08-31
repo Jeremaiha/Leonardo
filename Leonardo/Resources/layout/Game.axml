@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content">
             <ImageButton
-                android:src="@drawable/red_mushroom_1"
+                android:src="@android:drawable/ic_menu_gallery"
                 android:layout_column="0"
                 android:id="@+id/imageButton1"
                 android:layout_width="92.0dp"

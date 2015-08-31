@@ -18,9 +18,22 @@ namespace Leonardo
         const int SIZE = 4;
         ImageButton outerImageButton;
         ImageButton[,] buttonsArray;
+        HashSet<Resource.Drawable> gameImages;
+
+        private void initiateAll(){
+            initiateButtonsArray();
+            initiateSetOfImages();
+        }
+
+        private void initiateSetOfImages(){
+            gameImages = new HashSet<Resource.Drawable>();
+           // var temp = Resource.Drawable;
+
+          //  gameImages.Add(temp);
+        }
 
         /// <summary>
-        ///     Initiating the 2 dimentional array of buttons.
+        ///     Initiating the 2 dimentional array of buttons with a blank image.
         /// </summary>
         private void initiateButtonsArray(){
             buttonsArray = new ImageButton[SIZE, SIZE];
@@ -48,10 +61,13 @@ namespace Leonardo
             for(int i=0;i<SIZE;i++){
                 for(int j=0;j<SIZE;j++){
                     buttonsArray[i, j].SetImageResource(Resource.Drawable.blank);        
-
                 }
             }
     }
+
+        private void randomNextCard(){
+
+        }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -62,10 +78,10 @@ namespace Leonardo
             SetContentView(Resource.Layout.Game);
 
             //  Call the initiation of all buttons method.
-            initiateButtonsArray();
+            initiateAll();
 
-            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
-            outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
+//            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
+  //          outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
             
             //tempButton = FindViewById<ImageButton>(Resource.Id.imageButton14);
 
@@ -78,4 +94,6 @@ namespace Leonardo
 
 
     }
+
+
 }
