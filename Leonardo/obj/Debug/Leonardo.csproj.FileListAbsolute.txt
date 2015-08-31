@@ -14,3 +14,4 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signin.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signup.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\play_icon_small.png
