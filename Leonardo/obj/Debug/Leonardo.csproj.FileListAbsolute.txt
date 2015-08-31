@@ -15,3 +15,8 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signin.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signup.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\play_icon_small.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushrooms_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\x.png

@@ -15,12 +15,15 @@ namespace Leonardo
     [Activity(Label = "Game")]
     public class Game : Activity
     {
+        ImageButton outerImageButton;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Create your application here
             SetContentView(Resource.Layout.Game);
+
+            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
         }
     }
 }
