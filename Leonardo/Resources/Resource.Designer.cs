@@ -81,11 +81,11 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050017
-			public const int button1 = 2131034135;
+			// aapt resource value: 0x7f05001a
+			public const int button1 = 2131034138;
 			
-			// aapt resource value: 0x7f050018
-			public const int button2 = 2131034136;
+			// aapt resource value: 0x7f05001b
+			public const int button2 = 2131034139;
 			
 			// aapt resource value: 0x7f050003
 			public const int imageButton1 = 2131034115;
@@ -114,8 +114,17 @@ namespace Leonardo
 			// aapt resource value: 0x7f050016
 			public const int imageButton17 = 2131034134;
 			
+			// aapt resource value: 0x7f050018
+			public const int imageButton18 = 2131034136;
+			
+			// aapt resource value: 0x7f050019
+			public const int imageButton19 = 2131034137;
+			
 			// aapt resource value: 0x7f050004
 			public const int imageButton2 = 2131034116;
+			
+			// aapt resource value: 0x7f050017
+			public const int imageButton20 = 2131034135;
 			
 			// aapt resource value: 0x7f050005
 			public const int imageButton3 = 2131034117;

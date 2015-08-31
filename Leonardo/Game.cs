@@ -22,6 +22,7 @@ namespace Leonardo
 
         private void initiateAll(){
             initiateButtonsArray();
+
             initiateSetOfImages();
         }
 
@@ -29,9 +30,35 @@ namespace Leonardo
         ///     Create an array of all images.
         /// </summary>
         private void initiateSetOfImages(){
-            gameImages = new Card[SIZE];
+            gameImages = new Card[3];
 
-           
+            // Just for now.
+            //ImageButton tempButton.GetDrawable;
+            //tempButton.SetImageResource(Resource.Drawable.red_mushroom_1);
+          /* WHY DID IT WORK WITH A C'TOR, BUT DIDN'T WORK WITH THE BELOW CODE
+            gameImages[0].ImageButton = tempButton;
+            gameImages[0].Shape = "Mushroom";
+            gameImages[0].Color = "Red";
+            gameImages[0].Amount = 1;
+            
+           */
+            gameImages[0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Mushroom", "Red", 1);
+            gameImages[0].ImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
+
+            gameImages[1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
+            gameImages[1].ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
+
+            gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
+            gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
+
+            /*
+            ImageButton tempButton2 = FindViewById<ImageButton>(Resource.Id.imageButton17);
+            tempButton2.SetImageResource(Resource.Drawable.green_cherry_3);
+            gameImages[1].ImageButton = tempButton2;
+            gameImages[1].Shape = "Cherry";
+            gameImages[1].Color = "Green";
+            gameImages[1].Amount = 3;
+            */
         }
 
         /// <summary>
@@ -68,7 +95,12 @@ namespace Leonardo
     }
 
         private void randomNextCard(){
+            
+            Random random = new Random();
+            int randomNumber = random.Next(0, 3);
 
+            //select random.
+            outerImageButton = gameImages[randomNumber];
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -81,7 +113,7 @@ namespace Leonardo
 
             //  Call the initiation of all buttons method.
             initiateAll();
-
+            randomNextCard();
 //            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
   //          outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
             
@@ -109,7 +141,17 @@ namespace Leonardo
         int amount;
 
         /// <summary>
-        ///     Constructor.
+        ///     Empty constructor.
+        /// </summary>
+        public Card(){
+            imageButton = null;
+            shape = "";
+            color = "";
+            amount = 0;
+        }
+
+        /// <summary>
+        ///     Full constructor.
         /// </summary>
         /// <param name="ib">ImageButton </param>
         /// <param name="shp">Shape</param>
