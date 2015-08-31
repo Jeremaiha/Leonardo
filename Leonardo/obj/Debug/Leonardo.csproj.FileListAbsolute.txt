@@ -20,3 +20,4 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_c
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushrooms_2.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_1.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\x.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\blank.png

@@ -19,6 +19,39 @@ namespace Leonardo
         ImageButton outerImageButton;
         ImageButton[,] buttonsArray;
 
+        /// <summary>
+        ///     Initiating the 2 dimentional array of buttons.
+        /// </summary>
+        private void initiateButtonsArray(){
+            buttonsArray = new ImageButton[SIZE, SIZE];
+            
+            buttonsArray[0, 0] = FindViewById<ImageButton>(Resource.Id.imageButton1);
+            buttonsArray[0, 1] = FindViewById<ImageButton>(Resource.Id.imageButton2);
+            buttonsArray[0, 2] = FindViewById<ImageButton>(Resource.Id.imageButton3);
+            buttonsArray[0, 3] = FindViewById<ImageButton>(Resource.Id.imageButton4);
+
+            buttonsArray[1, 0] = FindViewById<ImageButton>(Resource.Id.imageButton5);
+            buttonsArray[1, 1] = FindViewById<ImageButton>(Resource.Id.imageButton6);
+            buttonsArray[1, 2] = FindViewById<ImageButton>(Resource.Id.imageButton7);
+            buttonsArray[1, 3] = FindViewById<ImageButton>(Resource.Id.imageButton8);
+
+            buttonsArray[2, 0] = FindViewById<ImageButton>(Resource.Id.imageButton9);
+            buttonsArray[2, 1] = FindViewById<ImageButton>(Resource.Id.imageButton10);
+            buttonsArray[2, 2] = FindViewById<ImageButton>(Resource.Id.imageButton11);
+            buttonsArray[2, 3] = FindViewById<ImageButton>(Resource.Id.imageButton12);
+
+            buttonsArray[3, 0] = FindViewById<ImageButton>(Resource.Id.imageButton13);
+            buttonsArray[3, 1] = FindViewById<ImageButton>(Resource.Id.imageButton14);
+            buttonsArray[3, 2] = FindViewById<ImageButton>(Resource.Id.imageButton15);
+            buttonsArray[3, 3] = FindViewById<ImageButton>(Resource.Id.imageButton16);
+        
+            for(int i=0;i<SIZE;i++){
+                for(int j=0;j<SIZE;j++){
+                    buttonsArray[i, j].SetImageResource(Resource.Drawable.blank);        
+
+                }
+            }
+    }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -27,6 +60,9 @@ namespace Leonardo
             // Create your application here
             // Layout initialisation
             SetContentView(Resource.Layout.Game);
+
+            //  Call the initiation of all buttons method.
+            initiateButtonsArray();
 
             outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
             outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
