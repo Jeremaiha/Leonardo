@@ -21,9 +21,10 @@ namespace Leonardo
         Card outerImageButton;
         Card[,] buttonsArray;
         static Card[] gameImages;
-
+        Card[] cards;
         List<Action> methods = new List<Action>();
-        
+
+        int globalIndex;
 
         private void initiateAll(){
             initiateButtonsArray();
@@ -65,6 +66,8 @@ namespace Leonardo
             */
             methods.Add(redMushroom1);
             methods.Add(greenCherry3);
+
+            cards = new Card[3];
 
         }
 
@@ -112,6 +115,7 @@ namespace Leonardo
         private static void greenCherry3()
         {
             //gameImages[1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
+            
             gameImages[1].ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
             
         }
@@ -127,12 +131,14 @@ namespace Leonardo
             
             Random random = new Random();
             int randomNumber = random.Next(0, 2);
+            globalIndex = randomNumber;
 
             //select random.
           //  outerImageButton = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
            // outerImageButton.ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
 
             outerImageButton = gameImages[randomNumber];
+            // Calls the method pointer at a certain index.
             methods.ElementAt(randomNumber).Invoke();
         }
 
@@ -150,12 +156,13 @@ namespace Leonardo
 //            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
   //          outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
             
-            //tempButton = FindViewById<ImageButton>(Resource.Id.imageButton14);
+            ImageButton tempButton = FindViewById<ImageButton>(Resource.Id.imageButton14);
 
-/*            tempButton.Click += (sender, e) => {
-                tempButton.SetImageResource(Resource.Drawable.green_cherry_3);
+            tempButton.Click += (sender, e) => {
+        //        tempButton = 
+                //tempButton.SetImageResource(Resource.Drawable.green_cherry_3);
             };
-            */
+            
         }
 
 
