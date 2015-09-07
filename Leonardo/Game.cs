@@ -10,19 +10,23 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+
 namespace Leonardo
 {
+
     [Activity(Label = "Game")]
     public class Game : Activity
     {
         const int SIZE = 4;
         Card outerImageButton;
         Card[,] buttonsArray;
-        Card[] gameImages;
+        static Card[] gameImages;
+
+        List<Action> methods = new List<Action>();
+        
 
         private void initiateAll(){
             initiateButtonsArray();
-
             initiateSetOfImages();
         }
 
@@ -59,6 +63,9 @@ namespace Leonardo
             gameImages[1].Color = "Green";
             gameImages[1].Amount = 3;
             */
+            methods.Add(redMushroom1);
+            methods.Add(greenCherry3);
+
         }
 
         /// <summary>
@@ -94,13 +101,39 @@ namespace Leonardo
             }
     }
 
+        private static void redMushroom1()
+        {
+       
+           // gameImages[0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Mushroom", "Red", 1);
+            gameImages[0].ImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
+            
+        }
+
+        private static void greenCherry3()
+        {
+            //gameImages[1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
+            gameImages[1].ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
+            
+        }
+
+        private int greenCherry2()
+        {
+            gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
+            gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
+            return 0;
+        }
+
         private void randomNextCard(){
             
             Random random = new Random();
-            int randomNumber = random.Next(0, 3);
+            int randomNumber = random.Next(0, 2);
 
             //select random.
+          //  outerImageButton = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
+           // outerImageButton.ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
+
             outerImageButton = gameImages[randomNumber];
+            methods.ElementAt(randomNumber).Invoke();
         }
 
         protected override void OnCreate(Bundle bundle)
