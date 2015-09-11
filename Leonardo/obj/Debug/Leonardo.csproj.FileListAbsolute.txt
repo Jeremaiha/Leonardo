@@ -20,3 +20,4 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\x.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\blank.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\R.cs.flag
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.csprojResolveAssemblyReference.cache

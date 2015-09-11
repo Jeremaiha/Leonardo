@@ -22,13 +22,25 @@ namespace Leonardo
         Card[,] buttonsArray;
         static Card[] gameImages;
         Card[] cards;
-        //List<Action> methods = new List<Action>();
+
+        // An array of delegates to hold all cards initialization.
+        const int NUM_CARDS = 3;
+        public delegate void MethodsDelegates(ImageButton btnImg,int index);
+        public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
+
+        //List<Action<ImageButton, int>> methods = new List<Action<ImageButton, int>>();
 
         int globalIndex;
 
         private void initiateAll(){
             initiateButtonsArray();
             initiateSetOfImages();
+            //Game g = new Game();
+            //Add all methods to the delegates array.
+          //  g.cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
+         
+            // SAVE DELEGATE
+            cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
         }
 
         /// <summary>
@@ -131,7 +143,7 @@ namespace Leonardo
             
         }
 
-        private int greenCherry2(ImageButton btn,int index)
+        private void greenCherry2(ImageButton btn,int index)
         {
             btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
             btn.SetImageResource(Resource.Drawable.green_cherry_2);
@@ -139,7 +151,7 @@ namespace Leonardo
             
             //gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
             //gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
-            return 0;
+            //return 0;
         }
 
         private void randomNextCard(){
@@ -153,7 +165,12 @@ namespace Leonardo
            // outerImageButton.ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
 
             // HOLDING AN ARRAY OF DELEGATES.
-            greenCherry2(gameImages[randomNumber].ImageButton, 17);
+                       
+            // WORKS
+            //greenCherry2(gameImages[randomNumber].ImageButton, 17);
+
+            cardsMethods[0](gameImages[randomNumber].ImageButton, 17);
+
 
             //outerImageButton = gameImages[randomNumber];
             // Calls the method pointer at a certain index.
