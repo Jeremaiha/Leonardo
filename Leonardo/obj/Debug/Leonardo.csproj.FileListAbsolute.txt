@@ -2,18 +2,15 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.pdb
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo.apk
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo-Signed.apk
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.csprojResolveAssemblyReference.cache
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.pdb
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\android\bin\Leonardo.Leonardo.apk
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\main.xml
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\values\strings.xml
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\icon.png
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\R.cs.flag
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signin.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signup.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\main.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\values\strings.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\icon.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\play_icon_small.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_2.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_3.png
@@ -21,3 +18,5 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_m
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_1.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\x.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\blank.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\R.cs.flag
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\uploadflags.txt

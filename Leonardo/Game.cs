@@ -22,7 +22,7 @@ namespace Leonardo
         Card[,] buttonsArray;
         static Card[] gameImages;
         Card[] cards;
-        List<Action> methods = new List<Action>();
+        //List<Action> methods = new List<Action>();
 
         int globalIndex;
 
@@ -64,9 +64,7 @@ namespace Leonardo
             gameImages[1].Color = "Green";
             gameImages[1].Amount = 3;
             */
-            methods.Add(redMushroom1);
-            methods.Add(greenCherry3);
-
+            
             cards = new Card[3];
 
         }
@@ -76,8 +74,21 @@ namespace Leonardo
         /// </summary>
         private void initiateButtonsArray(){
             buttonsArray = new Card[SIZE, SIZE];
-            
-            buttonsArray[0, 0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton1),"blank","white",0);
+        
+            /*
+            int cnt = 1;
+            bool flag = false;
+            for (int i = 0; i < SIZE; i++){
+                for (int j = 0; j < SIZE; j++){
+                    ImageButton btnImage = new ImageButton();
+                    int btn = Resources.GetIdentifier("imageButton" + cnt.ToString(), "drawable", this.PackageName);
+                    btnImage.SetImageResource(btn);
+                    buttonsArray[i, j] = new Card(btnImage, "blank", "white", 0);
+                }
+            }
+            */
+               
+            buttonsArray[0, 0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton1), "blank", "white", 0);
             buttonsArray[0, 1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton2), "blank", "white", 0);
             buttonsArray[0, 2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton3), "blank", "white", 0);
             buttonsArray[0, 3] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton4), "blank", "white", 0);
@@ -96,7 +107,7 @@ namespace Leonardo
             buttonsArray[3, 1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton14), "blank", "white", 0);
             buttonsArray[3, 2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton15), "blank", "white", 0);
             buttonsArray[3, 3] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton16), "blank", "white", 0);
-        
+      
             for(int i=0;i<SIZE;i++){
                 for(int j=0;j<SIZE;j++){
                     buttonsArray[i, j].ImageButton.SetImageResource(Resource.Drawable.blank);        
@@ -120,10 +131,14 @@ namespace Leonardo
             
         }
 
-        private int greenCherry2()
+        private int greenCherry2(ImageButton btn,int index)
         {
-            gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
-            gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
+            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
+            btn.SetImageResource(Resource.Drawable.green_cherry_2);
+            
+            
+            //gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
+            //gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
             return 0;
         }
 
@@ -137,9 +152,13 @@ namespace Leonardo
           //  outerImageButton = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
            // outerImageButton.ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
 
-            outerImageButton = gameImages[randomNumber];
+            // HOLDING AN ARRAY OF DELEGATES.
+            greenCherry2(gameImages[randomNumber].ImageButton, 17);
+
+            //outerImageButton = gameImages[randomNumber];
             // Calls the method pointer at a certain index.
-            methods.ElementAt(randomNumber).Invoke();
+            
+
         }
 
         protected override void OnCreate(Bundle bundle)
