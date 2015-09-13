@@ -20,8 +20,8 @@ namespace Leonardo
         const int SIZE = 4;
         Card outerImageButton;
         Card[,] buttonsArray;
-        static Card[] gameImages;
-        Card[] cards;
+        Card[] gameImages;
+
 
         // An array of delegates to hold all cards initialization.
         const int NUM_CARDS = 3;
@@ -40,7 +40,32 @@ namespace Leonardo
           //  g.cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
          
             // SAVE DELEGATE
+            initiateDelegates();
+            //cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
+        }
+
+        /// <summary>
+        ///     In this method we will instantiate the array of delegates.
+        ///     The sake of this function is to create an array of delegates which
+        ///     will help us later on choosing the currect method for a specific card.
+        ///     Specified order : 
+        ///         * Green
+        ///         * Red
+        ///         * Blue
+        ///         * Yellow.
+        /// </summary>
+        private void initiateDelegates() { 
+            // Green
             cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
+            cardsMethods[1] += new Game.MethodsDelegates(greenCherry3);
+
+            // Red
+            cardsMethods[2] += new Game.MethodsDelegates(redMushroom1);
+
+            // Blue
+
+            // Yellow
+
         }
 
         /// <summary>
@@ -49,16 +74,7 @@ namespace Leonardo
         private void initiateSetOfImages(){
             gameImages = new Card[3];
 
-            // Just for now.
-            //ImageButton tempButton.GetDrawable;
-            //tempButton.SetImageResource(Resource.Drawable.red_mushroom_1);
-          /* WHY DID IT WORK WITH A C'TOR, BUT DIDN'T WORK WITH THE BELOW CODE
-            gameImages[0].ImageButton = tempButton;
-            gameImages[0].Shape = "Mushroom";
-            gameImages[0].Color = "Red";
-            gameImages[0].Amount = 1;
-            
-           */
+        
             gameImages[0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Mushroom", "Red", 1);
             gameImages[0].ImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
 
@@ -68,16 +84,7 @@ namespace Leonardo
             gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
             gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
 
-            /*
-            ImageButton tempButton2 = FindViewById<ImageButton>(Resource.Id.imageButton17);
-            tempButton2.SetImageResource(Resource.Drawable.green_cherry_3);
-            gameImages[1].ImageButton = tempButton2;
-            gameImages[1].Shape = "Cherry";
-            gameImages[1].Color = "Green";
-            gameImages[1].Amount = 3;
-            */
             
-            cards = new Card[3];
 
         }
 
@@ -127,54 +134,35 @@ namespace Leonardo
             }
     }
 
-        private static void redMushroom1()
-        {
-       
-           // gameImages[0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Mushroom", "Red", 1);
-            gameImages[0].ImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
-            
+        private void redMushroom1(ImageButton btn,int index)
+        {       
+            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
+            btn.SetImageResource(Resource.Drawable.red_mushroom_1);
+
         }
 
-        private static void greenCherry3()
-        {
-            //gameImages[1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
-            
-            gameImages[1].ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
-            
+        private void greenCherry3(ImageButton btn,int index)
+        {            
+            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
+            btn.SetImageResource(Resource.Drawable.green_cherry_3);
+           
         }
 
         private void greenCherry2(ImageButton btn,int index)
         {
             btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
             btn.SetImageResource(Resource.Drawable.green_cherry_2);
-            
-            
-            //gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
-            //gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
-            //return 0;
+
         }
 
         private void randomNextCard(){
             
             Random random = new Random();
-            int randomNumber = random.Next(0, 2);
+            int randomNumber = random.Next(0, 3);
             globalIndex = randomNumber;
 
-            //select random.
-          //  outerImageButton = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
-           // outerImageButton.ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
 
-            // HOLDING AN ARRAY OF DELEGATES.
-                       
-            // WORKS
-            //greenCherry2(gameImages[randomNumber].ImageButton, 17);
-
-            cardsMethods[0](gameImages[randomNumber].ImageButton, 17);
-
-
-            //outerImageButton = gameImages[randomNumber];
-            // Calls the method pointer at a certain index.
-            
+            cardsMethods[randomNumber](gameImages[randomNumber].ImageButton, 17);
 
         }
 
@@ -189,13 +177,12 @@ namespace Leonardo
             //  Call the initiation of all buttons method.
             initiateAll();
             randomNextCard();
-//            outerImageButton = FindViewById<ImageButton>(Resource.Id.imageButton17);
-  //          outerImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
-            
+
             ImageButton tempButton = FindViewById<ImageButton>(Resource.Id.imageButton14);
 
-            tempButton.Click += (sender, e) => {
-        //        tempButton = 
+            buttonsArray[3,1].ImageButton.Click += (sender, e) => {
+                cardsMethods[globalIndex](buttonsArray[3,1].ImageButton,14);
+                //buttonsArray[3, 1].ImageButton.SetImageResource();
                 //tempButton.SetImageResource(Resource.Drawable.green_cherry_3);
             };
             
