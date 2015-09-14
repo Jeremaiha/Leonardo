@@ -177,18 +177,94 @@ namespace Leonardo
             //  Call the initiation of all buttons method.
             initiateAll();
             randomNextCard();
-
-            ImageButton tempButton = FindViewById<ImageButton>(Resource.Id.imageButton14);
-
+            simulate();       
+/*
             buttonsArray[3,1].ImageButton.Click += (sender, e) => {
                 cardsMethods[globalIndex](buttonsArray[3,1].ImageButton,14);
                 //buttonsArray[3, 1].ImageButton.SetImageResource();
                 //tempButton.SetImageResource(Resource.Drawable.green_cherry_3);
             };
-            
+  */          
         }
 
+        private void simulate()
+        {
+            buttonsClicks();
+        }
+        /// <summary>
+        ///     When a button is clicked, then an action listenr appears.
+        ///     This method is responsible for each button.
+        /// </summary>
+        private void buttonsClicks()
+        {
+            buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton, 1);
+            };
+            buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton, 2);
+            };
+            buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton, 3);
+            };
+            buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton, 4);
+            };
 
+            buttonsArray[1, 0].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton, 5);
+            };
+            buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton, 6);
+            };
+            buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton, 7);
+            };
+            buttonsArray[1, 3].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton, 8);
+            };
+
+            buttonsArray[2, 0].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton, 9);
+            };
+            buttonsArray[2, 1].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton, 10);
+            };
+            buttonsArray[2, 2].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton, 11);
+            };
+            buttonsArray[2, 3].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton, 12);
+            };
+
+            buttonsArray[3, 0].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton, 13);
+            };
+            buttonsArray[3, 1].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton, 14);
+            };
+            buttonsArray[3, 2].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton, 15);
+            };
+            buttonsArray[3, 3].ImageButton.Click += (sender, e) =>
+            {
+                cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton, 16);
+            };
+        }
 
     }
     /// <summary>
