@@ -18,14 +18,13 @@ namespace Leonardo
     public class Game : Activity
     {
         const int SIZE = 4;
-        Card outerImageButton;
+        Card  outerImage;   // Image Button 17
         Card[,] buttonsArray;
-        Card[] gameImages;
 
 
         // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS = 3;
-        public delegate void MethodsDelegates(ImageButton btnImg,int index);
+        const int NUM_CARDS = 12 * 3;
+        public delegate void MethodsDelegates(ImageButton btnImg);
         public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
 
         //List<Action<ImageButton, int>> methods = new List<Action<ImageButton, int>>();
@@ -35,13 +34,10 @@ namespace Leonardo
         private void initiateAll(){
             initiateButtonsArray();
             initiateSetOfImages();
-            //Game g = new Game();
-            //Add all methods to the delegates array.
-          //  g.cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
          
             // SAVE DELEGATE
             initiateDelegates();
-            //cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
+   
         }
 
         /// <summary>
@@ -56,15 +52,52 @@ namespace Leonardo
         /// </summary>
         private void initiateDelegates() { 
             // Green
-            cardsMethods[0] += new Game.MethodsDelegates(greenCherry2);
-            cardsMethods[1] += new Game.MethodsDelegates(greenCherry3);
+            cardsMethods[0] += new Game.MethodsDelegates(greenCherry1);
+            cardsMethods[1] += new Game.MethodsDelegates(greenCherry2);
+            cardsMethods[2] += new Game.MethodsDelegates(greenCherry3);
+            cardsMethods[3] += new Game.MethodsDelegates(greenCherry4);
+
+            cardsMethods[4] += new Game.MethodsDelegates(greenMushroom1);
+            cardsMethods[5] += new Game.MethodsDelegates(greenMushroom2);
+            cardsMethods[6] += new Game.MethodsDelegates(greenMushroom3);
+            cardsMethods[7] += new Game.MethodsDelegates(greenMushroom4);
+
+            cardsMethods[8] += new Game.MethodsDelegates(greenStrawberry1);
+            cardsMethods[9] += new Game.MethodsDelegates(greenStrawberry2);
+            cardsMethods[10] += new Game.MethodsDelegates(greenStrawberry3);
+            cardsMethods[11] += new Game.MethodsDelegates(greenStrawberry4);
 
             // Red
-            cardsMethods[2] += new Game.MethodsDelegates(redMushroom1);
+            cardsMethods[12] += new Game.MethodsDelegates(redCherry1);
+            cardsMethods[13] += new Game.MethodsDelegates(redCherry2);
+            cardsMethods[14] += new Game.MethodsDelegates(redCherry3);
+            cardsMethods[15] += new Game.MethodsDelegates(redCherry4);
 
-            // Blue
+            cardsMethods[16] += new Game.MethodsDelegates(redMushroom1);
+            cardsMethods[17] += new Game.MethodsDelegates(redMushroom2);
+            cardsMethods[18] += new Game.MethodsDelegates(redMushroom3);
+            cardsMethods[19] += new Game.MethodsDelegates(redMushroom4);
+
+            cardsMethods[20] += new Game.MethodsDelegates(redStrawberry1);
+            cardsMethods[21] += new Game.MethodsDelegates(redStrawberry2);
+            cardsMethods[22] += new Game.MethodsDelegates(redStrawberry3);
+            cardsMethods[23] += new Game.MethodsDelegates(redStrawberry4);
 
             // Yellow
+            cardsMethods[24] += new Game.MethodsDelegates(yellowCherry1);
+            cardsMethods[25] += new Game.MethodsDelegates(yellowCherry2);
+            cardsMethods[26] += new Game.MethodsDelegates(yellowCherry3);
+            cardsMethods[27] += new Game.MethodsDelegates(yellowCherry4);
+
+            cardsMethods[28] += new Game.MethodsDelegates(yellowMushroom1);
+            cardsMethods[29] += new Game.MethodsDelegates(yellowMushroom2);
+            cardsMethods[30] += new Game.MethodsDelegates(yellowMushroom3);
+            cardsMethods[31] += new Game.MethodsDelegates(yellowMushroom4);
+
+            cardsMethods[32] += new Game.MethodsDelegates(yellowStrawberry1);
+            cardsMethods[33] += new Game.MethodsDelegates(yellowStrawberry2);
+            cardsMethods[34] += new Game.MethodsDelegates(yellowStrawberry3);
+            cardsMethods[35] += new Game.MethodsDelegates(yellowStrawberry4);
 
         }
 
@@ -72,19 +105,7 @@ namespace Leonardo
         ///     Create an array of all images.
         /// </summary>
         private void initiateSetOfImages(){
-            gameImages = new Card[3];
-
-        
-            gameImages[0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Mushroom", "Red", 1);
-            gameImages[0].ImageButton.SetImageResource(Resource.Drawable.red_mushroom_1);
-
-            gameImages[1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 3);
-            gameImages[1].ImageButton.SetImageResource(Resource.Drawable.green_cherry_3);
-
-            gameImages[2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "Cherry", "Green", 2);
-            gameImages[2].ImageButton.SetImageResource(Resource.Drawable.green_cherry_2);
-
-            
+          
 
         }
 
@@ -126,43 +147,27 @@ namespace Leonardo
             buttonsArray[3, 1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton14), "blank", "white", 0);
             buttonsArray[3, 2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton15), "blank", "white", 0);
             buttonsArray[3, 3] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton16), "blank", "white", 0);
-      
+
+            outerImage = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "blank", "white", 0);
+
             for(int i=0;i<SIZE;i++){
                 for(int j=0;j<SIZE;j++){
                     buttonsArray[i, j].ImageButton.SetImageResource(Resource.Drawable.blank);        
                 }
             }
+
     }
 
-        private void redMushroom1(ImageButton btn,int index)
-        {       
-            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
-            btn.SetImageResource(Resource.Drawable.red_mushroom_1);
 
-        }
-
-        private void greenCherry3(ImageButton btn,int index)
-        {            
-            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
-            btn.SetImageResource(Resource.Drawable.green_cherry_3);
-           
-        }
-
-        private void greenCherry2(ImageButton btn,int index)
-        {
-            btn.SetImageResource(Resources.GetIdentifier("imageButton" + index.ToString(), "drawable", this.PackageName));
-            btn.SetImageResource(Resource.Drawable.green_cherry_2);
-
-        }
-
+        
         private void randomNextCard(){
             
             Random random = new Random();
-            int randomNumber = random.Next(0, 3);
+            int randomNumber = random.Next(0, NUM_CARDS);
             globalIndex = randomNumber;
 
 
-            cardsMethods[randomNumber](gameImages[randomNumber].ImageButton, 17);
+            cardsMethods[randomNumber](outerImage.ImageButton);
 
         }
 
@@ -178,13 +183,6 @@ namespace Leonardo
             initiateAll();
             randomNextCard();
             simulate();       
-/*
-            buttonsArray[3,1].ImageButton.Click += (sender, e) => {
-                cardsMethods[globalIndex](buttonsArray[3,1].ImageButton,14);
-                //buttonsArray[3, 1].ImageButton.SetImageResource();
-                //tempButton.SetImageResource(Resource.Drawable.green_cherry_3);
-            };
-  */          
         }
 
         private void simulate()
@@ -199,72 +197,160 @@ namespace Leonardo
         {
             buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton, 1);
+                cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton);
             };
             buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton, 2);
+                cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton);
             };
             buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton, 3);
+                cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton);
             };
             buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton, 4);
+                cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton);
             };
 
             buttonsArray[1, 0].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton, 5);
+                cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton);
             };
             buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton, 6);
+                cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton);
             };
             buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton, 7);
+                cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton);
             };
             buttonsArray[1, 3].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton, 8);
+                cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton);
             };
 
             buttonsArray[2, 0].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton, 9);
+                cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton);
             };
             buttonsArray[2, 1].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton, 10);
+                cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton);
             };
             buttonsArray[2, 2].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton, 11);
+                cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton);
             };
             buttonsArray[2, 3].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton, 12);
+                cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton);
             };
 
             buttonsArray[3, 0].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton, 13);
+                cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton);
             };
             buttonsArray[3, 1].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton, 14);
+                cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton);
             };
             buttonsArray[3, 2].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton, 15);
+                cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton);
             };
             buttonsArray[3, 3].ImageButton.Click += (sender, e) =>
             {
-                cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton, 16);
+                cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton);
             };
         }
+
+        // Beginning of all type methods.
+        // Green methods : 
+        private void greenCherry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_cherry_1); }
+        private void greenCherry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_cherry_2); }
+        private void greenCherry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_cherry_3); }
+        private void greenCherry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_cherry_4); }
+
+        private void greenMushroom1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_mushroom_1); }
+        private void greenMushroom2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_mushroom_2); }
+        private void greenMushroom3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_mushroom_3); }
+        private void greenMushroom4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_mushroom_4); }
+
+        private void greenStrawberry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_straw_1); }
+        private void greenStrawberry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_straw_2); }
+        private void greenStrawberry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_straw_3); }
+        private void greenStrawberry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.green_straw_4); }
+
+        // Red methods : 
+        private void redCherry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_cherry_1); }
+        private void redCherry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_cherry_2); }
+        private void redCherry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_cherry_3); }
+        private void redCherry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_cherry_4); }
+
+        private void redMushroom1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_mushroom_1); }
+        private void redMushroom2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_mushroom_2); }
+        private void redMushroom3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_mushroom_3); }
+        private void redMushroom4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_mushroom_4); }
+
+        private void redStrawberry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_straw_1); }
+        private void redStrawberry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_straw_2); }
+        private void redStrawberry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_straw_3); }
+        private void redStrawberry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.red_straw_4); }
+
+        // Yellow methods : 
+        private void yellowCherry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_cherry_1); }
+        private void yellowCherry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_cherry_2); }
+        private void yellowCherry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_cherry_3); }
+        private void yellowCherry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_cherry_4); }
+
+        private void yellowMushroom1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_mushroom_1); }
+        private void yellowMushroom2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_mushroom_2); }
+        private void yellowMushroom3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_mushroom_3); }
+        private void yellowMushroom4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_mushroom_4); }
+
+        private void yellowStrawberry1(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_straw_1); }
+        private void yellowStrawberry2(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_straw_2); }
+        private void yellowStrawberry3(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_straw_3); }
+        private void yellowStrawberry4(ImageButton btn)
+        { btn.SetImageResource(Resource.Drawable.yellow_straw_4); }
+
+        // End of delegates methods, all possible game cards.
+
 
     }
     /// <summary>

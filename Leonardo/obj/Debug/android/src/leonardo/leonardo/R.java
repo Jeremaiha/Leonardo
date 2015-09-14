@@ -12,13 +12,47 @@ public final class R {
     }
     public static final class drawable {
         public static final int blank=0x7f020000;
-        public static final int green_cherry_2=0x7f020001;
-        public static final int green_cherry_3=0x7f020002;
-        public static final int green_mushrooms_2=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int play_icon_small=0x7f020005;
-        public static final int red_mushroom_1=0x7f020006;
-        public static final int x=0x7f020007;
+        public static final int green_cherry_1=0x7f020001;
+        public static final int green_cherry_2=0x7f020002;
+        public static final int green_cherry_3=0x7f020003;
+        public static final int green_cherry_4=0x7f020004;
+        public static final int green_mushroom_1=0x7f020005;
+        public static final int green_mushroom_2=0x7f020006;
+        public static final int green_mushroom_3=0x7f020007;
+        public static final int green_mushroom_4=0x7f020008;
+        public static final int green_straw_1=0x7f020009;
+        public static final int green_straw_2=0x7f02000a;
+        public static final int green_straw_3=0x7f02000b;
+        public static final int green_straw_4=0x7f02000c;
+        public static final int icon=0x7f02000d;
+        public static final int logo=0x7f02000e;
+        public static final int play=0x7f02000f;
+        public static final int play_icon_small=0x7f020010;
+        public static final int red_cherry_1=0x7f020011;
+        public static final int red_cherry_2=0x7f020012;
+        public static final int red_cherry_3=0x7f020013;
+        public static final int red_cherry_4=0x7f020014;
+        public static final int red_mushroom_1=0x7f020015;
+        public static final int red_mushroom_2=0x7f020016;
+        public static final int red_mushroom_3=0x7f020017;
+        public static final int red_mushroom_4=0x7f020018;
+        public static final int red_straw_1=0x7f020019;
+        public static final int red_straw_2=0x7f02001a;
+        public static final int red_straw_3=0x7f02001b;
+        public static final int red_straw_4=0x7f02001c;
+        public static final int x=0x7f02001d;
+        public static final int yellow_cherry_1=0x7f02001e;
+        public static final int yellow_cherry_2=0x7f02001f;
+        public static final int yellow_cherry_3=0x7f020020;
+        public static final int yellow_cherry_4=0x7f020021;
+        public static final int yellow_mushroom_1=0x7f020022;
+        public static final int yellow_mushroom_2=0x7f020023;
+        public static final int yellow_mushroom_3=0x7f020024;
+        public static final int yellow_mushroom_4=0x7f020025;
+        public static final int yellow_straw_1=0x7f020026;
+        public static final int yellow_straw_2=0x7f020027;
+        public static final int yellow_straw_3=0x7f020028;
+        public static final int yellow_straw_4=0x7f020029;
     }
     public static final class id {
         public static final int button1=0x7f05001a;
