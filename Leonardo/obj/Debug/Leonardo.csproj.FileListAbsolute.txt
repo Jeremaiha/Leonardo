@@ -77,3 +77,4 @@ E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_1.pn
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_2.png
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_3.png
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_4.png
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\Leonardo.csprojResolveAssemblyReference.cache
