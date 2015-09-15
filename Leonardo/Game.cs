@@ -20,14 +20,14 @@ namespace Leonardo
         const int SIZE = 4;
         Card  outerImage;   // Image Button 17
         Card[,] buttonsArray;
-
-
+        
         // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS = 12 * 3;
+        const int NUM_CARDS =  12 * 3;
         public delegate void MethodsDelegates(ImageButton btnImg);
         public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
 
-        //List<Action<ImageButton, int>> methods = new List<Action<ImageButton, int>>();
+        Card[] gameCards;
+        int[] numOfCards;
 
         int globalIndex;
 
@@ -47,7 +47,6 @@ namespace Leonardo
         ///     Specified order : 
         ///         * Green
         ///         * Red
-        ///         * Blue
         ///         * Yellow.
         /// </summary>
         private void initiateDelegates() { 
@@ -103,10 +102,56 @@ namespace Leonardo
 
         /// <summary>
         ///     Create an array of all images.
+        ///     A help array will exist, which will be holding the counting of each card in.
         /// </summary>
         private void initiateSetOfImages(){
-          
+            int localCnt = 0;
 
+            // Initialize all game cards.
+            gameCards =  new Card[NUM_CARDS];
+            numOfCards = new int [NUM_CARDS];
+
+            // Initialize amount.
+            for (int i = 0; i < NUM_CARDS; i++ ){
+                numOfCards[i] = 4;
+            }
+
+            // Initialize the cards symbols,color and amount.
+            // Order : Green , Red , Yellow.
+            // Type  : Cherry, Mushroom , Strawberry.
+
+            // Green
+            for (int i = 0; i < 4; i++,localCnt++){
+                gameCards[localCnt] = new Card(null,"cherry","green",i+1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "mushroom", "green", i+1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "stawberry", "green", i + 1);
+            }
+
+            // Red
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "cherry", "red", i + 1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "mushroom", "red", i + 1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "stawberry", "red", i + 1);
+            }
+
+            // Yellow
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "cherry", "yellow", i + 1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "mushroom", "yellow", i + 1);
+            }
+            for (int i = 0; i < 4; i++, localCnt++){
+                gameCards[localCnt] = new Card(null, "stawberry", "yellow", i + 1);
+            }
         }
 
         /// <summary>
@@ -158,8 +203,6 @@ namespace Leonardo
 
     }
 
-
-        
         private void randomNextCard(){
             
             Random random = new Random();
