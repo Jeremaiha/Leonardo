@@ -22,14 +22,14 @@ namespace Leonardo
         Card[,] buttonsArray;
         
         // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS =  12 * 3;
+        const int NUM_CARDS =  3 * 4 * 3;//Amount of all cards(3 shapes, 4 amounts of all shape and 3 colors)
         public delegate void MethodsDelegates(ImageButton btnImg);
         public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
 
-        Card[] gameCards;
-        int[] numOfCards;
-
-        int globalIndex;
+        Card[] gameCards;// Array of all possible cards
+        int[] numOfCards;//Amount of each card in the game
+        int numberOfCards = NUM_CARDS; //Substact each time when Random function is activated
+        int globalIndex;//To know which delegate is active in current time
 
         private void initiateAll(){
             initiateButtonsArray();
@@ -37,7 +37,8 @@ namespace Leonardo
          
             // SAVE DELEGATE
             initiateDelegates();
-   
+            //Will be re
+
         }
 
         /// <summary>
@@ -207,7 +208,13 @@ namespace Leonardo
             
             Random random = new Random();
             int randomNumber;
-            
+            if(numberOfCards != 0){
+                numberOfCards--;
+            }else{
+                // Game ended, show scores.
+                return;
+            }
+               
             // Untill I get a card which I can use, keep doing random.
             do{
                 randomNumber = random.Next(0, NUM_CARDS);
@@ -238,11 +245,8 @@ namespace Leonardo
 
         private void simulate()
         {
-            for (int i = NUM_CARDS; i > 0; i--){
-                randomNextCard();
-                buttonsClicks();
-            }
-            
+            randomNextCard();
+            buttonsClicks();
         }
         /// <summary>
         ///     When a button is clicked, then an action listenr appears.
@@ -250,80 +254,120 @@ namespace Leonardo
         /// </summary>
         private void buttonsClicks()
         {
+            /*
+            for (int i = 0; i < SIZE; i++){
+                for (int j = 0; j < SIZE; j++){
+                    buttonsArray[i, j].ImageButton.Click += (sender, e) =>
+                    {
+                        cardsMethods[globalIndex](buttonsArray[i, j].ImageButton);
+                        randomNextCard();
+                        buttonsArray[i, j].ImageButton.Enabled = false;
+                    };
+                }
+            }
+            */
             buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton);
+                randomNextCard();
+                buttonsArray[0, 0].ImageButton.Enabled = false;
             };
             buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton);
+                randomNextCard();
+                buttonsArray[0, 1].ImageButton.Enabled = false;
             };
             buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton);
+                randomNextCard();
+                buttonsArray[0, 2].ImageButton.Enabled = false;
             };
             buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton);
+                randomNextCard();
+                buttonsArray[0, 3].ImageButton.Enabled = false;
             };
-
             buttonsArray[1, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton);
+                randomNextCard();
+                buttonsArray[1, 0].ImageButton.Enabled = false;
             };
             buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton);
+                randomNextCard();
+                buttonsArray[1, 1].ImageButton.Enabled = false;
             };
             buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton);
+                randomNextCard();
+                buttonsArray[1, 2].ImageButton.Enabled = false;
             };
             buttonsArray[1, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton);
+                randomNextCard();
+                buttonsArray[1, 3].ImageButton.Enabled = false;
             };
-
             buttonsArray[2, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton);
+                randomNextCard();
+                buttonsArray[2, 0].ImageButton.Enabled = false;
             };
             buttonsArray[2, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton);
+                randomNextCard();
+                buttonsArray[2, 1].ImageButton.Enabled = false;
             };
             buttonsArray[2, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton);
+                randomNextCard();
+                buttonsArray[2, 2].ImageButton.Enabled = false;
             };
             buttonsArray[2, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton);
+                randomNextCard();
+                buttonsArray[2, 3].ImageButton.Enabled = false;
             };
-
             buttonsArray[3, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton);
+                randomNextCard();
+                buttonsArray[3, 0].ImageButton.Enabled = false;
             };
             buttonsArray[3, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton);
+                randomNextCard();
+                buttonsArray[3, 1].ImageButton.Enabled = false;
             };
             buttonsArray[3, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton);
+                randomNextCard();
+                buttonsArray[3, 2].ImageButton.Enabled = false;
             };
             buttonsArray[3, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton);
+                randomNextCard();
+                buttonsArray[3, 3].ImageButton.Enabled = false;
             };
         }
 
         // Beginning of all type methods.
         // Green methods : 
         private void greenCherry1(ImageButton btn)
-        { btn.SetImageResource(Resource.Drawable.green_cherry_1);
-        }
+        { btn.SetImageResource(Resource.Drawable.green_cherry_1); }
         private void greenCherry2(ImageButton btn)
         { btn.SetImageResource(Resource.Drawable.green_cherry_2); }
         private void greenCherry3(ImageButton btn)

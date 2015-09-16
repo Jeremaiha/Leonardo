@@ -14,7 +14,6 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\icon.pn
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\play_icon_small.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_2.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_3.png
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushrooms_2.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_1.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\x.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\blank.png
@@ -78,3 +77,39 @@ E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_2.pn
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_3.png
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_4.png
 E:\Programming\github\Leonardo\Leonardo\obj\Debug\Leonardo.csprojResolveAssemblyReference.cache
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_cherry_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushroom_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushroom_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushroom_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_mushroom_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_straw_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_straw_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_straw_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\green_straw_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\logo.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\play.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_cherry_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_cherry_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_cherry_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_cherry_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_mushroom_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_straw_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_straw_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_straw_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\red_straw_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_cherry_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_cherry_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_cherry_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_cherry_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_mushroom_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_mushroom_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_mushroom_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_mushroom_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_1.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_2.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_3.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_4.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\background.png
