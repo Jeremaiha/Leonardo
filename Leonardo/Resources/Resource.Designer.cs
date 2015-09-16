@@ -186,11 +186,11 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05001b
-			public const int button1 = 2131034139;
-			
 			// aapt resource value: 0x7f05001c
-			public const int button2 = 2131034140;
+			public const int button1 = 2131034140;
+			
+			// aapt resource value: 0x7f05001d
+			public const int button2 = 2131034141;
 			
 			// aapt resource value: 0x7f050003
 			public const int imageButton1 = 2131034115;
@@ -219,17 +219,17 @@ namespace Leonardo
 			// aapt resource value: 0x7f050016
 			public const int imageButton17 = 2131034134;
 			
-			// aapt resource value: 0x7f050018
-			public const int imageButton18 = 2131034136;
-			
 			// aapt resource value: 0x7f050019
-			public const int imageButton19 = 2131034137;
+			public const int imageButton18 = 2131034137;
+			
+			// aapt resource value: 0x7f05001a
+			public const int imageButton19 = 2131034138;
 			
 			// aapt resource value: 0x7f050004
 			public const int imageButton2 = 2131034116;
 			
-			// aapt resource value: 0x7f050017
-			public const int imageButton20 = 2131034135;
+			// aapt resource value: 0x7f050018
+			public const int imageButton20 = 2131034136;
 			
 			// aapt resource value: 0x7f050005
 			public const int imageButton3 = 2131034117;
@@ -252,8 +252,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f05000d
 			public const int imageButton9 = 2131034125;
 			
-			// aapt resource value: 0x7f05001a
-			public const int imageView1 = 2131034138;
+			// aapt resource value: 0x7f05001b
+			public const int imageView1 = 2131034139;
 			
 			// aapt resource value: 0x7f050001
 			public const int tableLayout1 = 2131034113;
@@ -272,6 +272,9 @@ namespace Leonardo
 			
 			// aapt resource value: 0x7f050000
 			public const int textView1 = 2131034112;
+			
+			// aapt resource value: 0x7f050017
+			public const int textView3 = 2131034135;
 			
 			static Id()
 			{

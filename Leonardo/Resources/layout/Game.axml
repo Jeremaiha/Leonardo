@@ -135,6 +135,13 @@
         android:id="@+id/imageButton17"
         android:layout_marginLeft="0.0dp"
         android:layout_gravity="center" />
+    <TextView
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_gravity="center" />
     <ImageButton
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="0.0dp"

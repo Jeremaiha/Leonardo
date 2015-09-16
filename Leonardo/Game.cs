@@ -32,6 +32,7 @@ namespace Leonardo
         int globalIndex;// To know which delegate is active in current time
 
         GameRules gameRules; // Holds the game board, and all its rules.
+        TextView score;
 
         private void initiateAll(){
             initiateButtonsArray();
@@ -41,6 +42,7 @@ namespace Leonardo
             initiateDelegates();
 
             gameRules = new GameRules(buttonsArray,SIZE);
+            score = FindViewById<TextView>(Resource.Id.textView3);
         }
 
         /// <summary>
@@ -231,7 +233,7 @@ namespace Leonardo
             outerImage.Color  = gameCards[randomNumber].Color;
 
             // Start all game rules validations.
-            gameRules.simulateAllRules();
+            score.Text = (Int32.Parse(score.Text.ToString())+gameRules.simulateAllRules()).ToString();
             
         }
 
@@ -522,6 +524,7 @@ namespace Leonardo
     public class GameRules
     {
         Card[,] gameBoard;
+        //TextView score;
         int SIZE;
 
         /// <summary>
@@ -533,6 +536,7 @@ namespace Leonardo
         {
             gameBoard = arrayOfButtons;
             SIZE = newSize;
+            //score = newScore;
         }
 
 
@@ -543,6 +547,7 @@ namespace Leonardo
         public int simulateAllRules(){
             int sum = 0;
             sum = checkRows();
+         //   score.Text += sum;
 
             return sum;
         }
