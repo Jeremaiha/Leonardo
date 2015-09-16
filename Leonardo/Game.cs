@@ -22,23 +22,25 @@ namespace Leonardo
         Card[,] buttonsArray;
         
         // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS =  3 * 4 * 3;//Amount of all cards(3 shapes, 4 amounts of all shape and 3 colors)
+        const int NUM_CARDS =  3 * 4 * 3;//Amount of all cards(3 shapes, 4 cards and 3 colors)
         public delegate void MethodsDelegates(ImageButton btnImg);
         public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
 
         Card[] gameCards;// Array of all possible cards
         int[] numOfCards;//Amount of each card in the game
-        int numberOfCards = NUM_CARDS; //Substact each time when Random function is activated
-        int globalIndex;//To know which delegate is active in current time
+        int numberOfCards = NUM_CARDS; // Substract each time when Random function is activated
+        int globalIndex;// To know which delegate is active in current time
+
+        GameRules gameRules; // Holds the game board, and all its rules.
 
         private void initiateAll(){
             initiateButtonsArray();
             initiateSetOfImages();
          
-            // SAVE DELEGATE
+            // Save all delegates.
             initiateDelegates();
-            //Will be re
 
+            gameRules = new GameRules(buttonsArray,SIZE);
         }
 
         /// <summary>
@@ -227,6 +229,10 @@ namespace Leonardo
             outerImage.Shape  = gameCards[randomNumber].Shape;
             outerImage.Amount = gameCards[randomNumber].Amount;
             outerImage.Color  = gameCards[randomNumber].Color;
+
+            // Start all game rules validations.
+            gameRules.simulateAllRules();
+            
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -236,10 +242,9 @@ namespace Leonardo
             // Create your application here
             // Layout initialisation
             SetContentView(Resource.Layout.Game);
-
             //  Call the initiation of all buttons method.
             initiateAll();
-            
+          
             simulate();       
         }
 
@@ -247,6 +252,7 @@ namespace Leonardo
         {
             randomNextCard();
             buttonsClicks();
+            
         }
         /// <summary>
         ///     When a button is clicked, then an action listenr appears.
@@ -269,98 +275,154 @@ namespace Leonardo
             buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton);
+                
+                buttonsArray[0, 0].ImageButton.Enabled = false; // Disable the button.
+                // Copy configurations from button 17 to [i,j] - needed for game rules.
+                buttonsArray[0, 0].Shape = outerImage.Shape;
+                buttonsArray[0, 0].Amount = outerImage.Amount;
+                buttonsArray[0, 0].Color = outerImage.Color;
+               /* var callDialog = new AlertDialog.Builder(this);
+                callDialog.SetMessage(buttonsArray[0, 0].Shape + "," + buttonsArray[0, 0].Amount.ToString() + " " + 
+                    buttonsArray[0, 0].Color);
+                callDialog.SetNeutralButton("ok", delegate { });
+                callDialog.Show();
+                */
                 randomNextCard();
-                buttonsArray[0, 0].ImageButton.Enabled = false;
             };
             buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton);
-                randomNextCard();
                 buttonsArray[0, 1].ImageButton.Enabled = false;
+                buttonsArray[0, 1].Shape = outerImage.Shape;
+                buttonsArray[0, 1].Amount = outerImage.Amount;
+                buttonsArray[0, 1].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton);
-                randomNextCard();
                 buttonsArray[0, 2].ImageButton.Enabled = false;
+                buttonsArray[0, 2].Shape = outerImage.Shape;
+                buttonsArray[0, 2].Amount = outerImage.Amount;
+                buttonsArray[0, 2].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton);
-                randomNextCard();
                 buttonsArray[0, 3].ImageButton.Enabled = false;
+                buttonsArray[0, 3].Shape = outerImage.Shape;
+                buttonsArray[0, 3].Amount = outerImage.Amount;
+                buttonsArray[0, 3].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[1, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton);
-                randomNextCard();
                 buttonsArray[1, 0].ImageButton.Enabled = false;
+                buttonsArray[1, 0].Shape = outerImage.Shape;
+                buttonsArray[1, 0].Amount = outerImage.Amount;
+                buttonsArray[1, 0].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton);
-                randomNextCard();
                 buttonsArray[1, 1].ImageButton.Enabled = false;
+                buttonsArray[1, 1].Shape = outerImage.Shape;
+                buttonsArray[1, 1].Amount = outerImage.Amount;
+                buttonsArray[1, 1].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton);
-                randomNextCard();
                 buttonsArray[1, 2].ImageButton.Enabled = false;
+                buttonsArray[1, 2].Shape = outerImage.Shape;
+                buttonsArray[1, 2].Amount = outerImage.Amount;
+                buttonsArray[1, 2].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[1, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton);
-                randomNextCard();
                 buttonsArray[1, 3].ImageButton.Enabled = false;
+                buttonsArray[1, 3].Shape = outerImage.Shape;
+                buttonsArray[1, 3].Amount = outerImage.Amount;
+                buttonsArray[1, 3].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[2, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton);
-                randomNextCard();
                 buttonsArray[2, 0].ImageButton.Enabled = false;
+                buttonsArray[2, 0].Shape = outerImage.Shape;
+                buttonsArray[2, 0].Amount = outerImage.Amount;
+                buttonsArray[2, 0].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[2, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton);
-                randomNextCard();
                 buttonsArray[2, 1].ImageButton.Enabled = false;
+                buttonsArray[2, 1].Shape = outerImage.Shape;
+                buttonsArray[2, 1].Amount = outerImage.Amount;
+                buttonsArray[2, 1].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[2, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton);
-                randomNextCard();
                 buttonsArray[2, 2].ImageButton.Enabled = false;
+                buttonsArray[2, 2].Shape = outerImage.Shape;
+                buttonsArray[2, 2].Amount = outerImage.Amount;
+                buttonsArray[2, 2].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[2, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton);
-                randomNextCard();
                 buttonsArray[2, 3].ImageButton.Enabled = false;
+                buttonsArray[2, 3].Shape = outerImage.Shape;
+                buttonsArray[2, 3].Amount = outerImage.Amount;
+                buttonsArray[2, 3].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[3, 0].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton);
-                randomNextCard();
                 buttonsArray[3, 0].ImageButton.Enabled = false;
+                buttonsArray[3, 0].Shape = outerImage.Shape;
+                buttonsArray[3, 0].Amount = outerImage.Amount;
+                buttonsArray[3, 0].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[3, 1].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton);
-                randomNextCard();
                 buttonsArray[3, 1].ImageButton.Enabled = false;
+                buttonsArray[3, 1].Shape = outerImage.Shape;
+                buttonsArray[3, 1].Amount = outerImage.Amount;
+                buttonsArray[3, 1].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[3, 2].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton);
-                randomNextCard();
                 buttonsArray[3, 2].ImageButton.Enabled = false;
+                buttonsArray[3, 2].Shape = outerImage.Shape;
+                buttonsArray[3, 2].Amount = outerImage.Amount;
+                buttonsArray[3, 2].Color = outerImage.Color;
+                randomNextCard();
             };
             buttonsArray[3, 3].ImageButton.Click += (sender, e) =>
             {
                 cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton);
-                randomNextCard();
                 buttonsArray[3, 3].ImageButton.Enabled = false;
+                buttonsArray[3, 3].Shape = outerImage.Shape;
+                buttonsArray[3, 3].Amount = outerImage.Amount;
+                buttonsArray[3, 3].Color = outerImage.Color;
+                randomNextCard();
             };
         }
 
@@ -453,6 +515,124 @@ namespace Leonardo
 
 
     }
+
+    /// <summary>
+    ///     Definning all game rules.
+    /// </summary>
+    public class GameRules
+    {
+        Card[,] gameBoard;
+        int SIZE;
+
+        /// <summary>
+        ///     C'tor.
+        /// </summary>
+        /// <param name="arrayOfButtons"></param>
+        /// <param name="newSize"></param>
+        public GameRules(Card[,] arrayOfButtons, int newSize)
+        {
+            gameBoard = arrayOfButtons;
+            SIZE = newSize;
+        }
+
+
+        /// <summary>
+        ///     Simulate all rules.
+        /// </summary>
+        /// <returns></returns>
+        public int simulateAllRules(){
+            int sum = 0;
+            sum = checkRows();
+
+            return sum;
+        }
+
+        /// <summary>
+        ///     Returns total sum of all rows.
+        /// </summary>
+        /// <returns></returns>
+        private int checkRows(){
+            int sum = 0;
+            for (int i = 0; i < SIZE; i++ ){
+                sum += checkRow(i);
+            }
+            return sum;
+        }
+
+        /// <summary>
+        ///     Check individual row.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        private int checkRow(int i){
+            int sum = 0, cnt = 0, rowSuccess = 0; //if it's at least 1, then we erase row. 3 is extra points.
+            string tempStr;
+            int tempInt;
+
+            // Check if there is at least 1 blank
+
+            for (int j = 0; j < SIZE; j++){ //checked with the rest.
+                if (gameBoard[i, j].Shape == "blank"){
+                    // at least 1 blank exists.
+                    return 0;
+                }
+            }
+
+            // Check amount.
+            tempInt = gameBoard[i,0].Amount; //took the first.
+            for (int j = 1; j < SIZE; j++ ){ //checked with the rest.
+                if(gameBoard[i,j].Amount == tempInt){
+                    cnt++;
+                }
+            }
+            if(cnt == 3){ //Successfull row.
+                sum += 50;
+                rowSuccess += 1;
+            }
+            // Check color.
+            cnt = 0;
+            tempStr = gameBoard[i,0].Color; //took the first.
+            for (int j = 1; j < SIZE; j++ ){ //checked with the rest.
+                if(gameBoard[i,j].Color == tempStr){
+                    cnt++;
+                }
+            }
+            if(cnt == 3){ //Successfull row.
+                sum += 50;
+                rowSuccess += 1;
+            }
+            // Check shape.
+            cnt = 0;
+            tempStr = gameBoard[i, 0].Shape; //took the first.
+            for (int j = 1; j < SIZE; j++){ //checked with the rest.
+                if (gameBoard[i, j].Shape == tempStr){
+                    cnt++;
+                }
+            }
+            if (cnt == 3){ //Successfull row.
+                sum += 50;
+                rowSuccess += 1;
+            }
+            
+            // If bonus needed.
+            if (rowSuccess == 3){
+                sum *= 2;
+            }
+
+            // If at least 1 row exists.
+            if (rowSuccess > 0){
+                for (int j = 0; j < SIZE; j++){
+                    gameBoard[i,j].ImageButton.SetImageResource(Resource.Drawable.blank);
+                    gameBoard[i,j].Shape = "blank";
+                    gameBoard[i,j].Color = "white";
+                    gameBoard[i,j].Amount = 0;
+                    gameBoard[i, j].ImageButton.Enabled = true;
+                }
+            }
+            return sum;
+        }
+    }
+
     /// <summary>
     ///     Card class which is a card container.
     ///     Contains the imageButton,Color,Shape and Amount.
@@ -473,6 +653,19 @@ namespace Leonardo
             shape = "";
             color = "";
             amount = 0;
+        }
+
+        /// <summary>
+        ///     Copy C'tor.
+        ///     For an object to be copied deeply.
+        /// </summary>
+        /// <param name="card"></param>
+        public Card(Card card)
+        {
+            imageButton = card.imageButton;
+            shape = card.shape;
+            color = card.color;
+            amount = card.amount;
         }
 
         /// <summary>
