@@ -1,7 +1,7 @@
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Leonardo.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Mono.Android.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\mscorlib.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Core.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.dll
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.Linq.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\Leonardo.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\Mono.Android.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\mscorlib.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\System.Core.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\System.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.dll
+E:\Programming\github\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.Linq.dll
