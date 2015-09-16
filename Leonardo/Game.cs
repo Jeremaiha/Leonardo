@@ -206,12 +206,20 @@ namespace Leonardo
         private void randomNextCard(){
             
             Random random = new Random();
-            int randomNumber = random.Next(0, NUM_CARDS);
+            int randomNumber;
+            
+            // Untill I get a card which I can use, keep doing random.
+            do{
+                randomNumber = random.Next(0, NUM_CARDS);
+            }while(numOfCards[randomNumber] == 0);
+            numOfCards[randomNumber] -= 1; // Decrease 1, used this card at this round.
             globalIndex = randomNumber;
-
-
+            // Call the delegate method.
             cardsMethods[randomNumber](outerImage.ImageButton);
-
+            // Set the rest values of the 17'th button.
+            outerImage.Shape  = gameCards[randomNumber].Shape;
+            outerImage.Amount = gameCards[randomNumber].Amount;
+            outerImage.Color  = gameCards[randomNumber].Color;
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -224,13 +232,17 @@ namespace Leonardo
 
             //  Call the initiation of all buttons method.
             initiateAll();
-            randomNextCard();
+            
             simulate();       
         }
 
         private void simulate()
         {
-            buttonsClicks();
+            for (int i = NUM_CARDS; i > 0; i--){
+                randomNextCard();
+                buttonsClicks();
+            }
+            
         }
         /// <summary>
         ///     When a button is clicked, then an action listenr appears.
@@ -310,7 +322,8 @@ namespace Leonardo
         // Beginning of all type methods.
         // Green methods : 
         private void greenCherry1(ImageButton btn)
-        { btn.SetImageResource(Resource.Drawable.green_cherry_1); }
+        { btn.SetImageResource(Resource.Drawable.green_cherry_1);
+        }
         private void greenCherry2(ImageButton btn)
         { btn.SetImageResource(Resource.Drawable.green_cherry_2); }
         private void greenCherry3(ImageButton btn)
