@@ -56,8 +56,12 @@ public final class R {
         public static final int yellow_straw_4=0x7f02002a;
     }
     public static final class id {
+        public static final int absoluteLayout1=0x7f060026;
         public static final int button1=0x7f06001c;
         public static final int button2=0x7f06001d;
+        public static final int editText1=0x7f06001f;
+        public static final int editText2=0x7f060022;
+        public static final int editText3=0x7f060025;
         public static final int imageButton1=0x7f060003;
         public static final int imageButton10=0x7f06000e;
         public static final int imageButton11=0x7f06000f;
@@ -79,6 +83,9 @@ public final class R {
         public static final int imageButton8=0x7f06000b;
         public static final int imageButton9=0x7f06000d;
         public static final int imageView1=0x7f06001b;
+        public static final int linearLayout1=0x7f06001e;
+        public static final int linearLayout2=0x7f060020;
+        public static final int linearLayout3=0x7f060023;
         public static final int tableLayout1=0x7f060001;
         public static final int tableRow1=0x7f060002;
         public static final int tableRow2=0x7f060007;
@@ -86,6 +93,8 @@ public final class R {
         public static final int tableRow4=0x7f060011;
         public static final int textView1=0x7f060000;
         public static final int textView3=0x7f060017;
+        public static final int textView4=0x7f060021;
+        public static final int textView5=0x7f060024;
     }
     public static final class layout {
         public static final int game=0x7f030000;

@@ -14,7 +14,7 @@ using Android.Widget;
 namespace Leonardo
 {
 
-    [Activity(Label = "Game")]
+    [Activity(Label = "Leonardo")]
     public class Game : Activity
     {
         const int SIZE = 4;

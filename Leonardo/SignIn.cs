@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Leonardo
 {
-    [Activity(Label = "SignIn")]
+    [Activity(Label = "Leonardo")]
     public class SignIn : Activity
     {
         protected override void OnCreate(Bundle bundle)
