@@ -6,6 +6,10 @@ Leonardo.MainActivity, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
 Leonardo.MainActivity, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
 Leonardo.MainActivity;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
 leonardo.MainActivity;md5fef12874a7007ce33bb07b59ba6322ab.MainActivity
+Leonardo.ParseApplication, Leonardo;leonardo.ParseApplication
+Leonardo.ParseApplication, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;leonardo.ParseApplication
+Leonardo.ParseApplication;leonardo.ParseApplication
+leonardo.ParseApplication;leonardo.ParseApplication
 Leonardo.SignIn, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.SignIn
 Leonardo.SignIn, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.SignIn
 Leonardo.SignIn;md5fef12874a7007ce33bb07b59ba6322ab.SignIn
@@ -14,3 +18,11 @@ Leonardo.SignUp, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 Leonardo.SignUp, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 Leonardo.SignUp;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 leonardo.SignUp;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
+Parse.ParsePushBroadcastReceiver, Parse.Android;parse.ParsePushBroadcastReceiver
+Parse.ParsePushBroadcastReceiver, Parse.Android, Version=1.5.5.0, Culture=neutral, PublicKeyToken=null;parse.ParsePushBroadcastReceiver
+Parse.ParsePushBroadcastReceiver;parse.ParsePushBroadcastReceiver
+parse.ParsePushBroadcastReceiver;parse.ParsePushBroadcastReceiver
+Parse.ParsePushService, Parse.Android;parse.ParsePushService
+Parse.ParsePushService, Parse.Android, Version=1.5.5.0, Culture=neutral, PublicKeyToken=null;parse.ParsePushService
+Parse.ParsePushService;parse.ParsePushService
+parse.ParsePushService;parse.ParsePushService

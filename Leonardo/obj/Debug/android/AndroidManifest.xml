@@ -1,24 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Leonardo.Leonardo" android:versionCode="1" android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.parse.leonardo" android:versionCode="1" android:versionName="1.0">
   <uses-sdk android:minSdkVersion="11" />
-  <application android:label="Leonardo" android:icon="@drawable/icon" android:name="mono.android.app.Application" android:debuggable="true">
+  <!-- AndroidManifest.xml -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+  <permission android:protectionLevel="signature" android:name="com.parse.leonardo.permission.C2D_MESSAGE" />
+  <uses-permission android:name="com.parse.leonardo.permission.C2D_MESSAGE" />
+  <application android:label="com.parse.leonardo" android:icon="@drawable/icon" android:name="leonardo.ParseApplication" android:debuggable="true">
+    <service android:name="parse.ParsePushService" />
+    <receiver android:name="parse.ParsePushBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="com.parse.leonardo" />
+      </intent-filter>
+    </receiver>
     <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.Game" />
-    <activity android:icon="@drawable/icon" android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.MainActivity">
+    <activity android:icon="@drawable/icon" android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.MainActivity" />
+    <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignIn" />
+    <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignUp" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.parse.leonardo.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.parse.leonardo" />
+      </intent-filter>
+    </receiver>
+    <activity android:icon="@drawable/icon" android:label="Leonardo" android:name="com.parse.leonardo.TrialSplashScreen" android:theme="@style/Mono.Android.Theme.Splash" android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignIn" />
-    <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignUp" />
-    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="Leonardo.Leonardo.mono.MonoRuntimeProvider.__mono_init__" />
-    <receiver android:name="mono.android.Seppuku">
-      <intent-filter>
-        <action android:name="mono.android.intent.action.SEPPUKU" />
-        <category android:name="mono.android.intent.category.SEPPUKU.Leonardo.Leonardo" />
-      </intent-filter>
-    </receiver>
   </application>
-  <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

@@ -1,10 +1,7 @@
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.pdb
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo.apk
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Leonardo.Leonardo-Signed.apk
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\Leonardo.pdb
-E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\android\bin\Leonardo.Leonardo.apk
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\game.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signin.xml
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\signup.xml
@@ -114,3 +111,8 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_4.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\background.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\clickinmenu.mp3
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Parse.Android.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\Parse.Android.xml
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\com.parse.leonardo.apk
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\bin\Debug\com.parse.leonardo-Signed.apk
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\android\bin\com.parse.leonardo.apk

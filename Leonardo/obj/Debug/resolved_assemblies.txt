@@ -1,6 +1,7 @@
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Leonardo.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Mono.Android.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\mscorlib.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Parse.Android.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Core.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.dll
