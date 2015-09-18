@@ -5,17 +5,20 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Media;
 
 namespace Leonardo
 {
     [Activity(Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+       // MediaPlayer soundPlayer;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+//            soundPlayer = MediaPlayer.Create(this,Resource.Raw.clickInMenu);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -24,11 +27,13 @@ namespace Leonardo
             // and attach an event to it
             ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
             imageButton.Click += delegate {
+                //soundPlayer.Start();
                 StartActivity(typeof(Game));
             };
 
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate {
+  //              soundPlayer.Start();
                 StartActivity(typeof(SignIn));
             };
 

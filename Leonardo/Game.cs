@@ -212,7 +212,7 @@ namespace Leonardo
             
             Random random = new Random();
             int randomNumber;
-            if(numberOfCards != 0){
+            if(numberOfCards != -1){
                 numberOfCards--;
             }else{
                 // Game ended, show scores.
@@ -241,11 +241,10 @@ namespace Leonardo
         private void gameOver(){
             var callDialog = new AlertDialog.Builder(this);
             callDialog.SetMessage("Game Over.\nYour Score is : " + score.Text);
-            callDialog.SetNeutralButton("OK", delegate { 
-                
+            callDialog.SetNeutralButton("OK", delegate {
+                base.OnBackPressed();
             });
             callDialog.Show();
-            base.OnBackPressed();
         }
 
         protected override void OnCreate(Bundle bundle)

@@ -113,3 +113,4 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_3.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\yellow_straw_4.png
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\drawable\background.png
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\clickinmenu.mp3
