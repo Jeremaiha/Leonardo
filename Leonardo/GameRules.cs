@@ -40,11 +40,17 @@ namespace Leonardo
         /// <returns></returns>
         public int simulateAllRules()
         {
-            int sum = 0;
-            sum = checkColumns();
-            sum += checkRows();
+            int sum;
+            try{
+                sum = 0;
+                sum = checkColumns();
+                sum += checkRows();
 
-            //   score.Text += sum;
+            }
+            catch(Exception e){
+                throw e;
+            }
+
 
             return sum;
         }
