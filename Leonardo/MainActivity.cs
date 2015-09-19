@@ -18,6 +18,8 @@ namespace Leonardo
         {
             base.OnCreate(bundle);
 
+
+
 //            soundPlayer = MediaPlayer.Create(this,Resource.Raw.clickInMenu);
 
             // Set our view from the "main" layout resource
@@ -42,7 +44,10 @@ namespace Leonardo
                 StartActivity(typeof(SignUp));
             };
 
+
         }
+
+
     }
 }
 

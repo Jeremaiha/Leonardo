@@ -9,6 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView1" />
+    <TextView
+        android:text="Unregistered"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#00ff00"
+        android:background="#000000"
+        android:id="@+id/textView1"
+        android:layout_gravity="right" />
     <AbsoluteLayout
         android:minWidth="25px"
         android:minHeight="25px"

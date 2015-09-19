@@ -25,6 +25,11 @@ namespace Leonardo
             sumbitClick(submitBtn);
         }
 
+        /// <summary>
+        ///     Submit button clicked, checks all details.
+        ///     Registers if validated correctly
+        /// </summary>
+        /// <param name="submitBtn"></param>
         private void sumbitClick(Button submitBtn){
             submitBtn.Click += (sender, e) =>{
                 User user = getUser();
@@ -39,12 +44,21 @@ namespace Leonardo
                 }
             };
         }
-
+        /// <summary>
+        ///     Receives the user data, 
+        ///     If it's correct, he's signed in.
+        ///     Else, Error dialog box.
+        /// </summary>
+        /// <returns></returns>
         private User getUser(){
             try{
                 var name = FindViewById<EditText>(Resource.Id.editText1);
                 var email = FindViewById<EditText>(Resource.Id.editText2);
                 var password = FindViewById<EditText>(Resource.Id.editText3);
+
+                if (alreadyRegistered(email.Text)){
+                    
+                }
 
                 return new User(name.Text, email.Text, password.Text);        
             }
@@ -53,6 +67,15 @@ namespace Leonardo
             }catch (Exception e){
                 throw new Exception("Error : Creation of a user.\n" + e.Message);
             }
+        }
+
+        /// <summary>
+        ///     Should check in the database if the email already exists.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        private bool alreadyRegistered(string email){
+            return false;
         }
 
     }
