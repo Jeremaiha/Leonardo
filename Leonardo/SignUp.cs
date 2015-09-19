@@ -40,6 +40,8 @@ namespace Leonardo
                     callDialog.Show();
                 }else{
                     Toast.MakeText(this,user.Name+" Was Added",ToastLength.Short).Show();
+                    var mainActivity = new Intent(this,typeof(MainActivity));
+                    mainActivity.PutExtra("New User", "User from Sign Up");
                     StartActivity(typeof(MainActivity));
                 }
             };

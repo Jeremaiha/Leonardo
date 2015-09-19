@@ -22,7 +22,7 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="155.7dp"
+        android:layout_height="143.5dp"
         android:id="@+id/absoluteLayout1" />
     <ImageButton
         android:src="@drawable/play"
@@ -35,7 +35,7 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="136.8dp"
+        android:layout_height="100.6dp"
         android:id="@+id/absoluteLayout2" />
     <Button
         android:text="Sign In"

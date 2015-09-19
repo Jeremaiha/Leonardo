@@ -13,13 +13,16 @@ namespace Leonardo
     public class MainActivity : Activity
     {
        // MediaPlayer soundPlayer;
-
+        TextView registeredUser;
+      
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-
-
+            /*
+            string text = Intent.GetStringExtra("New User") ?? "Data not available";
+            registeredUser = FindViewById<TextView>(Resource.Id.textView1);
+            registeredUser.Text = text;
+            */
 //            soundPlayer = MediaPlayer.Create(this,Resource.Raw.clickInMenu);
 
             // Set our view from the "main" layout resource
