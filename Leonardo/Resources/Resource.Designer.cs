@@ -189,35 +189,38 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070025
-			public const int absoluteLayout1 = 2131165221;
-			
 			// aapt resource value: 0x7f07001c
-			public const int button1 = 2131165212;
+			public const int absoluteLayout1 = 2131165212;
 			
 			// aapt resource value: 0x7f07001d
-			public const int button2 = 2131165213;
+			public const int absoluteLayout2 = 2131165213;
 			
-			// aapt resource value: 0x7f070026
-			public const int buttonSignIn = 2131165222;
+			// aapt resource value: 0x7f07001e
+			public const int button1 = 2131165214;
 			
-			// aapt resource value: 0x7f07002d
-			public const int buttonSubmit = 2131165229;
+			// aapt resource value: 0x7f07001f
+			public const int button2 = 2131165215;
 			
 			// aapt resource value: 0x7f070027
-			public const int editText1 = 2131165223;
+			public const int buttonSignIn = 2131165223;
 			
-			// aapt resource value: 0x7f07002a
-			public const int editText2 = 2131165226;
+			// aapt resource value: 0x7f07002e
+			public const int buttonSubmit = 2131165230;
 			
-			// aapt resource value: 0x7f07002c
-			public const int editText3 = 2131165228;
+			// aapt resource value: 0x7f070028
+			public const int editText1 = 2131165224;
 			
-			// aapt resource value: 0x7f070021
-			public const int editTextName = 2131165217;
+			// aapt resource value: 0x7f07002b
+			public const int editText2 = 2131165227;
 			
-			// aapt resource value: 0x7f070024
-			public const int editTextPass = 2131165220;
+			// aapt resource value: 0x7f07002d
+			public const int editText3 = 2131165229;
+			
+			// aapt resource value: 0x7f070023
+			public const int editTextName = 2131165219;
+			
+			// aapt resource value: 0x7f070026
+			public const int editTextPass = 2131165222;
 			
 			// aapt resource value: 0x7f070003
 			public const int imageButton1 = 2131165187;
@@ -282,14 +285,14 @@ namespace Leonardo
 			// aapt resource value: 0x7f07001b
 			public const int imageView1 = 2131165211;
 			
-			// aapt resource value: 0x7f07001f
-			public const int linearLayout1 = 2131165215;
+			// aapt resource value: 0x7f070021
+			public const int linearLayout1 = 2131165217;
 			
-			// aapt resource value: 0x7f070028
-			public const int linearLayout2 = 2131165224;
+			// aapt resource value: 0x7f070029
+			public const int linearLayout2 = 2131165225;
 			
-			// aapt resource value: 0x7f070022
-			public const int linearLayout3 = 2131165218;
+			// aapt resource value: 0x7f070024
+			public const int linearLayout3 = 2131165220;
 			
 			// aapt resource value: 0x7f070001
 			public const int tableLayout1 = 2131165185;
@@ -312,20 +315,20 @@ namespace Leonardo
 			// aapt resource value: 0x7f070017
 			public const int textView3 = 2131165207;
 			
-			// aapt resource value: 0x7f070029
-			public const int textView4 = 2131165225;
+			// aapt resource value: 0x7f07002a
+			public const int textView4 = 2131165226;
 			
-			// aapt resource value: 0x7f07002b
-			public const int textView5 = 2131165227;
+			// aapt resource value: 0x7f07002c
+			public const int textView5 = 2131165228;
+			
+			// aapt resource value: 0x7f070022
+			public const int textViewName = 2131165218;
+			
+			// aapt resource value: 0x7f070025
+			public const int textViewPass = 2131165221;
 			
 			// aapt resource value: 0x7f070020
-			public const int textViewName = 2131165216;
-			
-			// aapt resource value: 0x7f070023
-			public const int textViewPass = 2131165219;
-			
-			// aapt resource value: 0x7f07001e
-			public const int textViewSignIn = 2131165214;
+			public const int textViewSignIn = 2131165216;
 			
 			static Id()
 			{

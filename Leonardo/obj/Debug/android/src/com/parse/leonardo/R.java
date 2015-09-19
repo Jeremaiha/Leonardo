@@ -57,16 +57,17 @@ public final class R {
         public static final int yellow_straw_4=0x7f02002b;
     }
     public static final class id {
-        public static final int absoluteLayout1=0x7f070025;
-        public static final int button1=0x7f07001c;
-        public static final int button2=0x7f07001d;
-        public static final int buttonSignIn=0x7f070026;
-        public static final int buttonSubmit=0x7f07002d;
-        public static final int editText1=0x7f070027;
-        public static final int editText2=0x7f07002a;
-        public static final int editText3=0x7f07002c;
-        public static final int editTextName=0x7f070021;
-        public static final int editTextPass=0x7f070024;
+        public static final int absoluteLayout1=0x7f07001c;
+        public static final int absoluteLayout2=0x7f07001d;
+        public static final int button1=0x7f07001e;
+        public static final int button2=0x7f07001f;
+        public static final int buttonSignIn=0x7f070027;
+        public static final int buttonSubmit=0x7f07002e;
+        public static final int editText1=0x7f070028;
+        public static final int editText2=0x7f07002b;
+        public static final int editText3=0x7f07002d;
+        public static final int editTextName=0x7f070023;
+        public static final int editTextPass=0x7f070026;
         public static final int imageButton1=0x7f070003;
         public static final int imageButton10=0x7f07000e;
         public static final int imageButton11=0x7f07000f;
@@ -88,9 +89,9 @@ public final class R {
         public static final int imageButton8=0x7f07000b;
         public static final int imageButton9=0x7f07000d;
         public static final int imageView1=0x7f07001b;
-        public static final int linearLayout1=0x7f07001f;
-        public static final int linearLayout2=0x7f070028;
-        public static final int linearLayout3=0x7f070022;
+        public static final int linearLayout1=0x7f070021;
+        public static final int linearLayout2=0x7f070029;
+        public static final int linearLayout3=0x7f070024;
         public static final int tableLayout1=0x7f070001;
         public static final int tableRow1=0x7f070002;
         public static final int tableRow2=0x7f070007;
@@ -98,11 +99,11 @@ public final class R {
         public static final int tableRow4=0x7f070011;
         public static final int textView1=0x7f070000;
         public static final int textView3=0x7f070017;
-        public static final int textView4=0x7f070029;
-        public static final int textView5=0x7f07002b;
-        public static final int textViewName=0x7f070020;
-        public static final int textViewPass=0x7f070023;
-        public static final int textViewSignIn=0x7f07001e;
+        public static final int textView4=0x7f07002a;
+        public static final int textView5=0x7f07002c;
+        public static final int textViewName=0x7f070022;
+        public static final int textViewPass=0x7f070025;
+        public static final int textViewSignIn=0x7f070020;
     }
     public static final class layout {
         public static final int game=0x7f030000;
