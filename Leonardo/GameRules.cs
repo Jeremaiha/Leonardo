@@ -40,19 +40,16 @@ namespace Leonardo
         /// <returns></returns>
         public int simulateAllRules()
         {
-            int sum;
             try{
-                sum = 0;
+                int sum = 0;
                 sum = checkColumns();
                 sum += checkRows();
-
+                return sum;
             }
             catch(Exception e){
-                throw e;
+                throw new Exception("Error : Simulating game rules.\n" + e.Message);
             }
 
-
-            return sum;
         }
         /// <summary>
         ///     Returns total sum of all columns.
@@ -60,12 +57,15 @@ namespace Leonardo
         /// <returns></returns>
         private int checkColumns()
         {
-            int sum = 0;
-            for (int i = 0; i < SIZE; i++)
-            {
-                sum += checkColumn(i);
+            try{
+                int sum = 0;
+                for (int i = 0; i < SIZE; i++){
+                    sum += checkColumn(i);
+                }
+                return sum;
+            }catch (Exception e){
+                throw new Exception("Error : Checking columns.\n" + e.Message);
             }
-            return sum;
         }
         /// <summary>
         ///     Check an individual column.
@@ -161,12 +161,15 @@ namespace Leonardo
         /// <returns></returns>
         private int checkRows()
         {
-            int sum = 0;
-            for (int i = 0; i < SIZE; i++)
-            {
-                sum += checkRow(i);
+            try{
+                int sum = 0;
+                for (int i = 0; i < SIZE; i++){
+                    sum += checkRow(i);
+                }
+                return sum;
+            }catch (Exception e){
+                throw new Exception("Error : Checking rows.\n" + e.Message);
             }
-            return sum;
         }
 
         /// <summary>
