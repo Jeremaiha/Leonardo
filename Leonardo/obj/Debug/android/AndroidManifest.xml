@@ -22,6 +22,7 @@
     <activity android:icon="@drawable/icon" android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.MainActivity" />
     <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignIn" />
     <activity android:label="Leonardo" android:name="md5fef12874a7007ce33bb07b59ba6322ab.SignUp" />
+    <activity android:label="Leonardo : TOP 10" android:name="md5fef12874a7007ce33bb07b59ba6322ab.TopScore" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.parse.leonardo.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>

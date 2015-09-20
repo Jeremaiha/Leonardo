@@ -18,6 +18,10 @@ Leonardo.SignUp, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 Leonardo.SignUp, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 Leonardo.SignUp;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
 leonardo.SignUp;md5fef12874a7007ce33bb07b59ba6322ab.SignUp
+Leonardo.TopScore, Leonardo;md5fef12874a7007ce33bb07b59ba6322ab.TopScore
+Leonardo.TopScore, Leonardo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5fef12874a7007ce33bb07b59ba6322ab.TopScore
+Leonardo.TopScore;md5fef12874a7007ce33bb07b59ba6322ab.TopScore
+leonardo.TopScore;md5fef12874a7007ce33bb07b59ba6322ab.TopScore
 Parse.ParsePushBroadcastReceiver, Parse.Android;parse.ParsePushBroadcastReceiver
 Parse.ParsePushBroadcastReceiver, Parse.Android, Version=1.5.5.0, Culture=neutral, PublicKeyToken=null;parse.ParsePushBroadcastReceiver
 Parse.ParsePushBroadcastReceiver;parse.ParsePushBroadcastReceiver

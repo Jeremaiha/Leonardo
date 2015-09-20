@@ -104,6 +104,13 @@ namespace Leonardo
                 StartActivity(typeof(SignUp));
             };
 
+            Button Top10Button = FindViewById<Button>(Resource.Id.button3);
+            Top10Button.Click += delegate
+            {
+                soundPlayer.Start();
+                StartActivity(typeof(TopScore));
+            };
+
         }
 
     }

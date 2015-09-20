@@ -121,3 +121,4 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\buttondown.m
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\combo.mp3
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\gameover.mp3
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\raw\singleroworcolumn.mp3
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\res\layout\topscore.xml

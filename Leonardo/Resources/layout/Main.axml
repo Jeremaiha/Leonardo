@@ -35,7 +35,7 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="100.6dp"
+        android:layout_height="53.4dp"
         android:id="@+id/absoluteLayout2" />
     <Button
         android:text="Sign In"
@@ -47,4 +47,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2" />
+    <Button
+        android:text="TOP 10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3" />
 </LinearLayout>
