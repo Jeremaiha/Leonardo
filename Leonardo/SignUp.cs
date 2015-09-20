@@ -15,6 +15,10 @@ namespace Leonardo
     [Activity(Label = "Leonardo")] 
     public class SignUp : Activity
     {
+
+        public delegate void delPassUser(string userName);
+
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -40,8 +44,8 @@ namespace Leonardo
                     callDialog.Show();
                 }else{
                     Toast.MakeText(this,user.Name+" Was Added",ToastLength.Short).Show();
-                    var mainActivity = new Intent(this,typeof(MainActivity));
-                    mainActivity.PutExtra("New User", "User from Sign Up");
+                    delPassUser del = new delPassUser(Leonardo.MainActivity.passUsername);
+                    del(user.Name);
                     StartActivity(typeof(MainActivity));
                 }
             };

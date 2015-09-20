@@ -13,43 +13,68 @@ namespace Leonardo
     public class MainActivity : Activity
     {
        // MediaPlayer soundPlayer;
-        TextView registeredUser;
-      
+        private TextView registeredUser;
+        private static string registrationString = "Unregistered";
+        /// <summary>
+        ///     Delegate method, to pass from SignUp activity the user.
+        /// </summary>
+        /// <param name="name"></param>
+        public static void passUsername(string name){
+            registrationString = name;
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            /*
-            string text = Intent.GetStringExtra("New User") ?? "Data not available";
+            SetContentView(Resource.Layout.Main);
+            
+            // If data was sent, the new user name is replaced.
             registeredUser = FindViewById<TextView>(Resource.Id.textView1);
-            registeredUser.Text = text;
-            */
+            registeredUser.Text = registrationString;
+         
 //            soundPlayer = MediaPlayer.Create(this,Resource.Raw.clickInMenu);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            // Instantiate the events.
+            buttonsClicks();
+
+        }
+
+        /// <summary>
+        ///     Buttons clicks events initialization.
+        /// </summary>
+        private void buttonsClicks(){
 
             // Get our button from the layout resource,
             // and attach an event to it
             ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
-            imageButton.Click += delegate {
+            imageButton.Click += delegate
+            {
                 //soundPlayer.Start();
-                StartActivity(typeof(Game));
+                // Was changed.
+                if (registeredUser.Text != "Unregistered"){
+                    StartActivity(typeof(Game));
+                }
+                var callDialog = new AlertDialog.Builder(this);
+                callDialog.SetMessage("Please Sign In/Up!");
+                callDialog.SetNeutralButton("Ok", delegate { });
+                callDialog.Show();
+
             };
 
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
-            signInButton.Click += delegate {
-  //              soundPlayer.Start();
+            signInButton.Click += delegate
+            {
+                //              soundPlayer.Start();
                 StartActivity(typeof(SignIn));
             };
 
             Button signUpButton = FindViewById<Button>(Resource.Id.button2);
-            signUpButton.Click += delegate{
+            signUpButton.Click += delegate
+            {
                 StartActivity(typeof(SignUp));
             };
 
-
         }
-
 
     }
 }
