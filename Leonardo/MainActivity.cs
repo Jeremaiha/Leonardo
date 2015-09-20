@@ -12,7 +12,7 @@ namespace Leonardo
     [Activity(Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-       // MediaPlayer soundPlayer;
+        MediaPlayer soundPlayer;
         private TextView registeredUser;
         private static string registrationString = "Unregistered";
         /// <summary>
@@ -27,12 +27,13 @@ namespace Leonardo
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Main);
-            
+
+            soundPlayer = MediaPlayer.Create(this, Resource.Raw.clickInMenu);
+
             // If data was sent, the new user name is replaced.
             registeredUser = FindViewById<TextView>(Resource.Id.textView1);
             registeredUser.Text = registrationString;
          
-//            soundPlayer = MediaPlayer.Create(this,Resource.Raw.clickInMenu);
 
             // Instantiate the events.
             buttonsClicks();
@@ -49,8 +50,7 @@ namespace Leonardo
             ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
             imageButton.Click += delegate
             {
-                //soundPlayer.Start();
-                // Was changed.
+                soundPlayer.Start();
                 if (registeredUser.Text != "Unregistered"){
                     StartActivity(typeof(Game));
                 }else{
@@ -66,13 +66,14 @@ namespace Leonardo
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate
             {
-                //              soundPlayer.Start();
+                soundPlayer.Start();
                 StartActivity(typeof(SignIn));
             };
 
             Button signUpButton = FindViewById<Button>(Resource.Id.button2);
             signUpButton.Click += delegate
             {
+                soundPlayer.Start();
                 StartActivity(typeof(SignUp));
             };
 

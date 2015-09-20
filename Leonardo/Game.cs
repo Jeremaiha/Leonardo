@@ -9,7 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using Android.Media;
 
 namespace Leonardo
 {
@@ -33,6 +33,8 @@ namespace Leonardo
 
         GameRules gameRules; // Holds the game board, and all its rules.
         TextView score;
+        MediaPlayer soundPlayer;
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -60,7 +62,8 @@ namespace Leonardo
 
                 gameRules = new GameRules(buttonsArray,SIZE);
                 score = FindViewById<TextView>(Resource.Id.textView3);
-            
+                soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+
             }catch (Exception e){
                 throw new Exception("Error : Initiating everything.\n" + e.Message);
             }
@@ -293,7 +296,12 @@ namespace Leonardo
                 outerImage.Color = gameCards[randomNumber].Color;
 
                 // Start all game rules validations.
-                score.Text = (Int32.Parse(score.Text.ToString()) + gameRules.simulateAllRules()).ToString();
+                randomNumber = gameRules.simulateAllRules();
+                if (randomNumber != 0){
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.singleRowOrColumn);
+                    soundPlayer.Start();
+                }
+                score.Text = (Int32.Parse(score.Text.ToString()) + randomNumber).ToString();
 
             }catch (Exception e){
                 throw new Exception("Error : Next random card.\n" + e.Message);
@@ -308,6 +316,8 @@ namespace Leonardo
         /// </summary>
         private void gameOver(){
             try{
+                soundPlayer = MediaPlayer.Create(this, Resource.Raw.gameOver);
+                soundPlayer.Start();
                 var callDialog = new AlertDialog.Builder(this);
                 callDialog.SetMessage("Game Over.\nYour Score is : " + score.Text);
                 callDialog.SetNeutralButton("OK", delegate {
@@ -357,8 +367,9 @@ namespace Leonardo
            */
                 buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton);
-
                     buttonsArray[0, 0].ImageButton.Enabled = false; // Disable the button.
                     // Copy configurations from button 17 to [i,j] - needed for game rules.
                     buttonsArray[0, 0].Shape = outerImage.Shape;
@@ -368,6 +379,8 @@ namespace Leonardo
                 };
                 buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton);
                     buttonsArray[0, 1].ImageButton.Enabled = false;
                     buttonsArray[0, 1].Shape = outerImage.Shape;
@@ -377,6 +390,8 @@ namespace Leonardo
                 };
                 buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton);
                     buttonsArray[0, 2].ImageButton.Enabled = false;
                     buttonsArray[0, 2].Shape = outerImage.Shape;
@@ -386,6 +401,8 @@ namespace Leonardo
                 };
                 buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[0, 3].ImageButton);
                     buttonsArray[0, 3].ImageButton.Enabled = false;
                     buttonsArray[0, 3].Shape = outerImage.Shape;
@@ -395,6 +412,8 @@ namespace Leonardo
                 };
                 buttonsArray[1, 0].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[1, 0].ImageButton);
                     buttonsArray[1, 0].ImageButton.Enabled = false;
                     buttonsArray[1, 0].Shape = outerImage.Shape;
@@ -404,6 +423,8 @@ namespace Leonardo
                 };
                 buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton);
                     buttonsArray[1, 1].ImageButton.Enabled = false;
                     buttonsArray[1, 1].Shape = outerImage.Shape;
@@ -413,6 +434,8 @@ namespace Leonardo
                 };
                 buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[1, 2].ImageButton);
                     buttonsArray[1, 2].ImageButton.Enabled = false;
                     buttonsArray[1, 2].Shape = outerImage.Shape;
@@ -422,6 +445,8 @@ namespace Leonardo
                 };
                 buttonsArray[1, 3].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[1, 3].ImageButton);
                     buttonsArray[1, 3].ImageButton.Enabled = false;
                     buttonsArray[1, 3].Shape = outerImage.Shape;
@@ -431,6 +456,8 @@ namespace Leonardo
                 };
                 buttonsArray[2, 0].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[2, 0].ImageButton);
                     buttonsArray[2, 0].ImageButton.Enabled = false;
                     buttonsArray[2, 0].Shape = outerImage.Shape;
@@ -440,6 +467,8 @@ namespace Leonardo
                 };
                 buttonsArray[2, 1].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[2, 1].ImageButton);
                     buttonsArray[2, 1].ImageButton.Enabled = false;
                     buttonsArray[2, 1].Shape = outerImage.Shape;
@@ -449,6 +478,8 @@ namespace Leonardo
                 };
                 buttonsArray[2, 2].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[2, 2].ImageButton);
                     buttonsArray[2, 2].ImageButton.Enabled = false;
                     buttonsArray[2, 2].Shape = outerImage.Shape;
@@ -458,6 +489,8 @@ namespace Leonardo
                 };
                 buttonsArray[2, 3].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[2, 3].ImageButton);
                     buttonsArray[2, 3].ImageButton.Enabled = false;
                     buttonsArray[2, 3].Shape = outerImage.Shape;
@@ -467,6 +500,8 @@ namespace Leonardo
                 };
                 buttonsArray[3, 0].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[3, 0].ImageButton);
                     buttonsArray[3, 0].ImageButton.Enabled = false;
                     buttonsArray[3, 0].Shape = outerImage.Shape;
@@ -476,6 +511,8 @@ namespace Leonardo
                 };
                 buttonsArray[3, 1].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[3, 1].ImageButton);
                     buttonsArray[3, 1].ImageButton.Enabled = false;
                     buttonsArray[3, 1].Shape = outerImage.Shape;
@@ -485,6 +522,8 @@ namespace Leonardo
                 };
                 buttonsArray[3, 2].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[3, 2].ImageButton);
                     buttonsArray[3, 2].ImageButton.Enabled = false;
                     buttonsArray[3, 2].Shape = outerImage.Shape;
@@ -494,6 +533,8 @@ namespace Leonardo
                 };
                 buttonsArray[3, 3].ImageButton.Click += (sender, e) =>
                 {
+                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+                    soundPlayer.Start();
                     cardsMethods[globalIndex](buttonsArray[3, 3].ImageButton);
                     buttonsArray[3, 3].ImageButton.Enabled = false;
                     buttonsArray[3, 3].Shape = outerImage.Shape;
