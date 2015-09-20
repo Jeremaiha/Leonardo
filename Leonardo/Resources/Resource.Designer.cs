@@ -217,7 +217,7 @@ namespace Leonardo
 			public const int editText3 = 2131165229;
 			
 			// aapt resource value: 0x7f070023
-			public const int editTextName = 2131165219;
+			public const int editTextEmail = 2131165219;
 			
 			// aapt resource value: 0x7f070026
 			public const int editTextPass = 2131165222;

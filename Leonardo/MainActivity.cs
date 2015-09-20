@@ -53,12 +53,14 @@ namespace Leonardo
                 // Was changed.
                 if (registeredUser.Text != "Unregistered"){
                     StartActivity(typeof(Game));
-                }
-                var callDialog = new AlertDialog.Builder(this);
-                callDialog.SetMessage("Please Sign In/Up!");
-                callDialog.SetNeutralButton("Ok", delegate { });
-                callDialog.Show();
+                }else{
+                    var callDialog = new AlertDialog.Builder(this);
+                    callDialog.SetMessage("Please Sign In/Up!");
+                    callDialog.SetNeutralButton("Ok", delegate { });
+                    callDialog.Show();
 
+                }
+                
             };
 
             Button signInButton = FindViewById<Button>(Resource.Id.button1);

@@ -27,7 +27,7 @@
         <EditText
             android:layout_width="287.5dp"
             android:layout_height="58.6dp"
-            android:id="@+id/editTextName" />
+            android:id="@+id/editTextEmail" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

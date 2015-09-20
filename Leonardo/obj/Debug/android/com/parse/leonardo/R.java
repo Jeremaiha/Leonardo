@@ -66,7 +66,7 @@ public final class R {
         public static final int editText1=0x7f070028;
         public static final int editText2=0x7f07002b;
         public static final int editText3=0x7f07002d;
-        public static final int editTextName=0x7f070023;
+        public static final int editTextEmail=0x7f070023;
         public static final int editTextPass=0x7f070026;
         public static final int imageButton1=0x7f070003;
         public static final int imageButton10=0x7f07000e;
