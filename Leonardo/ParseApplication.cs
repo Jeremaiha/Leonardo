@@ -35,8 +35,10 @@ namespace Leonardo
             
         }
         public async void saveObject(){
-            var testObject = new ParseObject("TestObject");
-            testObject["Vlada"] = "Vinokorov";
+            var testObject = new ParseObject("Users");
+            testObject["Name"] = "Jeremy";
+            testObject["Email"] = "something@gmail.com";
+            testObject["Password"] = "123";
             await testObject.SaveAsync();
         }
 
