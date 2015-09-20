@@ -26,6 +26,9 @@ namespace Leonardo
         public delegate void MethodsDelegates(ImageButton btnImg);
         public MethodsDelegates[] cardsMethods = new MethodsDelegates[NUM_CARDS];
 
+        public delegate void delegatePassScore(int score);
+
+
         Card[] gameCards;// Array of all possible cards
         int[] numOfCards;//Amount of each card in the game
         int numberOfCards = NUM_CARDS; // Substract each time when Random function is activated
@@ -310,6 +313,7 @@ namespace Leonardo
             
         }
 
+
         /// <summary>
         ///     When the game finishes, data is stored in the database.
         ///     Goes back to the starting screen.
@@ -324,13 +328,19 @@ namespace Leonardo
                     base.OnBackPressed();
                 });
                 callDialog.Show();
-            
+                addUserScore();
             }catch (Exception e){
                 throw new Exception("Error : Finishing the game.\n" + e.Message);
             }
             
         }
 
+        private void addUserScore(){
+            delegatePassScore dlg = new delegatePassScore(Leonardo.MainActivity.getScore);
+            dlg(Int32.Parse(score.Text));
+
+        }
+        
         /// <summary>
         ///     Simulates for the first time the random card.
         ///     then action listeners for the buttons are called.

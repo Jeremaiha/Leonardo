@@ -10,13 +10,15 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+using Parse;
+
 namespace Leonardo
 {
     [Activity(Label = "Leonardo")] 
     public class SignUp : Activity
     {
 
-        public delegate void delPassUser(string userName);
+        public delegate void delPassUser(User dlgUser);
 
 
         protected override void OnCreate(Bundle bundle)
@@ -42,10 +44,11 @@ namespace Leonardo
                     callDialog.SetMessage("Wrong Email Address!");
                     callDialog.SetNeutralButton("Woops", delegate{});
                     callDialog.Show();
-                }else{
+                }else{ // User added.
                     Toast.MakeText(this,user.Name+" Was Added",ToastLength.Short).Show();
                     delPassUser del = new delPassUser(Leonardo.MainActivity.passUsername);
-                    del(user.Name);
+                    del(user);
+                    addUserToParse(user);
                     StartActivity(typeof(MainActivity));
                 }
             };
@@ -73,6 +76,20 @@ namespace Leonardo
             }catch (Exception e){
                 throw new Exception("Error : Creation of a user.\n" + e.Message);
             }
+        }
+
+        private async void addUserToParse(User user1){
+            var user = new ParseUser()
+            {
+                Username = user1.Name,
+                Password = user1.Password,
+                Email = user1.Email
+            };
+
+            // other fields can be set just like with ParseObject
+            //user["phone"] = "415-392-0202";
+
+            await user.SignUpAsync();
         }
 
         /// <summary>

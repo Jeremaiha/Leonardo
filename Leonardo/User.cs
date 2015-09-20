@@ -13,9 +13,10 @@ using System.Net.Mail;
 
 namespace Leonardo
 {
-    class User
+    public class User
     {
         // All fields for a user.
+        public int Score { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         private string email; 
@@ -50,6 +51,13 @@ namespace Leonardo
                 throw new FormatException();
             }
 
+        }
+
+        public User(User newUser)
+        {
+            Score = newUser.Score;
+            email = newUser.email;
+            Password = newUser.Password;
         }
 
         /// <summary>

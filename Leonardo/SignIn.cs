@@ -15,7 +15,7 @@ namespace Leonardo
     [Activity(Label = "Leonardo")]
     public class SignIn : Activity
     {
-        public delegate void delPassUser(string userName);
+        public delegate void delegatePassUser(User dlgUser);
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -43,8 +43,8 @@ namespace Leonardo
                     callDialog.Show();
                 }else{
                     Toast.MakeText(this, user.Name + " Registered", ToastLength.Short).Show();
-                    delPassUser del = new delPassUser(Leonardo.MainActivity.passUsername);
-                    del(user.Name);
+                    delegatePassUser del = new delegatePassUser(Leonardo.MainActivity.passUsername);
+                    del(user);
                     StartActivity(typeof(MainActivity));
                 }
             };
