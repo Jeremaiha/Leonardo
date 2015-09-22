@@ -217,18 +217,21 @@ namespace Leonardo
             try{
                 buttonsArray = new Card[SIZE, SIZE];
 
-                /*
+                
                 int cnt = 1;
                 bool flag = false;
                 for (int i = 0; i < SIZE; i++){
                     for (int j = 0; j < SIZE; j++){
-                        ImageButton btnImage = new ImageButton();
-                        int btn = Resources.GetIdentifier("imageButton" + cnt.ToString(), "drawable", this.PackageName);
-                        btnImage.SetImageResource(btn);
-                        buttonsArray[i, j] = new Card(btnImage, "blank", "white", 0);
+                        ImageButton btnImage = new ImageButton(this);
+                        var s = "imageButton" + (i * SIZE + j +1);
+                    //    int btn = Resources.GetIdentifier("blank" , "drawable", this.PackageName);
+                        int rid = Resources.GetIdentifier(s, "id", this.PackageName);
+                        buttonsArray[i, j] = new Card(FindViewById<ImageButton>(rid), "blank", "white", 0);
+                       // btnImage.SetImageResource(btn);
+                  //      buttonsArray[i, j] = new Card(btnImage, "blank", "white", 0);
                     }
                 }
-                */
+                /*
                 // Initiate all buttons.
                 buttonsArray[0, 0] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton1), "blank", "white", 0);
                 buttonsArray[0, 1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton2), "blank", "white", 0);
@@ -249,9 +252,9 @@ namespace Leonardo
                 buttonsArray[3, 1] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton14), "blank", "white", 0);
                 buttonsArray[3, 2] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton15), "blank", "white", 0);
                 buttonsArray[3, 3] = new Card(FindViewById<ImageButton>(Resource.Id.imageButton16), "blank", "white", 0);
-
+                */
                 outerImage = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "blank", "white", 0);
-
+                
                 for (int i = 0; i < SIZE; i++)
                 {
                     for (int j = 0; j < SIZE; j++)
@@ -363,51 +366,28 @@ namespace Leonardo
         private void buttonsClicks()
         {
             try{
-                /*
+                
                for (int i = 0; i < SIZE; i++){
-                   for (int j = 0; j < SIZE; j++){
+                   for (int j = 0; j < SIZE; j++) {
+                       int ii = i, jj = j;
                        buttonsArray[i, j].ImageButton.Click += (sender, e) =>
                        {
-                           cardsMethods[globalIndex](buttonsArray[i, j].ImageButton);
-                           randomNextCard();
-                           buttonsArray[i, j].ImageButton.Enabled = false;
+                           onCardClick(ii, jj, globalIndex);
                        };
                    }
                }
-           */
+           /*
                 buttonsArray[0, 0].ImageButton.Click += (sender, e) =>
                 {
-                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-                    soundPlayer.Start();
-                    cardsMethods[globalIndex](buttonsArray[0, 0].ImageButton);
-                    buttonsArray[0, 0].ImageButton.Enabled = false; // Disable the button.
-                    // Copy configurations from button 17 to [i,j] - needed for game rules.
-                    buttonsArray[0, 0].Shape = outerImage.Shape;
-                    buttonsArray[0, 0].Amount = outerImage.Amount;
-                    buttonsArray[0, 0].Color = outerImage.Color;
-                    randomNextCard();
+                    onCardClick(0,0);
                 };
                 buttonsArray[0, 1].ImageButton.Click += (sender, e) =>
                 {
-                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-                    soundPlayer.Start();
-                    cardsMethods[globalIndex](buttonsArray[0, 1].ImageButton);
-                    buttonsArray[0, 1].ImageButton.Enabled = false;
-                    buttonsArray[0, 1].Shape = outerImage.Shape;
-                    buttonsArray[0, 1].Amount = outerImage.Amount;
-                    buttonsArray[0, 1].Color = outerImage.Color;
-                    randomNextCard();
+                    onCardClick(0, 1);
                 };
                 buttonsArray[0, 2].ImageButton.Click += (sender, e) =>
                 {
-                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-                    soundPlayer.Start();
-                    cardsMethods[globalIndex](buttonsArray[0, 2].ImageButton);
-                    buttonsArray[0, 2].ImageButton.Enabled = false;
-                    buttonsArray[0, 2].Shape = outerImage.Shape;
-                    buttonsArray[0, 2].Amount = outerImage.Amount;
-                    buttonsArray[0, 2].Color = outerImage.Color;
-                    randomNextCard();
+                    onCardClick(0, 2);
                 };
                 buttonsArray[0, 3].ImageButton.Click += (sender, e) =>
                 {
@@ -433,14 +413,7 @@ namespace Leonardo
                 };
                 buttonsArray[1, 1].ImageButton.Click += (sender, e) =>
                 {
-                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-                    soundPlayer.Start();
-                    cardsMethods[globalIndex](buttonsArray[1, 1].ImageButton);
-                    buttonsArray[1, 1].ImageButton.Enabled = false;
-                    buttonsArray[1, 1].Shape = outerImage.Shape;
-                    buttonsArray[1, 1].Amount = outerImage.Amount;
-                    buttonsArray[1, 1].Color = outerImage.Color;
-                    randomNextCard();
+                    onCardClick(1, 1);
                 };
                 buttonsArray[1, 2].ImageButton.Click += (sender, e) =>
                 {
@@ -551,16 +524,34 @@ namespace Leonardo
                     buttonsArray[3, 3].Amount = outerImage.Amount;
                     buttonsArray[3, 3].Color = outerImage.Color;
                     randomNextCard();
-                };
+                };*/
             }
             catch (Exception e){
                 throw new Exception("Error : Buttons click listener.\n" + e.Message);
             }
            
         }
+        
+        private void onCardClick(int i,int j, int delegateIndex)
+        {
+            soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
+            soundPlayer.Start();
+            cardsMethods[delegateIndex](buttonsArray[i, j].ImageButton);
+            buttonsArray[i, j].ImageButton.Enabled = false; // Disable the button.
+            // Copy configurations from button 17 to [i,j] - needed for game rules.
+            buttonsArray[i, j].Shape = outerImage.Shape;
+            buttonsArray[i, j].Amount = outerImage.Amount;
+            buttonsArray[i, j].Color = outerImage.Color;
+            randomNextCard();
+        }
 
         // Beginning of all type methods.
         // Green methods : 
+        private void setimg(ImageButton btn,string shape)
+        {
+               int drawbleid = Resources.GetIdentifier(shape , "drawable", this.PackageName);
+               btn.SetImageResource(drawbleid);
+        }
         private void greenCherry1(ImageButton btn)
         { btn.SetImageResource(Resource.Drawable.green_cherry_1); }
         private void greenCherry2(ImageButton btn)

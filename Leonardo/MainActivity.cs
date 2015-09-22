@@ -16,7 +16,7 @@ namespace Leonardo
     {
         MediaPlayer soundPlayer;
         private TextView registeredUser;
-        private static User currentUser;
+        private static User currentUser = null;
         private static string registrationString = "Unregistered";
         private static int userScore = 0;
         /// <summary>
@@ -46,13 +46,21 @@ namespace Leonardo
 
             // Instantiate the events.
             buttonsClicks();
-
+            if (currentUser != null)
+            {
+       //         addUserToParse();                   
+            }
+            
         }
 
         private void addUserToParse(){
-            /*
+            
             var query = ParseUser.GetQuery("User");
             query.WhereEqualTo("email", currentUser.Email);
+            
+            //Roi: 
+            var score = ParseUser.CurrentUser["Score"];//.Get<int>("Score");
+            /*
             query.findInBackground(new FindCallback<ParseUser>() {
               public void done(List<ParseUser> objects, ParseException e) {
                 if (e == null) {
@@ -78,7 +86,7 @@ namespace Leonardo
             imageButton.Click += delegate
             {
                 soundPlayer.Start();
-                if (registeredUser.Text != "Unregistered"){
+                if (registeredUser.Text == "Unregistered"){
                     StartActivity(typeof(Game));
                 }else{
                     var callDialog = new AlertDialog.Builder(this);
