@@ -81,6 +81,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"Leonardo.dll",
 		"Parse.Android.dll",
+		"Xamarin.Auth.Android.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

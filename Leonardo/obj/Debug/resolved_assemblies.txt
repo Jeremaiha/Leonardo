@@ -4,5 +4,7 @@ E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\mscorlib.
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Parse.Android.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Core.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Json.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.dll
 E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\System.Xml.Linq.dll
+E:\Program Files\Kimaia\Project\Leonardo\Leonardo\obj\Debug\assemblies\Xamarin.Auth.Android.dll

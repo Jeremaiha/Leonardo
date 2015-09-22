@@ -189,8 +189,8 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070030
-			public const int TextView04 = 2131165232;
+			// aapt resource value: 0x7f070031
+			public const int TextView04 = 2131165233;
 			
 			// aapt resource value: 0x7f07001c
 			public const int absoluteLayout1 = 2131165212;
@@ -207,20 +207,23 @@ namespace Leonardo
 			// aapt resource value: 0x7f070020
 			public const int button3 = 2131165216;
 			
+			// aapt resource value: 0x7f070029
+			public const int buttonFacebookLogIn = 2131165225;
+			
 			// aapt resource value: 0x7f070028
 			public const int buttonSignIn = 2131165224;
 			
+			// aapt resource value: 0x7f070030
+			public const int buttonSubmit = 2131165232;
+			
+			// aapt resource value: 0x7f07002a
+			public const int editText1 = 2131165226;
+			
+			// aapt resource value: 0x7f07002d
+			public const int editText2 = 2131165229;
+			
 			// aapt resource value: 0x7f07002f
-			public const int buttonSubmit = 2131165231;
-			
-			// aapt resource value: 0x7f070029
-			public const int editText1 = 2131165225;
-			
-			// aapt resource value: 0x7f07002c
-			public const int editText2 = 2131165228;
-			
-			// aapt resource value: 0x7f07002e
-			public const int editText3 = 2131165230;
+			public const int editText3 = 2131165231;
 			
 			// aapt resource value: 0x7f070024
 			public const int editTextEmail = 2131165220;
@@ -294,8 +297,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070022
 			public const int linearLayout1 = 2131165218;
 			
-			// aapt resource value: 0x7f07002a
-			public const int linearLayout2 = 2131165226;
+			// aapt resource value: 0x7f07002b
+			public const int linearLayout2 = 2131165227;
 			
 			// aapt resource value: 0x7f070025
 			public const int linearLayout3 = 2131165221;
@@ -306,8 +309,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070002
 			public const int tableRow1 = 2131165186;
 			
-			// aapt resource value: 0x7f070036
-			public const int tableRow10 = 2131165238;
+			// aapt resource value: 0x7f070037
+			public const int tableRow10 = 2131165239;
 			
 			// aapt resource value: 0x7f070007
 			public const int tableRow2 = 2131165191;
@@ -318,20 +321,20 @@ namespace Leonardo
 			// aapt resource value: 0x7f070011
 			public const int tableRow4 = 2131165201;
 			
-			// aapt resource value: 0x7f070031
-			public const int tableRow5 = 2131165233;
-			
 			// aapt resource value: 0x7f070032
-			public const int tableRow6 = 2131165234;
+			public const int tableRow5 = 2131165234;
 			
 			// aapt resource value: 0x7f070033
-			public const int tableRow7 = 2131165235;
+			public const int tableRow6 = 2131165235;
 			
 			// aapt resource value: 0x7f070034
-			public const int tableRow8 = 2131165236;
+			public const int tableRow7 = 2131165236;
 			
 			// aapt resource value: 0x7f070035
-			public const int tableRow9 = 2131165237;
+			public const int tableRow8 = 2131165237;
+			
+			// aapt resource value: 0x7f070036
+			public const int tableRow9 = 2131165238;
 			
 			// aapt resource value: 0x7f070000
 			public const int textView1 = 2131165184;
@@ -339,11 +342,11 @@ namespace Leonardo
 			// aapt resource value: 0x7f070017
 			public const int textView3 = 2131165207;
 			
-			// aapt resource value: 0x7f07002b
-			public const int textView4 = 2131165227;
+			// aapt resource value: 0x7f07002c
+			public const int textView4 = 2131165228;
 			
-			// aapt resource value: 0x7f07002d
-			public const int textView5 = 2131165229;
+			// aapt resource value: 0x7f07002e
+			public const int textView5 = 2131165230;
 			
 			// aapt resource value: 0x7f070023
 			public const int textViewName = 2131165219;

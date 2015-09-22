@@ -51,12 +51,19 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="121.5dp"
-        android:id="@+id/absoluteLayout1" />
+        android:layout_height="43.0dp"
+        android:id="@+id/absoluteLayout1"
+        android:layout_marginBottom="2.2dp" />
     <Button
         android:text="Sign In"
         android:layout_width="153.7dp"
         android:layout_height="wrap_content"
         android:id="@+id/buttonSignIn"
+        android:layout_gravity="center" />
+    <Button
+        android:text="Facebook Log In"
+        android:layout_width="153.7dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonFacebookLogIn"
         android:layout_gravity="center" />
 </LinearLayout>

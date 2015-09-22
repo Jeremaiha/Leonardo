@@ -68,7 +68,9 @@ namespace Leonardo
                 if (alreadyRegistered(email.Text)){
                     
                 }
-
+                if(name.Text =="" || email.Text =="" || password.Text==""){
+                    return null;
+                }
                 return new User(name.Text, email.Text, password.Text);        
             }
             catch (FormatException){
