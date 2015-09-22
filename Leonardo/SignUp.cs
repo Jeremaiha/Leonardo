@@ -86,10 +86,11 @@ namespace Leonardo
                 Username = user1.Name,
                 Password = user1.Password,
                 Email = user1.Email
+                
             };
 
             // other fields can be set just like with ParseObject
-            //user["phone"] = "415-392-0202";
+           user["Score"] = 0;
 
             await user.SignUpAsync();
         }
