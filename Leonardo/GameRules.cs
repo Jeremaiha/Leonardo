@@ -59,12 +59,33 @@ namespace Leonardo
         /// <returns></returns>
         public int checkRowsColumns(){
             int rowCnt, columnCnt,right2leftDiagonal,left2rightDiagonal ,finalSum=0;
+            right2leftDiagonal = checkRight2LeftDiagonal();
+            left2rightDiagonal = checkLeft2RightDiagonal();
+
             for (int i = 0; i < SIZE; i++ ){ // for each row.
                 rowCnt = checkRow(i);                    
                 for (int j = 0; j < SIZE; j++){
                     columnCnt = checkColumn(j);
                     // combo
-                    if (rowCnt > 0 && columnCnt > 0){
+                    if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0 && right2leftDiagonal>0){
+                        blankRow(i);
+                        blankColumn(j);
+                        blankRight2LeftDiagonal();
+                        blankLeft2RightDiagonal();
+                        finalSum += (rowCnt + columnCnt + left2rightDiagonal + right2leftDiagonal) * 2;
+                    }
+                    else if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0){
+                        blankRow(i);
+                        blankColumn(j);
+                        blankLeft2RightDiagonal();
+                        finalSum += (rowCnt + columnCnt + left2rightDiagonal) * 2;
+                    }
+                    else if (rowCnt > 0 && columnCnt > 0 && right2leftDiagonal > 0){
+                        blankRow(i);
+                        blankColumn(j);
+                        blankRight2LeftDiagonal();
+                        finalSum += (rowCnt + columnCnt  + right2leftDiagonal) * 2;
+                    }else if (rowCnt > 0 && columnCnt > 0){
                         blankRow(i);
                         blankColumn(j);
                         finalSum += (rowCnt + columnCnt) * 2;
@@ -82,16 +103,15 @@ namespace Leonardo
                     finalSum += columnCnt;
                 }
             }
-            right2leftDiagonal = checkRight2LeftDiagonal();
-            left2rightDiagonal = checkLeft2RightDiagonal();
-            if (right2leftDiagonal > 0)
-            {
-                blankRight2LeftDiagonal();
+
+            // check if left diagonals
+            if (right2leftDiagonal > 0){
+                checkRight2LeftDiagonal();
             }
-            if (left2rightDiagonal > 0)
-            {
-                blankLeft2RightDiagonal();
-            } 
+            if (left2rightDiagonal > 0){
+                checkLeft2RightDiagonal();
+            }
+
 
             return finalSum;
         }
