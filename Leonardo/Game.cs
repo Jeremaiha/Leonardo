@@ -192,15 +192,9 @@ namespace Leonardo
 
                 numOfCards[randomNumber] -= 1; // Decrease 1, used this card at this round.
                 globalIndex = randomNumber;
-                
-                // Call the delegate method.
 
                 // Set the rest values of the 17'th button.
-                outerImage.Shape  = gameCards[randomNumber].Shape;
-                outerImage.Amount = gameCards[randomNumber].Amount;
-                outerImage.Color  = gameCards[randomNumber].Color;
-                
-                //cardsMethods[randomNumber](outerImage.ImageButton);
+                outerImage.setWithoutImgButton(gameCards[randomNumber]);
                 setImage(outerImage.ImageButton,outerImage.ToString());
 
                 // Start all game rules validations.
@@ -210,7 +204,7 @@ namespace Leonardo
                     soundPlayer.Start();
                 }
                 score.Text = (Int32.Parse(score.Text.ToString()) + randomNumber).ToString();
-
+                checkNextMove();
             }catch (Exception e){
                 throw new Exception("Error : Next random card.\n" + e.Message);
             }
@@ -256,8 +250,34 @@ namespace Leonardo
                 randomNextCard();
                 buttonsClicks();
 
+                checkNextMove();
+
+
             }catch (Exception e){
                 throw new Exception("Error : Game Simulation.\n" + e.Message);
+            }
+        }
+
+        private void checkNextMove()
+        {
+            int cnt = 0;
+            for (int i = 0; i < SIZE; i++)
+            {
+                for (int j = 0; j < SIZE; j++)
+                {
+                    if (buttonsArray[i, j].Shape != "blank")
+                    {
+                        cnt++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }// if all bored is taken by cards.
+            if (cnt == SIZE * SIZE)
+            {
+                gameOver();
             }
         }
 
@@ -286,14 +306,18 @@ namespace Leonardo
            
         }
         
+        /// <summary>
+        ///     When a button is clicked, activating all it's needs.
+        ///     Setting from the outer image to the current button.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="delegateIndex"></param>
         private void onCardClick(int i,int j, int delegateIndex)
         {
             soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
             soundPlayer.Start();
-            //cardsMethods[delegateIndex](buttonsArray[i, j].ImageButton);
-            buttonsArray[i, j].Shape = outerImage.Shape;
-            buttonsArray[i, j].Amount = outerImage.Amount;
-            buttonsArray[i, j].Color = outerImage.Color;
+            buttonsArray[i, j].setWithoutImgButton(outerImage);
             setImage(buttonsArray[i, j].ImageButton, buttonsArray[i, j].ToString());
             buttonsArray[i, j].ImageButton.Enabled = false; // Disable the button.
             // Copy configurations from button 17 to [i,j] - needed for game rules.

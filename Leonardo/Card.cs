@@ -86,6 +86,16 @@ namespace Leonardo
             set { amount = value; }
         }
 
+        /// <summary>
+        ///     Set param1's shape,color and amount to the current button.
+        /// </summary>
+        /// <param name="card"></param>
+        public void setWithoutImgButton(Card card){
+            this.shape  = card.shape;
+            this.color  = card.color;
+            this.amount = card.amount;
+        }
+
         public override string ToString()
         {
             return color + "_" + shape + "_" + amount;
