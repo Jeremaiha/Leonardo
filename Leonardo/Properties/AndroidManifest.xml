@@ -14,7 +14,11 @@
       android:name="com.parse.leonardo.permission.C2D_MESSAGE" />
   <uses-permission android:name="com.parse.leonardo.permission.C2D_MESSAGE" />
 
-	<application android:label="com.parse.leonardo" android:icon="@drawable/Icon">
+
+
+
+
+  <application android:label="com.parse.leonardo" android:icon="@drawable/Icon">
     <service android:name="parse.ParsePushService" />
     <receiver android:name="parse.ParsePushBroadcastReceiver"
         android:permission="com.google.android.c2dm.permission.SEND">
@@ -25,5 +29,11 @@
         <category android:name="com.parse.leonardo" />
       </intent-filter>
     </receiver>
+
+    <activity android:name="MainActivity"
+          android:label="Leonardo"
+          android:screenOrientation="portrait">
+    </activity>
+
   </application>
 </manifest>
