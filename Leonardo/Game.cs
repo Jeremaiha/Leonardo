@@ -251,13 +251,13 @@ namespace Leonardo
                 buttonsClicks();
 
                 checkNextMove();
-
-
             }catch (Exception e){
                 throw new Exception("Error : Game Simulation.\n" + e.Message);
             }
         }
-
+        /// <summary>
+        ///     Check if the game board is playable.
+        /// </summary>
         private void checkNextMove()
         {
             int cnt = 0;

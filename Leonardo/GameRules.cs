@@ -19,7 +19,7 @@ namespace Leonardo
     public class GameRules
     {
         Card[,] gameBoard;
-        //TextView score;
+        int gameSuccess;
         int SIZE;
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Leonardo
         {
             gameBoard = arrayOfButtons;
             SIZE = newSize;
-            //score = newScore;
+            gameSuccess = 0;
         }
 
 
@@ -43,8 +43,8 @@ namespace Leonardo
         {
             try{
                 int sum = 0;
-                sum = checkColumns();
-                sum += checkRows();
+                gameSuccess = 0;
+                sum = checkRowsColumns();
                 return sum;
             }
             catch(Exception e){
@@ -52,22 +52,70 @@ namespace Leonardo
             }
 
         }
+        
         /// <summary>
-        ///     Returns total sum of all columns.
+        ///     Check combos,rows and columns.
         /// </summary>
         /// <returns></returns>
-        private int checkColumns()
-        {
-            try{
-                int sum = 0;
-                for (int i = 0; i < SIZE; i++){
-                    sum += checkColumn(i);
+        public int checkRowsColumns(){
+            int rowCnt, columnCnt, finalSum=0;
+            for (int i = 0; i < SIZE; i++ ){ // for each row.
+                rowCnt = checkRow(i);                    
+                for (int j = 0; j < SIZE; j++){
+                    columnCnt = checkColumn(j);
+                    // combo
+                    if (rowCnt > 0 && columnCnt > 0){
+                        blankRow(i);
+                        blankColumn(j);
+                        finalSum += (rowCnt + columnCnt) * 2;
+                    }
+                    columnCnt = 0;
+                }// there was a successful row.
+                if(rowCnt != 0){
+                    blankRow(i);
                 }
-                return sum;
-            }catch (Exception e){
-                throw new Exception("Error : Checking columns.\n" + e.Message);
+            }//check left columns without rows.
+            for (int j = 0; j < SIZE; j++){ // for each column.
+                columnCnt = checkColumn(j);
+                if(columnCnt != 0){
+                    blankColumn(j);
+                    finalSum += columnCnt;
+                }
+            }
+            return finalSum;
+        }
+
+        /// <summary>
+        ///     Blank the i row.
+        /// </summary>
+        /// <param name="i"></param>
+        private void blankRow(int i)
+        {
+            for (int k = 0; k < SIZE; k++){
+                gameBoard[i, k].ImageButton.SetImageResource(Resource.Drawable.blank);
+                gameBoard[i, k].Shape = "blank";
+                gameBoard[i, k].Color = "white";
+                gameBoard[i, k].Amount = 0;
+                gameBoard[i, k].ImageButton.Enabled = true;
             }
         }
+
+        /// <summary>
+        ///     Blank the j column.
+        /// </summary>
+        /// <param name="j"></param>
+        private void blankColumn(int j)
+        {
+            for (int k = 0; k < SIZE;k++ ){
+                gameBoard[k, j].ImageButton.SetImageResource(Resource.Drawable.blank);
+                gameBoard[k, j].Shape = "blank";
+                gameBoard[k, j].Color = "white";
+                gameBoard[k, j].Amount = 0;
+                gameBoard[k, j].ImageButton.Enabled = true;
+            }
+        }
+
+  
         /// <summary>
         ///     Check an individual column.
         /// </summary>
@@ -142,8 +190,9 @@ namespace Leonardo
             }
 
             // If at least 1 row exists.
-            if (columnSuccess > 0)
-            {
+           /*
+            if (columnSuccess > 0){
+                gameSuccess++;
                 for (int j = 0; j < SIZE; j++)
                 {
                     gameBoard[j, i].ImageButton.SetImageResource(Resource.Drawable.blank);
@@ -152,25 +201,8 @@ namespace Leonardo
                     gameBoard[j, i].Amount = 0;
                     gameBoard[j, i].ImageButton.Enabled = true;
                 }
-            }
+            }*/
             return sum;
-        }
-
-        /// <summary>
-        ///     Returns total sum of all rows.
-        /// </summary>
-        /// <returns></returns>
-        private int checkRows()
-        {
-            try{
-                int sum = 0;
-                for (int i = 0; i < SIZE; i++){
-                    sum += checkRow(i);
-                }
-                return sum;
-            }catch (Exception e){
-                throw new Exception("Error : Checking rows.\n" + e.Message);
-            }
         }
 
         /// <summary>
@@ -247,7 +279,7 @@ namespace Leonardo
             }
 
             // If at least 1 row exists.
-            if (rowSuccess > 0)
+          /*  if (rowSuccess > 0)
             {
                 for (int j = 0; j < SIZE; j++)
                 {
@@ -257,7 +289,7 @@ namespace Leonardo
                     gameBoard[i, j].Amount = 0;
                     gameBoard[i, j].ImageButton.Enabled = true;
                 }
-            }
+            }*/
             return sum;
         }
     }
