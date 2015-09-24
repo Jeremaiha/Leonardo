@@ -86,6 +86,10 @@ namespace Leonardo
             set { amount = value; }
         }
 
+        public override string ToString()
+        {
+            return color + "_" + shape + "_" + amount;
 
+        }
     }
 }
