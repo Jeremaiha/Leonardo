@@ -373,8 +373,8 @@ namespace Leonardo
         // Green methods : 
         private void setimg(ImageButton btn,string shape)
         {
-               int drawbleid = Resources.GetIdentifier(shape , "drawable", this.PackageName);
-               btn.SetImageResource(drawbleid);
+            int drawbleid = Resources.GetIdentifier(shape , "drawable", this.PackageName);
+            btn.SetImageResource(drawbleid);
         }
         private void greenCherry1(ImageButton btn)
         { btn.SetImageResource(Resource.Drawable.green_cherry_1); }
