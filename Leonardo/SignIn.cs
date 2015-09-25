@@ -165,7 +165,7 @@ namespace Leonardo
 
         private User getUserFromParse(string email,string pass){
             // CHECK FROM DATA BASE!
-            return new User("TEMP",email,pass);
+            return null;//new User("TEMP",email,pass);
         }
 
 

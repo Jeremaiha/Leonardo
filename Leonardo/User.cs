@@ -10,10 +10,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Net.Mail;
-
+using Parse;
 namespace Leonardo
 {
-    public class User
+    public class User : ParseUser
     {
         // All fields for a user.
         public int Score { get; set; }
@@ -32,32 +32,60 @@ namespace Leonardo
                 }
             }
         }
+        private bool instantiated = false;
+        public bool Instantiated
+        {
+            get { return instantiated; }
+        } 
+
+        // Singelton
+        private static User currentUser;
+
+        public static User CurrentUser
+        {
+            get
+            {
+                if(currentUser==null){
+                    currentUser = new User(null, null, null);
+                }
+                return currentUser;
+            }
+        }
+
+        public void Create(string _name, string _email, string pass)
+        {
+            // Already created.
+            if (currentUser != null){
+                throw new Exception("Object already exists.");
+            }
+            currentUser = new User(_name,_email,pass);
+            
+        }
+
+        public static User CreateNullUser() {
+            currentUser=null;
+            return null;
+        }
 
         /// <summary>
-        ///     C'tor.
+        ///     Singelton C'tor.
         /// </summary>
         /// <param name="_name"></param>
         /// <param name="_email"></param>
         /// <param name="pass"></param>
-        public User(string _name, string _email, string pass){
+        private User(string _name, string _email, string pass){
             try{
-                if(IsValid(_email) == false){
+                if((instantiated==true) && (IsValid(_email) == false) ){
                     throw new FormatException();
                 }
                 Name = _name;
                 email = _email;
                 Password = pass;
+                instantiated = true;
             }catch(FormatException){
                 throw new FormatException();
             }
 
-        }
-
-        public User(User newUser)
-        {
-            Score = newUser.Score;
-            email = newUser.email;
-            Password = newUser.Password;
         }
 
         /// <summary>

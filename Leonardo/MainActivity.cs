@@ -14,11 +14,15 @@ namespace Leonardo
     [Activity(Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        public static User player;
+
+
         MediaPlayer soundPlayer;
         private TextView registeredUser;
         private static User currentUser = null;
         private static string registrationString = "Unregistered";
         private static int userScore = 0;
+
         /// <summary>
         ///     Delegate method, to pass from SignUp activity the user.
         /// </summary>
@@ -34,21 +38,29 @@ namespace Leonardo
 
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Main);
-
-            soundPlayer = MediaPlayer.Create(this, Resource.Raw.clickInMenu);
-
-            // If data was sent, the new user name is replaced.
-            registeredUser = FindViewById<TextView>(Resource.Id.textView1);
-            registeredUser.Text = registrationString;
-         
-
-            // Instantiate the events.
-            buttonsClicks();
-            if (currentUser != null)
+            try
             {
-       //         addUserToParse();                   
+                base.OnCreate(bundle);
+                SetContentView(Resource.Layout.Main);
+
+                player = User.CurrentUser;
+
+                soundPlayer = MediaPlayer.Create(this, Resource.Raw.clickInMenu);
+
+                // If data was sent, the new user name is replaced.
+                registeredUser = FindViewById<TextView>(Resource.Id.textView1);
+                registeredUser.Text = registrationString;
+
+
+                // Instantiate the events.
+                buttonsClicks();
+                if (currentUser != null)
+                {
+                    //         addUserToParse();                   
+                }
+            
+            }catch(Exception e){
+                throw new Exception("Error : In MainActivity.\n" + e.Message);
             }
             
         }

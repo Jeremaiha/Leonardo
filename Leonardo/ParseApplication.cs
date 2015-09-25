@@ -9,7 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using System.Threading.Tasks;
 using Parse;
 
 namespace Leonardo
@@ -21,20 +21,26 @@ namespace Leonardo
         {
         }
 
-        public override void OnCreate()
+        public async override void OnCreate()
         {
-            base.OnCreate();
-            /*
-            ParseClient.Initialize("YOUR APPLICATION ID", "YOUR .NET KEY");
-            ParsePush.ParsePushNotificationReceived += ParsePush.DefaultParsePushNotificationReceivedHandler;
-        */
-            ParseClient.Initialize("bOXeIXCGqp6eAgKyrMqwohohDbJeqf0vWhIqc9Cz",
-                           "NIs2OLWSOtQRfXfWOnz8xN8E9QOEG5mJQTFKXRwv");
-            saveObject();
-            ParsePush.ParsePushNotificationReceived += ParsePush.DefaultParsePushNotificationReceivedHandler;
+            try
+            {
+                base.OnCreate();
+                /*
+                ParseClient.Initialize("YOUR APPLICATION ID", "YOUR .NET KEY");
+                ParsePush.ParsePushNotificationReceived += ParsePush.DefaultParsePushNotificationReceivedHandler;
+            */
+                ParseClient.Initialize("bOXeIXCGqp6eAgKyrMqwohohDbJeqf0vWhIqc9Cz",
+                               "NIs2OLWSOtQRfXfWOnz8xN8E9QOEG5mJQTFKXRwv");
+                await saveObject();
+                ParsePush.ParsePushNotificationReceived += ParsePush.DefaultParsePushNotificationReceivedHandler;
+            
+            }catch(Exception e){
+                throw new Exception("Error : In Parse.\n" + e.Message);
+            }
             
         }
-        public async void saveObject(){
+        public async Task saveObject(){
             var testObject = new ParseObject("Users");
             testObject["Name"] = "Jeremy";
             testObject["Email"] = "something@gmail.com";
