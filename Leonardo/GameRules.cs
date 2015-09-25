@@ -19,7 +19,6 @@ namespace Leonardo
     public class GameRules
     {
         Card[,] gameBoard;
-        int gameSuccess;
         int SIZE;
 
         /// <summary>
@@ -27,11 +26,9 @@ namespace Leonardo
         /// </summary>
         /// <param name="arrayOfButtons"></param>
         /// <param name="newSize"></param>
-        public GameRules(Card[,] arrayOfButtons, int newSize)
-        {
+        public GameRules(Card[,] arrayOfButtons, int newSize){
             gameBoard = arrayOfButtons;
             SIZE = newSize;
-            gameSuccess = 0;
         }
 
 
@@ -43,7 +40,6 @@ namespace Leonardo
         {
             try{
                 int sum = 0;
-                gameSuccess = 0;
                 sum = checkRowsColumnsDiagonals();
                 return sum;
             }
@@ -157,6 +153,9 @@ namespace Leonardo
             }
         }
 
+        /// <summary>
+        ///     Blank the diagonal from the upper right to the left.
+        /// </summary>
         private void blankRight2LeftDiagonal()
         {
             for (int i = SIZE - 1; i >= 0; i--)
@@ -166,6 +165,9 @@ namespace Leonardo
             
         }
 
+        /// <summary>
+        ///     Blank the diagonal from the left upper to the right.
+        /// </summary>
         private void blankLeft2RightDiagonal()
         {
             for (int i = 0; i < SIZE; i++)
@@ -174,6 +176,11 @@ namespace Leonardo
             }
         }
 
+        /// <summary>
+        ///     Blank on the game board[i,j].
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
         private void blankOnIandJ(int i,int j)
         {
             gameBoard[i, j].ImageButton.SetImageResource(Resource.Drawable.blank);
@@ -331,6 +338,10 @@ namespace Leonardo
             return sum;
         }
 
+        /// <summary>
+        ///     Check from the left upper corner to the lower right, the diagonal.
+        /// </summary>
+        /// <returns></returns>
         private int checkLeft2RightDiagonal()
         {
             int sum=0,tempInt,cnt=0,diagonalSuccess=0;
@@ -382,6 +393,10 @@ namespace Leonardo
             return sum;
         }
 
+        /// <summary>
+        ///     Check from the right upper corner to the lower left, the diagonal.
+        /// </summary>
+        /// <returns></returns>
         private int checkRight2LeftDiagonal()
         {
             int sum = 0, tempInt, cnt = 0, diagonalSuccess = 0;
