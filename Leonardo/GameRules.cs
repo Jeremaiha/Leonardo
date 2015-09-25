@@ -44,7 +44,7 @@ namespace Leonardo
             try{
                 int sum = 0;
                 gameSuccess = 0;
-                sum = checkRowsColumns();
+                sum = checkRowsColumnsDiagonals();
                 return sum;
             }
             catch(Exception e){
@@ -57,8 +57,9 @@ namespace Leonardo
         ///     Check combos,rows and columns.
         /// </summary>
         /// <returns></returns>
-        public int checkRowsColumns(){
+        public int checkRowsColumnsDiagonals(){
             int rowCnt, columnCnt,right2leftDiagonal,left2rightDiagonal ,finalSum=0;
+            bool temp = false;
             right2leftDiagonal = checkRight2LeftDiagonal();
             left2rightDiagonal = checkLeft2RightDiagonal();
 
@@ -73,18 +74,22 @@ namespace Leonardo
                         blankRight2LeftDiagonal();
                         blankLeft2RightDiagonal();
                         finalSum += (rowCnt + columnCnt + left2rightDiagonal + right2leftDiagonal) * 2;
+                        left2rightDiagonal = 0;
+                        right2leftDiagonal = 0;
                     }
                     else if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0){
                         blankRow(i);
                         blankColumn(j);
                         blankLeft2RightDiagonal();
                         finalSum += (rowCnt + columnCnt + left2rightDiagonal) * 2;
+                        left2rightDiagonal = 0;
                     }
                     else if (rowCnt > 0 && columnCnt > 0 && right2leftDiagonal > 0){
                         blankRow(i);
                         blankColumn(j);
                         blankRight2LeftDiagonal();
-                        finalSum += (rowCnt + columnCnt  + right2leftDiagonal) * 2;
+                        finalSum += (rowCnt + columnCnt + right2leftDiagonal) * 2;
+                        right2leftDiagonal = 0;
                     }else if (rowCnt > 0 && columnCnt > 0){
                         blankRow(i);
                         blankColumn(j);
@@ -93,9 +98,13 @@ namespace Leonardo
                     columnCnt = 0;
                 }// there was a successful row.
                 if(rowCnt != 0){
+                    finalSum += (rowCnt);
+                    temp = true;
                     blankRow(i);
                 }
-            }//check left columns without rows.
+            }
+      
+            //check left columns without rows.
             for (int j = 0; j < SIZE; j++){ // for each column.
                 columnCnt = checkColumn(j);
                 if(columnCnt != 0){
@@ -104,12 +113,22 @@ namespace Leonardo
                 }
             }
 
-            // check if left diagonals
+            // check if there are diagonals left.
             if (right2leftDiagonal > 0){
-                checkRight2LeftDiagonal();
+                // if there was a row and a diagonal.
+                if(temp){
+                    finalSum += (right2leftDiagonal * 2);
+                }else{
+                    finalSum += (right2leftDiagonal);
+                }
+                blankRight2LeftDiagonal();
             }
             if (left2rightDiagonal > 0){
-                checkLeft2RightDiagonal();
+                if (temp){
+                    finalSum += (left2rightDiagonal * 2);
+                }else{
+                    finalSum += (left2rightDiagonal);
+                } blankLeft2RightDiagonal();
             }
 
 
@@ -138,7 +157,7 @@ namespace Leonardo
             }
         }
 
-        private void blankLeft2RightDiagonal()
+        private void blankRight2LeftDiagonal()
         {
             for (int i = SIZE - 1; i >= 0; i--)
             {
@@ -147,7 +166,7 @@ namespace Leonardo
             
         }
 
-        private void blankRight2LeftDiagonal()
+        private void blankLeft2RightDiagonal()
         {
             for (int i = 0; i < SIZE; i++)
             {
@@ -312,7 +331,7 @@ namespace Leonardo
             return sum;
         }
 
-        private int checkRight2LeftDiagonal()
+        private int checkLeft2RightDiagonal()
         {
             int sum=0,tempInt,cnt=0,diagonalSuccess=0;
             string tempStr;
@@ -363,7 +382,7 @@ namespace Leonardo
             return sum;
         }
 
-        private int checkLeft2RightDiagonal()
+        private int checkRight2LeftDiagonal()
         {
             int sum = 0, tempInt, cnt = 0, diagonalSuccess = 0;
             string tempStr;

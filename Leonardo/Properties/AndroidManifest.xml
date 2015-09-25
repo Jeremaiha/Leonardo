@@ -29,11 +29,6 @@
         <category android:name="com.parse.leonardo" />
       </intent-filter>
     </receiver>
-
-    <activity android:name="MainActivity"
-          android:label="Leonardo"
-          android:screenOrientation="portrait">
-    </activity>
-
+    
   </application>
 </manifest>
