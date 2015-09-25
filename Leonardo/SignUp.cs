@@ -20,7 +20,6 @@ namespace Leonardo
     public class SignUp : Activity
     {
 
-        public delegate void delPassUser(User dlgUser);
         bool _alreadyRegistered;
 
         protected override void OnCreate(Bundle bundle)
