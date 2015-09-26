@@ -32,7 +32,11 @@ namespace Leonardo
 
                 // Assign the button.
                 Button submitBtn = FindViewById<Button>(Resource.Id.buttonSubmit);
-                sumbitClick(submitBtn);
+                EditText name = FindViewById<EditText>(Resource.Id.editText1);
+                EditText email = FindViewById<EditText>(Resource.Id.editText2);
+                EditText password = FindViewById<EditText>(Resource.Id.editText3);
+                
+                sumbitClick(submitBtn,name,email,password);
         
             }catch(Exception e){
                 throw new Exception("Error : In SignUp.\n" + e.Message);
@@ -44,13 +48,21 @@ namespace Leonardo
         ///     Registers if validated correctly
         /// </summary>
         /// <param name="submitBtn"></param>
-        private async void sumbitClick(Button submitBtn)
+        private async void sumbitClick(Button submitBtn,EditText name,EditText email, EditText password)
         {
             submitBtn.Click += async (sender, e) =>
             {
                 try{
-                    disableScreen(false, submitBtn);
-                    await getUser();
+                    // All details must me entered.
+                    if (name.Text == "" || email.Text == "" || password.Text == ""){
+                        var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetMessage("Please enter all details!");
+                        callDialog.Show();           
+                        return;
+                    }
+
+                    disableScreen(false,name,email,password ,submitBtn);
+                    await getUser(name,email,password);
                     // Something went wrong.
                     if (MainActivity.player.Instantiated == false){
                         StartActivity(typeof(MainActivity));
@@ -65,7 +77,7 @@ namespace Leonardo
                         Toast.MakeText(this, MainActivity.player.Name + " Was Added", ToastLength.Short).Show();
                         StartActivity(typeof(MainActivity));
                     }
-                    disableScreen(true, submitBtn);
+                    disableScreen(true, name, email, password, submitBtn);
                 }catch (Exception ex){
                     throw new Exception("Error : Creation of a user.\n" + ex.Message);
                 }
@@ -78,11 +90,8 @@ namespace Leonardo
         /// </summary>
         /// <param name="flag"></param>
         /// <param name="btn"></param>
-        private void disableScreen(bool flag,Button btn)
-        {
-            EditText e1 = FindViewById<EditText>(Resource.Id.editText1);
-            EditText e2 = FindViewById<EditText>(Resource.Id.editText2);
-            EditText e3 = FindViewById<EditText>(Resource.Id.editText3);
+        private void disableScreen(bool flag,EditText e1,EditText e2, EditText e3,Button btn)
+        {   
             e1.Enabled = flag;
             e2.Enabled = flag;
             e3.Enabled = flag;
@@ -95,38 +104,24 @@ namespace Leonardo
         ///     Else, Error dialog box.
         /// </summary>
         /// <returns></returns>
-        private async Task getUser()
+        private async Task getUser(EditText name,EditText email,EditText password)
         {
-            try
-            {
-                var name = FindViewById<EditText>(Resource.Id.editText1);
-                var email = FindViewById<EditText>(Resource.Id.editText2);
-                var password = FindViewById<EditText>(Resource.Id.editText3);
-
+            try{
                 await alreadyRegistered(email.Text);
-                if (_alreadyRegistered)
-                {
+                if (_alreadyRegistered){
                     var callDialog = new AlertDialog.Builder(this);
                     callDialog.SetMessage("User Already Exist!");
                     callDialog.SetNeutralButton("oops", delegate { });
                     callDialog.Show();
-                //    return null;
                 }
 
-                if (name.Text == "" || email.Text == "" || password.Text == ""){
-                 //   return null;
-                }
                 MainActivity.player.Name = name.Text;
                 MainActivity.player.Email = email.Text;
                 MainActivity.player.Password = password.Text;
-                //return MainActivity.player;//new User();
-            }
-            catch (FormatException)
-            {
-            //    return null;
-            }
-            catch (Exception e)
-            {
+
+            }catch (FormatException){
+                throw new Exception("Error : Email address already exists.\n");
+            }catch (Exception e){
                 throw new Exception("Error : Creation of a user.\n" + e.Message);
             }
         }
@@ -181,11 +176,5 @@ namespace Leonardo
             }
         }
 
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
-        public string Username { get; set; }
     }
 }
