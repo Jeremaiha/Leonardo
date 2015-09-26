@@ -19,23 +19,10 @@ namespace Leonardo
 
         MediaPlayer soundPlayer;
         private TextView registeredUser;
-        private static User currentUser = null;
         private static string registrationString = "Unregistered";
         private static int userScore = 0;
 
-        /// <summary>
-        ///     Delegate method, to pass from SignUp activity the user.
-        /// </summary>
-        /// <param name="name"></param>
-        public static void passUsername(User user){
-            currentUser = user;
-            registrationString = user.Name;
-        }
-
-        public static void getScore(int score){
-            userScore = score;
-        }
-
+  
         protected override void OnCreate(Bundle bundle)
         {
             try
@@ -54,10 +41,7 @@ namespace Leonardo
 
                 // Instantiate the events.
                 buttonsClicks();
-                if (currentUser != null)
-                {
-                    //         addUserToParse();                   
-                }
+               
             
             }catch(Exception e){
                 throw new Exception("Error : In MainActivity.\n" + e.Message);
@@ -68,7 +52,7 @@ namespace Leonardo
         private void addUserToParse(){
             
             var query = ParseUser.GetQuery("User");
-            query.WhereEqualTo("email", currentUser.Email);
+            query.WhereEqualTo("email", player.Email);
             
             //Roi: 
             var score = ParseUser.CurrentUser["Score"];//.Get<int>("Score");

@@ -23,9 +23,6 @@ namespace Leonardo
         
         // An array of delegates to hold all cards initialization.
         const int NUM_CARDS =  3 * 4 * 3;//Amount of all cards(3 shapes, 4 cards and 3 colors)
-  
-        public delegate void delegatePassScore(int score);
-
 
         Card[] gameCards;// Array of all possible cards
         int[] numOfCards;//Amount of each card in the game
@@ -235,9 +232,7 @@ namespace Leonardo
         }
 
         private void addUserScore(){
-            delegatePassScore dlg = new delegatePassScore(Leonardo.MainActivity.getScore);
-            dlg(Int32.Parse(score.Text));
-
+         
         }
         
         /// <summary>

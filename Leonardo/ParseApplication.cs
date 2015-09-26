@@ -32,7 +32,7 @@ namespace Leonardo
             */
                 ParseClient.Initialize("bOXeIXCGqp6eAgKyrMqwohohDbJeqf0vWhIqc9Cz",
                                "NIs2OLWSOtQRfXfWOnz8xN8E9QOEG5mJQTFKXRwv");
-                await saveObject();
+                //await saveObject();
                 ParsePush.ParsePushNotificationReceived += ParsePush.DefaultParsePushNotificationReceivedHandler;
             
             }catch(Exception e){

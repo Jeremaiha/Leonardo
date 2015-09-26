@@ -13,6 +13,7 @@ using Xamarin.Auth;
 using System.Threading.Tasks;
 using System.Json;
 using Parse;
+using System.Threading;
 
 namespace Leonardo
 {
@@ -48,7 +49,7 @@ namespace Leonardo
             submitBtn.Click += async (sender, e) =>
             {
                 try{
-                    //User user = 
+                    disableScreen(false, submitBtn);
                     await getUser();
                     // Something went wrong.
                     if (MainActivity.player.Instantiated == false){
@@ -58,26 +59,43 @@ namespace Leonardo
                         callDialog.SetNeutralButton("Woops", delegate { });
                         callDialog.Show();
                     }else{ // User added.
-
-                        //delPassUser del = new delPassUser(Leonardo.MainActivity.passUsername);
-                        //del(user);
+                        ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await addUserToParse();
-                        //Toast.MakeText(this, User.CurrentUser.Name + " Was Added", ToastLength.Short).Show();
+                        await Task.Delay(2000);
+                        Toast.MakeText(this, MainActivity.player.Name + " Was Added", ToastLength.Short).Show();
                         StartActivity(typeof(MainActivity));
                     }
+                    disableScreen(true, submitBtn);
                 }catch (Exception ex){
                     throw new Exception("Error : Creation of a user.\n" + ex.Message);
                 }
                 
             };
         }
+
+        /// <summary>
+        ///     By param flag, disables or enables the button and 3 textboxes.
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <param name="btn"></param>
+        private void disableScreen(bool flag,Button btn)
+        {
+            EditText e1 = FindViewById<EditText>(Resource.Id.editText1);
+            EditText e2 = FindViewById<EditText>(Resource.Id.editText2);
+            EditText e3 = FindViewById<EditText>(Resource.Id.editText3);
+            e1.Enabled = flag;
+            e2.Enabled = flag;
+            e3.Enabled = flag;
+            btn.Enabled = flag;
+        }
+
         /// <summary>
         ///     Receives the user data, 
         ///     If it's correct, he's signed in.
         ///     Else, Error dialog box.
         /// </summary>
         /// <returns></returns>
-        private async Task<User> getUser()
+        private async Task getUser()
         {
             try
             {
@@ -92,23 +110,20 @@ namespace Leonardo
                     callDialog.SetMessage("User Already Exist!");
                     callDialog.SetNeutralButton("oops", delegate { });
                     callDialog.Show();
-                    return null;
+                //    return null;
                 }
 
-                if (name.Text == "" || email.Text == "" || password.Text == "")
-                {
-                    return null;
+                if (name.Text == "" || email.Text == "" || password.Text == ""){
+                 //   return null;
                 }
-
-               // User.Create(name.Text, email.Text, password.Text);
                 MainActivity.player.Name = name.Text;
                 MainActivity.player.Email = email.Text;
                 MainActivity.player.Password = password.Text;
-                return null;
+                //return MainActivity.player;//new User();
             }
             catch (FormatException)
             {
-                return null;
+            //    return null;
             }
             catch (Exception e)
             {
@@ -138,6 +153,8 @@ namespace Leonardo
                 { "Email", MainActivity.player.Email},
                 { "Password",MainActivity.player.Password } ,
             };
+            user["Score"] = "1";
+         
             await user.SaveAsync();//SaveAsync
         }
 

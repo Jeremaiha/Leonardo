@@ -130,8 +130,6 @@ namespace Leonardo
                     callDialog.Show();
                 }else{
                     Toast.MakeText(this, user.Name + " Registered", ToastLength.Short).Show();
-                    delegatePassUser del = new delegatePassUser(Leonardo.MainActivity.passUsername);
-                    del(user);
                     StartActivity(typeof(MainActivity));
                 }
             };

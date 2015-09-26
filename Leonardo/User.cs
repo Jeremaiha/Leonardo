@@ -13,7 +13,7 @@ using System.Net.Mail;
 using Parse;
 namespace Leonardo
 {
-    public class User : ParseUser
+    public class User 
     {
         // All fields for a user.
         public int Score { get; set; }
