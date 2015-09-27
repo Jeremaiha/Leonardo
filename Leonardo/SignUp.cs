@@ -23,7 +23,7 @@ namespace Leonardo
     {
 
         bool problemOccured;
-        bool _alreadyRegistered;
+        bool alreadyRegistered;
         /*Sound*/
         public static int STREAM_MUSIC = 0x00000003;
         SoundPool sp;
@@ -76,29 +76,28 @@ namespace Leonardo
                         callDialog.Show();           
                         return;
                     }
-
+                    // Disable screen while the data is syncronized, so that you won't be able to 
+                    //  click nor edit.
                     disableScreen(false,name,email,password ,submitBtn);
+
                     await getUser(name,email,password);
-                    // An exception was thrown. let's end the task.
+                    // If an exception is thrown. let's end the task.
                     if (problemOccured){
                         Finish();
                         return;
                     }
-                    // Something went wrong.
-                    if (MainActivity.player.Instantiated == false){
-                        StartActivity(typeof(MainActivity));
-                        var callDialog = new AlertDialog.Builder(this);
-                        callDialog.SetMessage("Wrong Email Address!\nOr you already registered!");
-                        callDialog.SetNeutralButton("Woops", delegate { });
-                        callDialog.Show();
+                    // Details are satisfying.
+                    // Entered email already exists.
+                    if (alreadyRegistered){
+                        showMessage("Current email address is already registered.");
                     }else{ // User added.
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await addUserToParse();
                         await Task.Delay(2000);
-                        Toast.MakeText(this, MainActivity.player.Name + " Was Added", ToastLength.Short).Show();
-                        Finish();
+                        showMessage(MainActivity.player.Name + " Was Added");
                     }
-                    disableScreen(true, name, email, password, submitBtn);
+                    //disableScreen(true, name, email, password, submitBtn);
+                    Finish();
                 }catch (Exception ex){
                     throw new Exception("Error : Creation of a user.\n" + ex.Message);
                 }
@@ -120,15 +119,15 @@ namespace Leonardo
         }
 
         /// <summary>
-        ///     Receives the user data, 
+        ///     Receives the user data from params. 
         ///     If it's correct, he's signed in.
-        ///     Else, Error dialog box.
+        ///     Else, Error occurs.
         /// </summary>
         /// <returns></returns>
         private async Task getUser(EditText name,EditText email,EditText password)
         {
             try{
-                await alreadyRegistered(email.Text);
+                await checkIfEmailRegistered(email.Text);
                
                 MainActivity.player.Name = name.Text;
                 MainActivity.player.Email = email.Text;
@@ -143,7 +142,10 @@ namespace Leonardo
                 problemOccured = true;
             }
         }
-
+        /// <summary>
+        ///     Get's a string, and shows a basic toast message.
+        /// </summary>
+        /// <param name="s"></param>
         private void showMessage(string s)
         {
             Toast.MakeText(this, s, ToastLength.Long).Show();
@@ -178,25 +180,30 @@ namespace Leonardo
 
         /// <summary>
         ///     Should check in the database if the email already exists.
+        ///     If it does - alreadyRegistered variable is set to true.
+        ///     Else       - alreadyRegistered = false.
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        private async Task alreadyRegistered(string email)
+        private async Task checkIfEmailRegistered(string email)
         {
             try
             {
                 //var query = ParseUser.Query.order", email);
                 // ask for 10 in parse.
                 // an option to show yourself too.
-                var query = ParseUser.Query.WhereEqualTo("email", email);
+                //var query = ParseUser.Query.WhereEqualTo("email", email);
+                var query = from Users in ParseObject.GetQuery("Users")
+                            where Users.Get<string>("Email") == email
+                            select Users;
 
                 IEnumerable<ParseObject> results = await query.FindAsync();
 
                 if (results.Count() == 0){
-                    _alreadyRegistered = false;
+                    alreadyRegistered = false;
 
                 }else{
-                    _alreadyRegistered = true;
+                    alreadyRegistered = true;
                 }
             }catch (FormatException){
                 throw new FormatException();
