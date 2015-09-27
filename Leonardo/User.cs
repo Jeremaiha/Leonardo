@@ -25,11 +25,20 @@ namespace Leonardo
             get { return email; }
             set
             {
-                if(IsValid(value)){
-                    email = value;
-                }else{
-                    email = null;
+                try
+                {
+                    if (IsValid(value))
+                    {
+                        email = value;
+                    }
+                    else
+                    {
+                        email = null;
+                    }
+                }catch(FormatException){
+                    throw new FormatException();
                 }
+                
             }
         }
         private bool instantiated = false;
@@ -85,7 +94,7 @@ namespace Leonardo
                 return true;
             }
             catch (FormatException){
-                return false;
+                throw new FormatException();
             }
         }
     }
