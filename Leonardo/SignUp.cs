@@ -21,37 +21,39 @@ namespace Leonardo
     [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
     public class SignUp : Activity
     {
-
-        bool problemOccured;
-        bool alreadyRegistered;
-        /*Sound*/
-        public static int STREAM_MUSIC = 0x00000003;
+        private bool problemOccured;    // if a problem is occured later on, variable is set to be true.
+        private bool alreadyRegistered; // if the email is found to be registered, the value will be set true.
+        // Sound variables.
+        private static int STREAM_MUSIC = 0x00000003;
         SoundPool sp;
         int SoundPushButton;
-        /*Sound*/
+        
         protected override void OnCreate(Bundle bundle)
         {
-            try
-            {
+            try{
+                // Activity initialization.
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.SignUp);
-                /*Sound*/
+
+                // Sound initialization.
                 Stream st = new Stream();
                 sp = new SoundPool(1, st, 0);
                 SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
-                /*Sound*/
-
+                // A variable which is used afterwards in the class.
                 problemOccured = false;
+
                 // Assign the button.
                 Button submitBtn = FindViewById<Button>(Resource.Id.buttonSubmit);
                 EditText name = FindViewById<EditText>(Resource.Id.editText1);
                 EditText email = FindViewById<EditText>(Resource.Id.editText2);
                 EditText password = FindViewById<EditText>(Resource.Id.editText3);
                 
+                // Submit button click.
                 sumbitClick(submitBtn,name,email,password);
         
-            }catch(Exception e){
-                throw new Exception("Error : In SignUp.\n" + e.Message);
+            }catch(Exception){
+                showMessage("Something went wrong in Sign Up button.");
+                Finish();
             }
         }
 
@@ -65,9 +67,8 @@ namespace Leonardo
             submitBtn.Click += async (sender, e) =>
             {
                 try{
-                    /*Sound*/
+                    // play button click sound.
                     sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
-
 
                     // All details must me entered.
                     if (name.Text == "" || email.Text == "" || password.Text == ""){
@@ -96,10 +97,9 @@ namespace Leonardo
                         await Task.Delay(2000);
                         showMessage(MainActivity.player.Name + " Was Added");
                     }
-                    //disableScreen(true, name, email, password, submitBtn);
                     Finish();
-                }catch (Exception ex){
-                    throw new Exception("Error : Creation of a user.\n" + ex.Message);
+                }catch (Exception){
+                    showMessage("Unknown error has occured while trying to create the user.");
                 }
                 
             };
