@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android.Media;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -17,19 +18,27 @@ using System.Threading;
 
 namespace Leonardo
 {
-    [Activity(Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
     public class SignUp : Activity
     {
 
         bool _alreadyRegistered;
-
+        /*Sound*/
+        public static int STREAM_MUSIC = 0x00000003;
+        SoundPool sp;
+        int SoundPushButton;
+        /*Sound*/
         protected override void OnCreate(Bundle bundle)
         {
             try
             {
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.SignUp);
-
+                /*Sound*/
+                Stream st = new Stream();
+                sp = new SoundPool(1, st, 0);
+                SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
+                /*Sound*/
                 // Assign the button.
                 Button submitBtn = FindViewById<Button>(Resource.Id.buttonSubmit);
                 EditText name = FindViewById<EditText>(Resource.Id.editText1);
@@ -53,6 +62,8 @@ namespace Leonardo
             submitBtn.Click += async (sender, e) =>
             {
                 try{
+                    /*Sound*/
+                    sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
                     // All details must me entered.
                     if (name.Text == "" || email.Text == "" || password.Text == ""){
                         var callDialog = new AlertDialog.Builder(this);
@@ -71,11 +82,12 @@ namespace Leonardo
                         callDialog.SetNeutralButton("Woops", delegate { });
                         callDialog.Show();
                     }else{ // User added.
-                        ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
+                        var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await addUserToParse();
                         await Task.Delay(2000);
                         Toast.MakeText(this, MainActivity.player.Name + " Was Added", ToastLength.Short).Show();
                         StartActivity(typeof(MainActivity));
+                        progessDialog.Hide();
                     }
                     disableScreen(true, name, email, password, submitBtn);
                 }catch (Exception ex){

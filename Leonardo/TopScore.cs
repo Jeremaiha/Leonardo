@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -12,7 +13,7 @@ using Android.Widget;
 
 namespace Leonardo
 {
-    [Activity(Label = "Leonardo : TOP 10")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo : TOP 10")]
     public class TopScore : Activity
     {
         protected override void OnCreate(Bundle bundle)

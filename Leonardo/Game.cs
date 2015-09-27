@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Android.Content.PM;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -14,10 +14,16 @@ using Android.Media;
 namespace Leonardo
 {
 
-    [Activity(Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
     public class Game : Activity
     {
         const int SIZE = 4;
+        /*Sound*/
+        SoundPool sp,sp2,sp3;
+        int _soundPushButton;
+        int _singleRowOrColumn;
+        int _gameOver;
+        /*Sound*/
         Card  outerImage;   // Image Button 17
         Card[,] buttonsArray;
         
@@ -31,12 +37,20 @@ namespace Leonardo
 
         GameRules gameRules; // Holds the game board, and all its rules.
         TextView score;
-        MediaPlayer soundPlayer;
+       
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
+            /*Sound*/
+            Stream st = new Stream();
+            sp = new SoundPool(1, st, 0);
+            sp2 = new SoundPool(1, st, 0);
+            sp3 = new SoundPool(1,st,0);
+            _soundPushButton = sp.Load(this, Resource.Raw.buttonDown, 1);
+            _singleRowOrColumn = sp2.Load(this, Resource.Raw.singleRowOrColumn, 1);
+            _gameOver = sp3.Load(this, Resource.Raw.gameOver, 1);
+            /*Sound*/
             // Create your application here
             // Layout initialisation
             SetContentView(Resource.Layout.Game);
@@ -57,8 +71,7 @@ namespace Leonardo
 
                 gameRules = new GameRules(buttonsArray,SIZE);
                 score = FindViewById<TextView>(Resource.Id.textView3);
-                soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-
+             
             }catch (Exception e){
                 throw new Exception("Error : Initiating everything.\n" + e.Message);
             }
@@ -197,8 +210,9 @@ namespace Leonardo
                 // Start all game rules validations.
                 randomNumber = gameRules.simulateAllRules();
                 if (randomNumber != 0){
-                    soundPlayer = MediaPlayer.Create(this, Resource.Raw.singleRowOrColumn);
-                    soundPlayer.Start();
+                    /*Sound*/
+                    sp2.Play(_singleRowOrColumn, 1, 1, 0, 0, 1);
+                    /*Sound*/
                 }
                 score.Text = (Int32.Parse(score.Text.ToString()) + randomNumber).ToString();
                 checkNextMove();
@@ -216,8 +230,10 @@ namespace Leonardo
         /// </summary>
         private void gameOver(){
             try{
-                soundPlayer = MediaPlayer.Create(this, Resource.Raw.gameOver);
-                soundPlayer.Start();
+                /*Sound*/
+
+                sp3.Play(_gameOver, 1, 1, 0, 0, 1);
+                /*Sound*/
                 var callDialog = new AlertDialog.Builder(this);
                 callDialog.SetMessage("Game Over.\nYour Score is : " + score.Text);
                 callDialog.SetNeutralButton("OK", delegate {
@@ -310,8 +326,9 @@ namespace Leonardo
         /// <param name="delegateIndex"></param>
         private void onCardClick(int i,int j, int delegateIndex)
         {
-            soundPlayer = MediaPlayer.Create(this, Resource.Raw.buttonDown);
-            soundPlayer.Start();
+            /*Sound*/
+            sp.Play(_soundPushButton, 1, 1, 0, 0, 1);
+            /*Sound*/
             buttonsArray[i, j].setWithoutImgButton(outerImage);
             setImage(buttonsArray[i, j].ImageButton, buttonsArray[i, j].ToString());
             buttonsArray[i, j].ImageButton.Enabled = false; // Disable the button.

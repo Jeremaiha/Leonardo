@@ -52,21 +52,7 @@ namespace Leonardo
             }
         }
 
-        public void Create(string _name, string _email, string pass)
-        {
-            // Already created.
-            if (currentUser != null){
-                throw new Exception("Object already exists.");
-            }
-            currentUser = new User(_name,_email,pass);
-            
-        }
-
-        public static User CreateNullUser() {
-            currentUser=null;
-            return null;
-        }
-
+     
         /// <summary>
         ///     Singelton C'tor.
         /// </summary>

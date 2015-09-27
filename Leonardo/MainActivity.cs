@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -11,13 +12,15 @@ using Parse;
 
 namespace Leonardo
 {
-    [Activity(Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         public static User player;
-
-
-        MediaPlayer soundPlayer;
+        /*Sound*/
+        public static int STREAM_MUSIC = 0x00000003;
+        SoundPool sp;
+        int SoundPushButton;
+        /*Sound*/
         private TextView registeredUser;
         private static string registrationString = "Unregistered";
         private static int userScore = 0;
@@ -29,10 +32,14 @@ namespace Leonardo
             {
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.Main);
-
+                /*Sound*/
+                Stream st = new Stream();
+                sp = new SoundPool(1, st, 0);
+                SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
+                /*Sound*/
                 player = User.CurrentUser;
 
-                soundPlayer = MediaPlayer.Create(this, Resource.Raw.clickInMenu);
+              
 
                 // If data was sent, the new user name is replaced.
                 registeredUser = FindViewById<TextView>(Resource.Id.textView1);
@@ -81,7 +88,9 @@ namespace Leonardo
             ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
             imageButton.Click += delegate
             {
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1,1,0,0,1);
+                /*Sound*/
                 if (registeredUser.Text == "Unregistered"){
                     StartActivity(typeof(Game));
                 }else{
@@ -97,21 +106,27 @@ namespace Leonardo
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate
             {
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                /*Sound*/
                 StartActivity(typeof(SignIn));
             };
 
             Button signUpButton = FindViewById<Button>(Resource.Id.button2);
             signUpButton.Click += delegate
             {
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                /*Sound*/
                 StartActivity(typeof(SignUp));
             };
 
             Button Top10Button = FindViewById<Button>(Resource.Id.button3);
             Top10Button.Click += delegate
             {
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                /*Sound*/
                 StartActivity(typeof(TopScore));
             };
 

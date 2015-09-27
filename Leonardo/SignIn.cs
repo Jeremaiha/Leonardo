@@ -5,6 +5,7 @@ using System.Text;
 using Android.Media;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -14,11 +15,15 @@ using System.Threading.Tasks;
 using System.Json;
 namespace Leonardo
 {
-    [Activity(Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
     public class SignIn : Activity
     {
 
-        MediaPlayer soundPlayer;
+        /*Sound*/
+        public static int STREAM_MUSIC = 0x00000003;
+        SoundPool sp;
+        int SoundPushButton;
+        /*Sound*/
         //FacebookLogIn facebookLogIn;
         //Button facebook;
         public delegate void delegatePassUser(User dlgUser);
@@ -31,7 +36,11 @@ namespace Leonardo
             Button signinBtn = FindViewById<Button>(Resource.Id.buttonSignIn);
             signInButton(signinBtn);
 
-            soundPlayer = MediaPlayer.Create(this, Resource.Raw.clickInMenu);
+            /*Sound*/
+            Stream st = new Stream();
+            sp = new SoundPool(1, st, 0);
+            SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
+            /*Sound*/
 
            // facebookLogIn = new FacebookLogIn();
            // facebook = FindViewById<Button>(Resource.Id.buttonFacebookLogIn);
@@ -40,7 +49,9 @@ namespace Leonardo
             var facebook = FindViewById<Button>(Resource.Id.buttonFacebookLogIn);
             facebook.Click += delegate { 
                 LoginToFacebook(true);
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                /*Sound*/
             };
 
          
@@ -121,7 +132,9 @@ namespace Leonardo
         {
             signinBtn.Click += (sender, e) =>
             {
-                soundPlayer.Start();
+                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                /*Sound*/
                 User user = getUser();
                 if (user == null){
                     var callDialog = new AlertDialog.Builder(this);
