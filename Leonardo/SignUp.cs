@@ -43,7 +43,7 @@ namespace Leonardo
                 problemOccured = false;
 
                 // Assign view variables.
-                Button signUpBtn = FindViewById<Button>(Resource.Id.signUp);
+                Button signUpBtn = FindViewById<Button>(Resource.Id.signUpBtn);
                 EditText name = FindViewById<EditText>(Resource.Id.editText1);
                 EditText email = FindViewById<EditText>(Resource.Id.editText2);
                 EditText password = FindViewById<EditText>(Resource.Id.editText3);
@@ -58,10 +58,12 @@ namespace Leonardo
         }
 
         /// <summary>
-        ///     Submit button clicked, checks all details.
-        ///     Registers if validated correctly
+        ///     Sign up if all details are ok.
         /// </summary>
         /// <param name="signUpBtn"></param>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         private async void signUpClick(Button signUpBtn,EditText name,EditText email, EditText password)
         {
             signUpBtn.Click += async (sender, e) =>
@@ -189,8 +191,8 @@ namespace Leonardo
         /// <returns></returns>
         private async Task checkIfEmailRegistered(string email)
         {
-            try
-            {
+            try{
+               
                 //var query = ParseUser.Query.order", email);
                 // ask for 10 in parse.
                 // an option to show yourself too.

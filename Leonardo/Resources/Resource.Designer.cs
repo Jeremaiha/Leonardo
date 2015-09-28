@@ -210,9 +210,6 @@ namespace Leonardo
 			// aapt resource value: 0x7f070029
 			public const int buttonFacebookLogIn = 2131165225;
 			
-			// aapt resource value: 0x7f070028
-			public const int buttonSignIn = 2131165224;
-			
 			// aapt resource value: 0x7f07002a
 			public const int editText1 = 2131165226;
 			
@@ -300,8 +297,11 @@ namespace Leonardo
 			// aapt resource value: 0x7f070025
 			public const int linearLayout3 = 2131165221;
 			
+			// aapt resource value: 0x7f070028
+			public const int signInBtn = 2131165224;
+			
 			// aapt resource value: 0x7f070030
-			public const int signUp = 2131165232;
+			public const int signUpBtn = 2131165232;
 			
 			// aapt resource value: 0x7f070001
 			public const int tableLayout1 = 2131165185;

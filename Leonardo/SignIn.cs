@@ -13,11 +13,14 @@ using Android.Widget;
 using Xamarin.Auth;
 using System.Threading.Tasks;
 using System.Json;
+using Parse;
 namespace Leonardo
 {
     [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
     public class SignIn : Activity
     {
+        bool userExists;
+        bool problemOccured; // if a problem will occure later on, variable will be set true.
 
         /*Sound*/
         public static int STREAM_MUSIC = 0x00000003;
@@ -33,18 +36,20 @@ namespace Leonardo
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.SignIn);
 
+            // Instantiation.
+            problemOccured = false;
+
             // Sound
             Stream st = new Stream();
             sp = new SoundPool(1, st, 0);
             SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
          
             // Assign activity variables.
-            TextView email    = FindViewById<TextView>(Resource.Id.editText1);
-            TextView password = FindViewById<TextView>(Resource.Id.editText2);
-            Button signInBtn = FindViewById<Button>(Resource.Id.buttonSignIn);
+            EditText email = FindViewById<EditText>(Resource.Id.editTextEmail);
+            EditText password = FindViewById<EditText>(Resource.Id.editTextPass);
+            Button signInBtn = FindViewById<Button>(Resource.Id.signInBtn);
+            
             signInButton(signInBtn,email,password);
-
-           
 
            // facebookLogIn = new FacebookLogIn();
            // facebook = FindViewById<Button>(Resource.Id.buttonFacebookLogIn);
@@ -128,54 +133,129 @@ namespace Leonardo
 
 
         /// <summary>
-        ///     Submit button clicked, checks all details.
-        ///     Registers if validated correctly
+        ///     Sign In, if details are correct.
         /// </summary>
-        /// <param name="submitBtn"></param>
-        private void signInButton(Button signinBtn,TextView email, TextView password)
+        /// <param name="signInBtn"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        private async void signInButton(Button signInBtn, EditText email, EditText password)
         {
-            signinBtn.Click += (sender, e) =>
+            signInBtn.Click += async (sender, e) =>
             {
-                /*Sound*/
-                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
-                /*Sound*/
-                User user = getUser();
-                if (user == null){
-                    var callDialog = new AlertDialog.Builder(this);
-                    callDialog.SetMessage("Wrong Email Address!");
-                    callDialog.SetNeutralButton("Ok I'll try again", delegate { });
-                    callDialog.Show();
-                }else{
-                    Toast.MakeText(this, user.Name + " Registered", ToastLength.Short).Show();
-                    StartActivity(typeof(MainActivity));
+              
+
+
+                try
+                {
+                    // play sound, because the button was clicked.
+                    sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+
+                    // All details must me entered.
+                    if (email.Text == "" || password.Text == "")
+                    {
+                        var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetMessage("Please enter all details!");
+                        callDialog.Show();
+                        return;
+                    }
+                    // Disable screen while the data is syncronized, so that you won't be able to 
+                    //  click nor edit.
+                    disableScreen(false,email, password, signInBtn);
+
+                    await getUser(email.Text, password.Text);
+                  
+                    // If an exception is thrown. let's end the task.
+                    if (problemOccured){
+                        Finish();
+                        return;
+                    }
+                    // Details are satisfying.
+                    // Entered email already exists.
+                    if (userExists){ // User is logged.
+                        //await Task.Delay(2000);
+                        var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
+                        await Task.Delay(2000);
+                        showMessage("Logged in as " + MainActivity.player.Name);
+                    }
+                    else{ // Didn't find such user.    
+                        var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
+                        await Task.Delay(2000);
+                        showMessage("No such user found");
+                    }
+                    Finish();
                 }
+                catch (Exception)
+                {
+                    showMessage("Unknown error has occured while trying to create the user.");
+                }
+
             };
         }
+
+        /// <summary>
+        ///     By param flag, disables or enables the button and 2 textboxes.
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <param name="btn"></param>
+        private void disableScreen(bool flag, EditText e1, EditText e2, Button btn)
+        {
+            e1.Enabled = flag;
+            e2.Enabled = flag;
+            btn.Enabled = flag;
+        }
+        
         /// <summary>
         ///     Receives the user data, 
         ///     If it's correct, he's signed in.
         ///     Else, Error dialog box.
         /// </summary>
         /// <returns></returns>
-        private User getUser()
+        private async Task getUser(string email, string password)
         {
             try{
-                var email = FindViewById<EditText>(Resource.Id.editTextEmail);
-                var password = FindViewById<EditText>(Resource.Id.editTextPass);
-
-                if(email.Text == "" || password.Text == ""){
-                    return null;
-                }
-                
-                return getUserFromParse(email.Text, password.Text);
+                await checkIfUserRegistered(email,password);
                 
             }
             catch (FormatException){
-                return null;
+                showMessage("Undefined email address!");
+                problemOccured = true;
             }
-            catch (Exception e){
-                throw new Exception("Error : Creation of a user.\n" + e.Message);
+            catch (Exception){
+                showMessage("Check your internet connection!");
+                problemOccured = true;
             }
+        }
+
+        private async Task checkIfUserRegistered(string email,string pass)
+        {
+            try{
+               
+                var query = from Users in ParseObject.GetQuery("Users")
+                            where Users.Get<string>("Email") == email
+                            where Users.Get<string>("Password") == pass
+                            select Users;
+
+                IEnumerable<ParseObject> results = await query.FindAsync();
+
+                if (results.Count() == 0){
+                    userExists = false;
+
+                }else{ //sign user if needed.
+                    var name = results.ElementAt(0).Get<string>("Name");
+                    setParseUser(name,email,pass);
+                    userExists = true;
+                }
+            }
+            catch (FormatException){
+                throw new FormatException();
+            }
+        }
+
+        private void setParseUser(string name,string email, string password)
+        {
+            MainActivity.player.Name = name;
+            MainActivity.player.Email = email;
+            MainActivity.player.Password = password;
         }
 
         private User getUserFromParse(string email,string pass){
@@ -183,7 +263,14 @@ namespace Leonardo
             return null;//new User("TEMP",email,pass);
         }
 
-
+        /// <summary>
+        ///     Get's a string, and shows a basic toast message.
+        /// </summary>
+        /// <param name="s"></param>
+        private void showMessage(string s)
+        {
+            Toast.MakeText(this, s, ToastLength.Long).Show();
+        }
 
     }
 }
