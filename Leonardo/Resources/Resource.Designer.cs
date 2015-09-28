@@ -213,9 +213,6 @@ namespace Leonardo
 			// aapt resource value: 0x7f070028
 			public const int buttonSignIn = 2131165224;
 			
-			// aapt resource value: 0x7f070030
-			public const int buttonSubmit = 2131165232;
-			
 			// aapt resource value: 0x7f07002a
 			public const int editText1 = 2131165226;
 			
@@ -302,6 +299,9 @@ namespace Leonardo
 			
 			// aapt resource value: 0x7f070025
 			public const int linearLayout3 = 2131165221;
+			
+			// aapt resource value: 0x7f070030
+			public const int signUp = 2131165232;
 			
 			// aapt resource value: 0x7f070001
 			public const int tableLayout1 = 2131165185;

@@ -42,14 +42,14 @@ namespace Leonardo
                 // A variable which is used afterwards in the class.
                 problemOccured = false;
 
-                // Assign the button.
-                Button submitBtn = FindViewById<Button>(Resource.Id.buttonSubmit);
+                // Assign view variables.
+                Button signUpBtn = FindViewById<Button>(Resource.Id.signUp);
                 EditText name = FindViewById<EditText>(Resource.Id.editText1);
                 EditText email = FindViewById<EditText>(Resource.Id.editText2);
                 EditText password = FindViewById<EditText>(Resource.Id.editText3);
                 
                 // Submit button click.
-                sumbitClick(submitBtn,name,email,password);
+                signUpClick(signUpBtn,name,email,password);
         
             }catch(Exception){
                 showMessage("Something went wrong in Sign Up button.");
@@ -61,10 +61,10 @@ namespace Leonardo
         ///     Submit button clicked, checks all details.
         ///     Registers if validated correctly
         /// </summary>
-        /// <param name="submitBtn"></param>
-        private async void sumbitClick(Button submitBtn,EditText name,EditText email, EditText password)
+        /// <param name="signUpBtn"></param>
+        private async void signUpClick(Button signUpBtn,EditText name,EditText email, EditText password)
         {
-            submitBtn.Click += async (sender, e) =>
+            signUpBtn.Click += async (sender, e) =>
             {
                 try{
                     // play button click sound.
@@ -79,7 +79,7 @@ namespace Leonardo
                     }
                     // Disable screen while the data is syncronized, so that you won't be able to 
                     //  click nor edit.
-                    disableScreen(false,name,email,password ,submitBtn);
+                    disableScreen(false,name,email,password ,signUpBtn);
 
                     await getUser(name,email,password);
                     // If an exception is thrown. let's end the task.
@@ -91,8 +91,8 @@ namespace Leonardo
                     // Entered email already exists.
                     if (alreadyRegistered){
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
-                        showMessage("Current email address is already registered.");
                         await Task.Delay(2000);
+                        showMessage("Current email address is already registered.");
                     }else{ // User added.
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await addUserToParse();

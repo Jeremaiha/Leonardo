@@ -71,9 +71,9 @@
         android:layout_height="25.4dp"
         android:id="@+id/absoluteLayout1" />
     <Button
-        android:text="Submit"
+        android:text="Sign Up"
         android:layout_width="153.7dp"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonSubmit"
+        android:id="@+id/signUp"
         android:layout_gravity="center" />
 </LinearLayout>

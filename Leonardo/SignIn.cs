@@ -33,14 +33,18 @@ namespace Leonardo
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.SignIn);
 
-            Button signinBtn = FindViewById<Button>(Resource.Id.buttonSignIn);
-            signInButton(signinBtn);
-
-            /*Sound*/
+            // Sound
             Stream st = new Stream();
             sp = new SoundPool(1, st, 0);
             SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
-            /*Sound*/
+         
+            // Assign activity variables.
+            TextView email    = FindViewById<TextView>(Resource.Id.editText1);
+            TextView password = FindViewById<TextView>(Resource.Id.editText2);
+            Button signInBtn = FindViewById<Button>(Resource.Id.buttonSignIn);
+            signInButton(signInBtn,email,password);
+
+           
 
            // facebookLogIn = new FacebookLogIn();
            // facebook = FindViewById<Button>(Resource.Id.buttonFacebookLogIn);
@@ -128,7 +132,7 @@ namespace Leonardo
         ///     Registers if validated correctly
         /// </summary>
         /// <param name="submitBtn"></param>
-        private void signInButton(Button signinBtn)
+        private void signInButton(Button signinBtn,TextView email, TextView password)
         {
             signinBtn.Click += (sender, e) =>
             {
