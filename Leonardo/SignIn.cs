@@ -142,11 +142,8 @@ namespace Leonardo
         {
             signInBtn.Click += async (sender, e) =>
             {
-              
-
-
-                try
-                {
+                try{
+                   
                     // play sound, because the button was clicked.
                     sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
 
