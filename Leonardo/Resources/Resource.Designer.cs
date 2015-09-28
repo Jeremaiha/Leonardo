@@ -90,91 +90,94 @@ namespace Leonardo
 			public const int Icon = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int logo = 2130837519;
+			public const int leonardo_title = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int monoandroidsplash = 2130837520;
+			public const int logo = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int play = 2130837521;
+			public const int monoandroidsplash = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int play_icon_small = 2130837522;
+			public const int play = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int red_cherry_1 = 2130837523;
+			public const int play_icon_small = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int red_cherry_2 = 2130837524;
+			public const int red_cherry_1 = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int red_cherry_3 = 2130837525;
+			public const int red_cherry_2 = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int red_cherry_4 = 2130837526;
+			public const int red_cherry_3 = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int red_mushroom_1 = 2130837527;
+			public const int red_cherry_4 = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int red_mushroom_2 = 2130837528;
+			public const int red_mushroom_1 = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int red_mushroom_3 = 2130837529;
+			public const int red_mushroom_2 = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int red_mushroom_4 = 2130837530;
+			public const int red_mushroom_3 = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int red_straw_1 = 2130837531;
+			public const int red_mushroom_4 = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int red_straw_2 = 2130837532;
+			public const int red_straw_1 = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int red_straw_3 = 2130837533;
+			public const int red_straw_2 = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int red_straw_4 = 2130837534;
+			public const int red_straw_3 = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int x = 2130837535;
+			public const int red_straw_4 = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int yellow_cherry_1 = 2130837536;
+			public const int x = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int yellow_cherry_2 = 2130837537;
+			public const int yellow_cherry_1 = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int yellow_cherry_3 = 2130837538;
+			public const int yellow_cherry_2 = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int yellow_cherry_4 = 2130837539;
+			public const int yellow_cherry_3 = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int yellow_mushroom_1 = 2130837540;
+			public const int yellow_cherry_4 = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int yellow_mushroom_2 = 2130837541;
+			public const int yellow_mushroom_1 = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int yellow_mushroom_3 = 2130837542;
+			public const int yellow_mushroom_2 = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int yellow_mushroom_4 = 2130837543;
+			public const int yellow_mushroom_3 = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int yellow_straw_1 = 2130837544;
+			public const int yellow_mushroom_4 = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int yellow_straw_2 = 2130837545;
+			public const int yellow_straw_1 = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int yellow_straw_3 = 2130837546;
+			public const int yellow_straw_2 = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int yellow_straw_4 = 2130837547;
+			public const int yellow_straw_3 = 2130837547;
+			
+			// aapt resource value: 0x7f02002c
+			public const int yellow_straw_4 = 2130837548;
 			
 			static Drawable()
 			{
@@ -189,41 +192,38 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070031
-			public const int TextView04 = 2131165233;
+			// aapt resource value: 0x7f070030
+			public const int TextView04 = 2131165232;
 			
 			// aapt resource value: 0x7f07001c
 			public const int absoluteLayout1 = 2131165212;
 			
 			// aapt resource value: 0x7f07001d
-			public const int absoluteLayout2 = 2131165213;
+			public const int button1 = 2131165213;
 			
 			// aapt resource value: 0x7f07001e
-			public const int button1 = 2131165214;
+			public const int button2 = 2131165214;
 			
 			// aapt resource value: 0x7f07001f
-			public const int button2 = 2131165215;
+			public const int button3 = 2131165215;
 			
-			// aapt resource value: 0x7f070020
-			public const int button3 = 2131165216;
+			// aapt resource value: 0x7f070028
+			public const int buttonFacebookLogIn = 2131165224;
 			
 			// aapt resource value: 0x7f070029
-			public const int buttonFacebookLogIn = 2131165225;
+			public const int editText1 = 2131165225;
 			
-			// aapt resource value: 0x7f07002a
-			public const int editText1 = 2131165226;
+			// aapt resource value: 0x7f07002c
+			public const int editText2 = 2131165228;
 			
-			// aapt resource value: 0x7f07002d
-			public const int editText2 = 2131165229;
+			// aapt resource value: 0x7f07002e
+			public const int editText3 = 2131165230;
 			
-			// aapt resource value: 0x7f07002f
-			public const int editText3 = 2131165231;
+			// aapt resource value: 0x7f070023
+			public const int editTextEmail = 2131165219;
 			
-			// aapt resource value: 0x7f070024
-			public const int editTextEmail = 2131165220;
-			
-			// aapt resource value: 0x7f070027
-			public const int editTextPass = 2131165223;
+			// aapt resource value: 0x7f070026
+			public const int editTextPass = 2131165222;
 			
 			// aapt resource value: 0x7f070003
 			public const int imageButton1 = 2131165187;
@@ -288,20 +288,20 @@ namespace Leonardo
 			// aapt resource value: 0x7f07001b
 			public const int imageView1 = 2131165211;
 			
-			// aapt resource value: 0x7f070022
-			public const int linearLayout1 = 2131165218;
+			// aapt resource value: 0x7f070021
+			public const int linearLayout1 = 2131165217;
 			
-			// aapt resource value: 0x7f07002b
-			public const int linearLayout2 = 2131165227;
+			// aapt resource value: 0x7f07002a
+			public const int linearLayout2 = 2131165226;
 			
-			// aapt resource value: 0x7f070025
-			public const int linearLayout3 = 2131165221;
+			// aapt resource value: 0x7f070024
+			public const int linearLayout3 = 2131165220;
 			
-			// aapt resource value: 0x7f070028
-			public const int signInBtn = 2131165224;
+			// aapt resource value: 0x7f070027
+			public const int signInBtn = 2131165223;
 			
-			// aapt resource value: 0x7f070030
-			public const int signUpBtn = 2131165232;
+			// aapt resource value: 0x7f07002f
+			public const int signUpBtn = 2131165231;
 			
 			// aapt resource value: 0x7f070001
 			public const int tableLayout1 = 2131165185;
@@ -309,8 +309,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070002
 			public const int tableRow1 = 2131165186;
 			
-			// aapt resource value: 0x7f070037
-			public const int tableRow10 = 2131165239;
+			// aapt resource value: 0x7f070036
+			public const int tableRow10 = 2131165238;
 			
 			// aapt resource value: 0x7f070007
 			public const int tableRow2 = 2131165191;
@@ -321,20 +321,20 @@ namespace Leonardo
 			// aapt resource value: 0x7f070011
 			public const int tableRow4 = 2131165201;
 			
+			// aapt resource value: 0x7f070031
+			public const int tableRow5 = 2131165233;
+			
 			// aapt resource value: 0x7f070032
-			public const int tableRow5 = 2131165234;
+			public const int tableRow6 = 2131165234;
 			
 			// aapt resource value: 0x7f070033
-			public const int tableRow6 = 2131165235;
+			public const int tableRow7 = 2131165235;
 			
 			// aapt resource value: 0x7f070034
-			public const int tableRow7 = 2131165236;
+			public const int tableRow8 = 2131165236;
 			
 			// aapt resource value: 0x7f070035
-			public const int tableRow8 = 2131165237;
-			
-			// aapt resource value: 0x7f070036
-			public const int tableRow9 = 2131165238;
+			public const int tableRow9 = 2131165237;
 			
 			// aapt resource value: 0x7f070000
 			public const int textView1 = 2131165184;
@@ -342,20 +342,20 @@ namespace Leonardo
 			// aapt resource value: 0x7f070017
 			public const int textView3 = 2131165207;
 			
-			// aapt resource value: 0x7f07002c
-			public const int textView4 = 2131165228;
+			// aapt resource value: 0x7f07002b
+			public const int textView4 = 2131165227;
 			
-			// aapt resource value: 0x7f07002e
-			public const int textView5 = 2131165230;
+			// aapt resource value: 0x7f07002d
+			public const int textView5 = 2131165229;
 			
-			// aapt resource value: 0x7f070023
-			public const int textViewName = 2131165219;
+			// aapt resource value: 0x7f070022
+			public const int textViewName = 2131165218;
 			
-			// aapt resource value: 0x7f070026
-			public const int textViewPass = 2131165222;
+			// aapt resource value: 0x7f070025
+			public const int textViewPass = 2131165221;
 			
-			// aapt resource value: 0x7f070021
-			public const int textViewSignIn = 2131165217;
+			// aapt resource value: 0x7f070020
+			public const int textViewSignIn = 2131165216;
 			
 			static Id()
 			{
@@ -377,13 +377,16 @@ namespace Leonardo
 			public const int Main = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SignIn = 2130903042;
+			public const int Registered = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int SignUp = 2130903043;
+			public const int SignIn = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int TopScore = 2130903044;
+			public const int SignUp = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int TopScore = 2130903045;
 			
 			static Layout()
 			{

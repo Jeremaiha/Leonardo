@@ -45,6 +45,7 @@ namespace Leonardo
         public bool Instantiated
         {
             get { return instantiated; }
+            set { instantiated = value; }
         } 
 
         // Singelton

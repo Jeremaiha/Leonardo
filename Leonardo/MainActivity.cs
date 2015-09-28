@@ -42,8 +42,8 @@ namespace Leonardo
               
 
                 // If data was sent, the new user name is replaced.
-                registeredUser = FindViewById<TextView>(Resource.Id.textView1);
-                registeredUser.Text = registrationString;
+          //      registeredUser = FindViewById<TextView>(Resource.Id.textView1);
+            //    registeredUser.Text = registrationString;
 
 
                 // Instantiate the events.
@@ -55,29 +55,17 @@ namespace Leonardo
             }
             
         }
-
-        private void addUserToParse(){
+        /*
+        protected override void OnResume()
+        {
+            if (player.Instantiated == false)
+            {
+                StartActivity(typeof(Registered));
+            }
             
-            var query = ParseUser.GetQuery("User");
-            query.WhereEqualTo("email", player.Email);
-            
-            //Roi: 
-            var score = ParseUser.CurrentUser["Score"];//.Get<int>("Score");
-            /*
-            query.findInBackground(new FindCallback<ParseUser>() {
-              public void done(List<ParseUser> objects, ParseException e) {
-                if (e == null) {
-                    // The query was successful.
-                } else {
-                    // Something went wrong.
-                }
-              }
-            });
-            */
         }
 
-
-
+        */
         /// <summary>
         ///     Buttons clicks events initialization.
         /// </summary>
@@ -85,12 +73,11 @@ namespace Leonardo
 
             // Get our button from the layout resource,
             // and attach an event to it
-            ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
+          /*  ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
             imageButton.Click += delegate
             {
-                /*Sound*/
+           
                 sp.Play(SoundPushButton, 1,1,0,0,1);
-                /*Sound*/
                 if (registeredUser.Text == "Unregistered"){
                     StartActivity(typeof(Game));
                 }else{
@@ -102,7 +89,7 @@ namespace Leonardo
                 }
                 
             };
-
+        */
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate
             {
