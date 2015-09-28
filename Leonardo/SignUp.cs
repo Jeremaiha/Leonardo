@@ -90,7 +90,9 @@ namespace Leonardo
                     // Details are satisfying.
                     // Entered email already exists.
                     if (alreadyRegistered){
+                        var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         showMessage("Current email address is already registered.");
+                        await Task.Delay(2000);
                     }else{ // User added.
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await addUserToParse();
