@@ -177,7 +177,7 @@ namespace Leonardo
                 { "Email", MainActivity.player.Email},
                 { "Password",MainActivity.player.Password } ,
             };
-            user["Score"] = "1";
+            user["Score"] = 0;
          
             await user.SaveAsync();//SaveAsync
         }
