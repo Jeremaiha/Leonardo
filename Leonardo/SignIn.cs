@@ -48,9 +48,16 @@ namespace Leonardo
             EditText email = FindViewById<EditText>(Resource.Id.editTextEmail);
             EditText password = FindViewById<EditText>(Resource.Id.editTextPass);
             Button signInBtn = FindViewById<Button>(Resource.Id.signInBtn);
-            
-            signInButton(signInBtn,email,password);
 
+            if (MainActivity.player.Email != null){
+                email.Text = MainActivity.player.Email;
+                password.Text = MainActivity.player.Password;
+            }
+          
+            signInButton(signInBtn, email, password);
+         
+
+            
            // facebookLogIn = new FacebookLogIn();
            // facebook = FindViewById<Button>(Resource.Id.buttonFacebookLogIn);
             
@@ -147,6 +154,7 @@ namespace Leonardo
                     // play sound, because the button was clicked.
                     sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
 
+                    
                     // All details must me entered.
                     if (email.Text == "" || password.Text == "")
                     {
