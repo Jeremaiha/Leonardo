@@ -60,6 +60,7 @@
     <Compile Include="FacebookLogIn.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameRules.cs" />
+    <Compile Include="HowToPlay.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="ParseApplication.cs" />
     <Compile Include="Registered.cs" />
@@ -87,6 +88,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Registered.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HowToPlay.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

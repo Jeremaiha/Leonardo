@@ -21,7 +21,50 @@ namespace Leonardo
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.Registered);
-            // Create your application here
+
+            showRegistered();
+
+            Button signOutBtn = FindViewById<Button>(Resource.Id.signOutBtn);
+            signOutClick(signOutBtn);
         }
+
+        private void signOutClick(Button signOutBtn){
+            signOutBtn.Click += (sender, e) =>{
+                try{
+                    string name = MainActivity.player.Name; 
+                    clearUser();
+                    showMessage(name + " Signed Out");
+                    Finish();
+//                    StartActivity(typeof(MainActivity));
+                }catch (Exception){
+                    showMessage("An error has occured while trying to sign out");
+                }
+
+            };
+         }
+
+        private void clearUser()
+        {
+            MainActivity.player.Email    = null;
+            MainActivity.player.Password = null;
+            MainActivity.player.Name     = null;
+
+        }
+
+        private void showRegistered()
+        {
+            TextView textView = FindViewById<TextView>(Resource.Id.registeredLabel);
+            textView.Text = MainActivity.player.Name;
+        }
+
+        /// <summary>
+        ///     Get's a string, and shows a basic toast message.
+        /// </summary>
+        /// <param name="s"></param>
+        public void showMessage(string s)
+        {
+            Toast.MakeText(this, s, ToastLength.Long).Show();
+        }
+
     }
 }

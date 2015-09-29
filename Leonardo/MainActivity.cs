@@ -39,7 +39,6 @@ namespace Leonardo
                 /*Sound*/
                 player = User.CurrentUser;
 
-              
 
                 // If data was sent, the new user name is replaced.
           //      registeredUser = FindViewById<TextView>(Resource.Id.textView1);
@@ -55,41 +54,15 @@ namespace Leonardo
             }
             
         }
-        /*
-        protected override void OnResume()
-        {
-            if (player.Instantiated == false)
-            {
-                StartActivity(typeof(Registered));
-            }
-            
-        }
+        
+     
 
-        */
+        
         /// <summary>
         ///     Buttons clicks events initialization.
         /// </summary>
         private void buttonsClicks(){
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-          /*  ImageButton imageButton = FindViewById<ImageButton>(Resource.Id.imageButton1);
-            imageButton.Click += delegate
-            {
-           
-                sp.Play(SoundPushButton, 1,1,0,0,1);
-                if (registeredUser.Text == "Unregistered"){
-                    StartActivity(typeof(Game));
-                }else{
-                    var callDialog = new AlertDialog.Builder(this);
-                    callDialog.SetMessage("Please Sign In/Up!");
-                    callDialog.SetNeutralButton("Ok", delegate { });
-                    callDialog.Show();
-
-                }
-                
-            };
-        */
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate
             {
@@ -118,6 +91,7 @@ namespace Leonardo
             };
 
         }
+
 
     }
 }

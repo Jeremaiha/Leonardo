@@ -27,12 +27,14 @@ namespace Leonardo
             {
                 try
                 {
-                    if (IsValid(value))
-                    {
+                    if(value == null){
+                        email = null;
+                        return;
+                    }
+                    if (IsValid(value)){
                         email = value;
                     }
-                    else
-                    {
+                    else{
                         email = null;
                     }
                 }catch(FormatException){

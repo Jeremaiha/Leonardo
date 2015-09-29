@@ -173,6 +173,7 @@ namespace Leonardo
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);
                         await Task.Delay(2000);
                         showMessage("Logged in as " + MainActivity.player.Name);
+                        StartActivity(typeof(Registered));
                     }
                     else{ // Didn't find such user.    
                         var progessDialog = ProgressDialog.Show(this, "Please wait...", "Checking account info...", true);

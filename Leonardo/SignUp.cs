@@ -100,6 +100,7 @@ namespace Leonardo
                         await addUserToParse();
                         await Task.Delay(2000);
                         showMessage(MainActivity.player.Name + " Was Added");
+                        StartActivity(typeof(Registered));
                     }
                     Finish();
                 }catch (Exception){
@@ -155,22 +156,12 @@ namespace Leonardo
             Toast.MakeText(this, s, ToastLength.Long).Show();
         }
 
+        /// <summary>
+        ///     Adding the user to the "Users" table in Parse.
+        /// </summary>
+        /// <returns></returns>
         private async Task addUserToParse()
         {
-            // THIS SECTION DOESN"T WORK
-            /*
-            var user = new ParseUser();
-            {
-                Username = MainActivity.player.Name,
-                Password = MainActivity.player.Password,
-                Email = MainActivity.player.Email
-
-            };
-            /*
-
-            // other fields can be set just like with ParseObject
-            user["Score"] = 0;
-            */
             var user = new ParseObject("Users")
             {
                 { "Name", MainActivity.player.Name },
