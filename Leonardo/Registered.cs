@@ -19,13 +19,39 @@ namespace Leonardo
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.Registered);
+            try
+            {
+                base.OnCreate(bundle);
+                SetContentView(Resource.Layout.Registered);
 
-            showRegistered();
+                showRegistered();
 
-            Button signOutBtn = FindViewById<Button>(Resource.Id.signOutBtn);
-            signOutClick(signOutBtn);
+                Button signOutBtn = FindViewById<Button>(Resource.Id.signOutBtn);
+                signOutClick(signOutBtn);
+
+                ImageButton playImgBtn = FindViewById<ImageButton>(Resource.Id.playImgBtn);
+                playButtonClick(playImgBtn);
+
+            }
+            catch (Exception)
+            {
+                showMessage("An error has occured while trying to show the page");
+            }
+            
+        }
+
+        private void playButtonClick(ImageButton playImgBtn)
+        {
+            playImgBtn.Click += (sender, e) =>
+            {
+                try{
+                    StartActivity(typeof(Game));
+                }
+                catch (Exception){
+                    showMessage("An error has occured while trying to play");
+                }
+
+            };
         }
 
         private void signOutClick(Button signOutBtn){

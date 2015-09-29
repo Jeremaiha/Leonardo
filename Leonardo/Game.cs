@@ -28,15 +28,16 @@ namespace Leonardo
         Card[,] buttonsArray;
         
         // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS =  3 * 4 * 3;//Amount of all cards(3 shapes, 4 cards and 3 colors)
+        const int NUM_CARDS =  (3 * 4 * 3);//Amount of all cards(3 shapes, 4 cards and 3 colors)
+        const int NUM_PACKETS = 2;
 
         Card[] gameCards;// Array of all possible cards
         int[] numOfCards;//Amount of each card in the game
-        int numberOfCards = NUM_CARDS; // Substract each time when Random function is activated
+        int numberOfCards = NUM_CARDS * NUM_PACKETS; // Substract each time when Random function is activated
         int globalIndex;// To know which delegate is active in current time
 
         GameRules gameRules; // Holds the game board, and all its rules.
-        TextView score;
+        TextView score,cardsLeft;
        
 
         protected override void OnCreate(Bundle bundle)
@@ -70,8 +71,8 @@ namespace Leonardo
          
 
                 gameRules = new GameRules(buttonsArray,SIZE);
-                score = FindViewById<TextView>(Resource.Id.textView3);
-             
+                score = FindViewById<TextView>(Resource.Id.scoreTextView);
+                cardsLeft = FindViewById<TextView>(Resource.Id.cardsLeftTextView);
             }catch (Exception e){
                 throw new Exception("Error : Initiating everything.\n" + e.Message);
             }
@@ -90,10 +91,10 @@ namespace Leonardo
                 gameCards = new Card[NUM_CARDS];
                 numOfCards = new int[NUM_CARDS];
 
-                // Initialize amount.
+                // Initialize amount  -  Responsible for amount of cards per type.
                 for (int i = 0; i < NUM_CARDS; i++)
                 {
-                    numOfCards[i] = 4;
+                    numOfCards[i] = 4 * NUM_PACKETS;
                 }
 
                 // Initialize the cards symbols,color and amount.
@@ -188,6 +189,7 @@ namespace Leonardo
                 Random random = new Random();
                 int randomNumber;
                 if (numberOfCards != -1){ // last card to be calculated also.
+                    cardsLeft.Text = numberOfCards.ToString(); 
                     numberOfCards--;
                 }else{
                     // Game ended, show scores.
@@ -240,17 +242,14 @@ namespace Leonardo
                     base.OnBackPressed();
                 });
                 callDialog.Show();
-                addUserScore();
+                
             }catch (Exception e){
                 throw new Exception("Error : Finishing the game.\n" + e.Message);
             }
             
         }
 
-        private void addUserScore(){
-         
-        }
-        
+   
         /// <summary>
         ///     Simulates for the first time the random card.
         ///     then action listeners for the buttons are called.
