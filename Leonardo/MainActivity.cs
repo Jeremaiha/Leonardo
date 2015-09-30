@@ -7,7 +7,6 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Media;
-
 using Parse;
 
 namespace Leonardo
@@ -32,8 +31,8 @@ namespace Leonardo
         /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
-            try
-            {
+            try{
+                // Activity initialization.
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.Main);
 
@@ -45,7 +44,6 @@ namespace Leonardo
 
                 // Instantiate the events.
                 buttonsClicks();
-            
             }catch(Exception){
                 showMessage("Error : In MainActivity.\n");
                 Finish();
