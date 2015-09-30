@@ -282,6 +282,32 @@
             <View
                 android:layout_height="1dip"
                 android:background="#000000" />
+        <!-- Row 11 with 2 columns -->
+            <TableRow
+                android:id="@+id/tableRow11"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:id="@+id/TextView21"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:background="#dcdcdc"
+                    android:textColor="#000000"
+                    android:padding="30dip"
+                    android:gravity="center" />
+                <TextView
+                    android:id="@+id/TextView22"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:background="#d3d3d3"
+                    android:textColor="#000000"
+                    android:padding="30dip"
+                    android:gravity="center" />
+            </TableRow>
+        <!-- just draw a  line -->
+            <View
+                android:layout_height="1dip"
+                android:background="#000000" />
         </TableLayout>
     </LinearLayout>
 </ScrollView>

@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Json;
 using Parse;
 using System.Threading;
+using Android.Graphics;
 
 namespace Leonardo
 {
@@ -22,12 +23,11 @@ namespace Leonardo
     public class TopScore : Activity
     {
         // Sound variables.
-        private static int STREAM_MUSIC = 0x00000003;
         SoundPool sp;
         int SoundPushButton;
         private TextView FirstColumn;
         private TextView SecondColumn;
-        int top = 4;
+        int top = 10;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -44,30 +44,23 @@ namespace Leonardo
             GetTop10();
             // button click
             WhereAreUClick(WhereAreU);
-
-            // Create your application here
         }
-
-
+        /// <summary>
+        ///     Get ordered data from DB
+        ///     and show it in table
+        /// </summary>
         private async void GetTop10()
         {
-
             try
             {
-                //var query = ParseUser.Query.order", email);
-                // ask for 10 in parse.
-                // an option to show yourself too.
-                //var query = ParseUser.Query.WhereEqualTo("email", email);
                 var query = (from Users in ParseObject.GetQuery("Users")
                              orderby Users.Get<string>("Score") descending,
                              Users.Get<string>("Name"), Users.Get<int>("Score")
                              select Users).Limit(top);
-
-
+                //save the result of query into list
                 IEnumerable<ParseObject> results = await query.FindAsync();
-
                 int cnt = 3;
-
+                //loop on elements of list and printing them
                 for (int i = 0; i < top; i++)
                 {
                     var Element = results.ElementAt(i);
@@ -77,20 +70,63 @@ namespace Leonardo
                     int rid_2 = Resources.GetIdentifier(SC, "id", this.PackageName);
                     cnt += 2;
                     FirstColumn = FindViewById<TextView>(rid_1);
+                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name))
+                    {
+                        FirstColumn.SetTextColor(Android.Graphics.Color.Red);
+                    }
                     FirstColumn.Text = Element.Get<String>("Name");
                     SecondColumn = FindViewById<TextView>(rid_2);
                     SecondColumn.Text = Element.Get<int>("Score").ToString();
-
                 }
-
             }
             catch (FormatException)
             {
                 throw new FormatException();
             }
-
-        }
-
+        }//GetTop10
+        /// <summary>
+        ///     Get ordered data from DB
+        /// </summary>
+        private async void GetLow10()
+        {
+            try
+            {
+                var query = (from Users in ParseObject.GetQuery("Users")
+                             orderby Users.Get<string>("Score") ascending,
+                             Users.Get<string>("Name"), Users.Get<int>("Score")
+                             select Users).Limit(top);
+                //save results of query in list
+                IEnumerable<ParseObject> results = await query.FindAsync();
+                int cnt = 3;
+                //loop on elements of list
+                for (int i = 0; i < top; i++)
+                {
+                    var Element = results.ElementAt(i);
+                    string FC = "TextView" + cnt;
+                    string SC = "TextView" + (cnt + 1);
+                    int rid_1 = Resources.GetIdentifier(FC, "id", this.PackageName);
+                    int rid_2 = Resources.GetIdentifier(SC, "id", this.PackageName);
+                    cnt += 2;
+                    FirstColumn = FindViewById<TextView>(rid_1);
+                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name))
+                    {
+                        FirstColumn.SetTextColor(Android.Graphics.Color.Red);
+                    }
+                    FirstColumn.Text = Element.Get<String>("Name");
+                    SecondColumn = FindViewById<TextView>(rid_2);
+                    SecondColumn.Text = Element.Get<int>("Score").ToString();
+                }
+            }
+            catch (FormatException)
+            {
+                throw new FormatException();
+            }
+        }//GetLow10
+        /// <summary>
+        /// Gets data from DB and shows palce of current user in table
+        /// after clicking "Where am I" button on screen
+        /// </summary>
+        /// <param name="WhereAreU"></param>
         private void WhereAreUClick(Button WhereAreU)
         {
             WhereAreU.Click += async (sender, e) =>
@@ -102,57 +138,66 @@ namespace Leonardo
                     //Check if user is already registered
                     if (MainActivity.player.Email == null)
                     {
+                        //If no show message
                         var callDialog = new AlertDialog.Builder(this);
                         callDialog.SetMessage("Sign In, Please!");
                         callDialog.Show();
                         return;
                     }
-
+                    //Check if player already have a score
                     var queryCurrentPayer = from Users in ParseObject.GetQuery("Users")
                                             where Users.Get<string>("Email") == MainActivity.player.Email
                                             select Users;
-
+                    IEnumerable<ParseObject> resultsCurrent = await queryCurrentPayer.FindAsync();
+                    var ElementCurrent = resultsCurrent.ElementAt(0);
+                    int currentPlayerScore = ElementCurrent.Get<int>("Score");
+                    //If have no score - show message
+                    if (currentPlayerScore == 0)
+                    {
+                        var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetMessage("Your score is 0. Try one more time!");
+                        callDialog.Show();
+                        return;
+                    }
+                    //Query gets list of 2 users which have greater score than current User
                     var queryTop = (from Users in ParseObject.GetQuery("Users")
-                                    where Users.Get<int>("Score") > 50//MainActivity.player.Score
+                                    where Users.Get<int>("Score") > currentPlayerScore
                                     orderby Users.Get<string>("Score") ascending,
                                     Users.Get<string>("Name"), Users.Get<int>("Score")
                                     select Users).Limit(2);
-
-
-                    //UNCOMMENT when finish
-                    //Check if player already have a score
-                    /*      if (MainActivity.player.Score == 0)
-                          {
-                              var callDialog = new AlertDialog.Builder(this);
-                              callDialog.SetMessage("You have no score!");
-                              callDialog.Show();
-                              return;
-                          }*/
-
-
+                    //Query gets list of 2 users which have lower score than current User
                     var queryBottom = (from Users in ParseObject.GetQuery("Users")
-                                       where Users.Get<int>("Score") <= 50//MainActivity.player.Score
+                                       where Users.Get<int>("Score") < currentPlayerScore
                                        where Users.Get<string>("Email") != MainActivity.player.Email
                                        orderby Users.Get<string>("Score") descending,
                                        Users.Get<string>("Name"), Users.Get<int>("Score")
                                        select Users).Limit(2);
-
-
-
-                    IEnumerable<ParseObject> resultsCurrent = await queryCurrentPayer.FindAsync();
                     IEnumerable<ParseObject> resultsTop = await queryTop.FindAsync();
                     IEnumerable<ParseObject> resultsBottom = await queryBottom.FindAsync();
-
+                    if (resultsTop.Count() < 2)
+                    {
+                        var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetMessage("Congratulations! Your are in TOP!");
+                        callDialog.Show();
+                        return;
+                    }
+                    if (resultsBottom.Count() == 0)
+                    {
+                        GetLow10();//Show the wrost scores
+                        var callDialog = new AlertDialog.Builder(this);
+                        callDialog.SetMessage("Oops! You are the last.");
+                        callDialog.Show();
+                        return;
+                    }
                     //Clear table
-                    for (int i = 3; i < 21; i++)
+                    for (int i = 3; i < 23; i++)
                     {
                         string FC = "TextView" + i;
                         int rid = Resources.GetIdentifier(FC, "id", this.PackageName);
                         FirstColumn = FindViewById<TextView>(rid);
                         FirstColumn.Text = "";
                     }
-
-                    // Show above
+                    //Show above score
                     int cnt = 3;
                     int rid_temp;
                     int index;
@@ -167,17 +212,18 @@ namespace Leonardo
                         SecondColumn.Text = ElementTop.Get<int>("Score").ToString();
                         cnt += 2;
                     }
-
-                    // show yourself
-                    var ElementCurrent = resultsCurrent.ElementAt(0);
+                    // show yourself score
                     rid_temp = Resources.GetIdentifier("TextView" + cnt, "id", this.PackageName);
                     FirstColumn = FindViewById<TextView>(rid_temp);
+                    FirstColumn.SetTextColor(Android.Graphics.Color.Red);
                     FirstColumn.Text = ElementCurrent.Get<String>("Name");
                     rid_temp = Resources.GetIdentifier("TextView" + (cnt + 1), "id", this.PackageName);
                     SecondColumn = FindViewById<TextView>(rid_temp);
+                    SecondColumn.SetTextColor(Android.Graphics.Color.Red);
                     SecondColumn.Text = ElementCurrent.Get<int>("Score").ToString();
                     cnt += 2;
-                    for (index = 0; index < 2; index++)
+                    //show lower scores
+                    for (index = 0; index < resultsBottom.Count(); index++)
                     {
                         var elementBot = resultsBottom.ElementAt(index);
                         rid_temp = Resources.GetIdentifier("TextView" + (cnt), "id", this.PackageName);
@@ -188,47 +234,13 @@ namespace Leonardo
                         SecondColumn.Text = elementBot.Get<int>("Score").ToString();
                         cnt += 2;
                     }
-                    /*
-                    var ElementTop = resultsTop.ElementAt(0);
-                    int rid_1 = Resources.GetIdentifier("TextView3", "id", this.PackageName);
-                    FirstColumn = FindViewById<TextView>(rid_1);
-                    FirstColumn.Text = ElementTop.Get<String>("Name");
-                    int rid_2 = Resources.GetIdentifier("TextView4", "id", this.PackageName);
-                    SecondColumn = FindViewById<TextView>(rid_2);
-                    SecondColumn.Text = ElementTop.Get<int>("Score").ToString();
-
-
-
-                    var ElementCurrent = resultsCurrent.ElementAt(0);
-                    rid_1 = Resources.GetIdentifier("TextView5", "id", this.PackageName);
-                    FirstColumn = FindViewById<TextView>(rid_1);
-                    FirstColumn.Text = ElementCurrent.Get<String>("Name");
-                    rid_2 = Resources.GetIdentifier("TextView6", "id", this.PackageName);
-                    SecondColumn = FindViewById<TextView>(rid_2);
-                    SecondColumn.Text = ElementCurrent.Get<int>("Score").ToString();
-
-
-                    var ElementBottom = resultsBottom.ElementAt(0);
-                    rid_1 = Resources.GetIdentifier("TextView7", "id", this.PackageName);
-                    FirstColumn = FindViewById<TextView>(rid_1);
-                    FirstColumn.Text = ElementBottom.Get<String>("Name");
-                    rid_2 = Resources.GetIdentifier("TextView8", "id", this.PackageName);
-                    SecondColumn = FindViewById<TextView>(rid_2);
-                    SecondColumn.Text = ElementBottom.Get<int>("Score").ToString();
-
-
-             */
-
-
-                }
-                catch (Exception)
-                {
+                }catch (Exception){
                     var callDialog = new AlertDialog.Builder(this);
                     callDialog.SetMessage("Unknown error has occured");
                     callDialog.Show();
                 }
 
             };
-        }
+        }//WhereAreU
     }
 }

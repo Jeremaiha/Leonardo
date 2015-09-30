@@ -255,6 +255,12 @@ namespace Leonardo
 			// aapt resource value: 0x7f070045
 			public const int TextView20 = 2131165253;
 			
+			// aapt resource value: 0x7f070047
+			public const int TextView21 = 2131165255;
+			
+			// aapt resource value: 0x7f070048
+			public const int TextView22 = 2131165256;
+			
 			// aapt resource value: 0x7f07002f
 			public const int TextView3 = 2131165231;
 			
@@ -377,6 +383,9 @@ namespace Leonardo
 			
 			// aapt resource value: 0x7f070043
 			public const int tableRow10 = 2131165251;
+			
+			// aapt resource value: 0x7f070046
+			public const int tableRow11 = 2131165254;
 			
 			// aapt resource value: 0x7f07002e
 			public const int tableRow2 = 2131165230;
