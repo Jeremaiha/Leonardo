@@ -27,6 +27,13 @@ namespace Leonardo
         SoundPool sp;
         int SoundPushButton;
      
+        /// <summary>
+        ///     Responsible for : 
+        ///         Getting the information from the textboxes.
+        ///         Sign in if user exist.
+        ///         Show messages accordingly : Wrong email, user doesn't exist , logged in.
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             try{

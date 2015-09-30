@@ -43,14 +43,13 @@ namespace Leonardo
                 
             }
         }
+        // A property which will help us know if the singleton contain a user.
         private bool instantiated = false;
         public bool Instantiated
         {
             get { return instantiated; }
             set { instantiated = value; }
         }
-
-        public ParseObject ParseCurrentUser { get; set; }
 
         // Singelton
         private static User currentUser;
@@ -84,12 +83,14 @@ namespace Leonardo
                 instantiated = true;
             }catch(FormatException){
                 throw new FormatException();
+            }catch (Exception){
+                throw new Exception();
             }
 
         }
 
         /// <summary>
-        ///     Method to check the email.
+        ///     Check if Email address is correct.
         /// </summary>
         /// <param name="emailAddr"></param>
         /// <returns></returns>
