@@ -108,59 +108,88 @@ namespace Leonardo
                 initiateButtonsArray();
                 initiateSetOfImages();
 
-
                 gameRules = new GameRules(buttonsArray, gameImgButtons, SIZE);
-                score = FindViewById<TextView>(Resource.Id.scoreTextView);
-                cardsLeft = FindViewById<TextView>(Resource.Id.cardsLeftTextView);
+                
+                // Assign score and cards number.
+                assignTextViews();
 
-                // New Game board
-                var metrics = Resources.DisplayMetrics;
-                var widthInDp = metrics.WidthPixels;
-                var heightInDp = metrics.HeightPixels;
-                gameBoard = (TableLayout)FindViewById(Resource.Id.boardTable);
-                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams((widthInDp / 4), (widthInDp / 4));
-                TableRow tableRow1 = new TableRow(this);
-                TableRow tableRow2 = new TableRow(this);
-                TableRow tableRow3 = new TableRow(this);
-                TableRow tableRow4 = new TableRow(this);
-
-                bool flag = false;
-                for (int i = 0; i < SIZE; i++){
-                    
-                    flag = !flag;
-                    for (int j = 0; j < SIZE; j++){
-                        gameImgButtons[i, j].SetImageResource(Resource.Drawable.blank);
-                        gameImgButtons[i, j].LayoutParameters = layoutParams;
-                        if (flag){
-                            if ((j % 2) == 0){
-                                gameImgButtons[i, j].SetBackgroundColor(Color.Black);
-                            }else{
-                                gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
-                            }
-                        }else{
-                            if ((j % 2) != 0){
-                                gameImgButtons[i, j].SetBackgroundColor(Color.Black);
-                            }else{
-                                gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
-                            }
-                        }
-
-                    }
-                    tableRow1.AddView(gameImgButtons[0, i], i);
-                    tableRow2.AddView(gameImgButtons[1, i], i);
-                    tableRow3.AddView(gameImgButtons[2, i], i);
-                    tableRow4.AddView(gameImgButtons[3, i], i);
-                }
-                // Add rows to table
-                gameBoard.AddView(tableRow1, 0);
-                gameBoard.AddView(tableRow2, 1);
-                gameBoard.AddView(tableRow3, 2);
-                gameBoard.AddView(tableRow4, 3);
+                // Table creation.
+                initializeTableLayout();
 
                }catch (Exception){
                    showMessage("Error in creating the layout");
                }
           
+        }
+
+        /// <summary>
+        ///     Assign the textviews of score and cards left.
+        /// </summary>
+        private void assignTextViews()
+        {
+            score = FindViewById<TextView>(Resource.Id.scoreTextView);
+            cardsLeft = FindViewById<TextView>(Resource.Id.cardsLeftTextView);
+        }
+
+        /// <summary>
+        ///     Create the table layout, and the image buttons,
+        ///     everything is assigned accordingly to the screen size.
+        /// </summary>
+        private void initializeTableLayout()
+        {
+            var metrics = Resources.DisplayMetrics;
+            var widthInDp = metrics.WidthPixels;
+            var heightInDp = metrics.HeightPixels;
+            gameBoard = (TableLayout)FindViewById(Resource.Id.boardTable);
+            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams((widthInDp / 4), (widthInDp / 4));
+            TableRow tableRow1 = new TableRow(this);
+            TableRow tableRow2 = new TableRow(this);
+            TableRow tableRow3 = new TableRow(this);
+            TableRow tableRow4 = new TableRow(this);
+
+            bool flag = false;
+            for (int i = 0; i < SIZE; i++)
+            {
+
+                flag = !flag;
+                for (int j = 0; j < SIZE; j++)
+                {
+                    gameImgButtons[i, j].SetImageResource(Resource.Drawable.blank);
+                    gameImgButtons[i, j].LayoutParameters = layoutParams;
+                    if (flag)
+                    {
+                        if ((j % 2) == 0)
+                        {
+                            gameImgButtons[i, j].SetBackgroundColor(Color.Black);
+                        }
+                        else
+                        {
+                            gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
+                        }
+                    }
+                    else
+                    {
+                        if ((j % 2) != 0)
+                        {
+                            gameImgButtons[i, j].SetBackgroundColor(Color.Black);
+                        }
+                        else
+                        {
+                            gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
+                        }
+                    }
+
+                }
+                tableRow1.AddView(gameImgButtons[0, i], i);
+                tableRow2.AddView(gameImgButtons[1, i], i);
+                tableRow3.AddView(gameImgButtons[2, i], i);
+                tableRow4.AddView(gameImgButtons[3, i], i);
+            }
+            // Add rows to table
+            gameBoard.AddView(tableRow1, 0);
+            gameBoard.AddView(tableRow2, 1);
+            gameBoard.AddView(tableRow3, 2);
+            gameBoard.AddView(tableRow4, 3);
         }
 
         /// <summary>
@@ -279,9 +308,12 @@ namespace Leonardo
         /// </summary>
         private async void randomNextCard(){
             try{
+                //  Get random card.
                 Random random = new Random();
-                int randomNumber;
-                if (numberOfCards != -1){ // last card to be calculated also.
+                int randomNumber, currentScoreTaken;
+
+                // Check if there are any cards left.
+                if (numberOfCards != -1){ 
                     cardsLeft.Text = numberOfCards.ToString(); 
                     numberOfCards--;
                 }else{
@@ -295,27 +327,30 @@ namespace Leonardo
                     randomNumber = random.Next(0, NUM_CARDS);
                 } while (numOfCards[randomNumber] == 0);
 
-                numOfCards[randomNumber] -= 1; // Decrease 1, used this card at this round.
-                globalIndex = randomNumber;
+                // Got a card which I can use.
+                // Decrease 1, used this card at this round.
+                numOfCards[randomNumber] -= 1; 
+                // Point to the specific card definition in the array of cards.
+                globalIndex = randomNumber; 
 
-                // Set the rest values of the 17'th button.
+                // Set the rest values of the outer button.
                 outerImage.setWithoutImgButton(gameCards[randomNumber]);
                 setImage(outerButton,outerImage.ToString());
 
                 // Start all game rules validations.
-                randomNumber = gameRules.simulateAllRules();
-                if (randomNumber != 0){
-                    /*Sound*/
+                currentScoreTaken = gameRules.simulateAllRules();
+
+                if (currentScoreTaken != 0){
+                    // Sound activation
                     sp2.Play(_singleRowOrColumn, 1, 1, 0, 0, 1);
-                    /*Sound*/
                 }
-                score.Text = (Int32.Parse(score.Text) + randomNumber).ToString();
+                // Show score in the score text view.
+                score.Text = (Int32.Parse(score.Text) + currentScoreTaken).ToString();
+                // If next move is possible.
                 checkNextMove();
-            }catch (Exception e){
-                throw new Exception("Error : Next random card.\n" + e.Message);
-            }
-            
-            
+            }catch (Exception){
+                showMessage("Error in getting next card.");
+            }    
         }
 
 
@@ -325,10 +360,10 @@ namespace Leonardo
         /// </summary>
         private async Task gameOver(){
             try{
-                /*Sound*/
-
+                // Activate sound/
                 sp3.Play(_gameOver, 100, 100, 0, 0, 100);
-                /*Sound*/
+                
+                // Show a big message with the score the user got, and that the game is over now.
                 var callDialog = new AlertDialog.Builder(this);
                 callDialog.SetMessage("Game Over.\nYour Score is : " + score.Text);
                 callDialog.SetNeutralButton("OK", delegate {
@@ -336,31 +371,42 @@ namespace Leonardo
                 });
                 callDialog.Show();
                 await saveScore();
-            }catch (Exception e){
-                Toast.MakeText(this, "Error : Finishing the game.\n", ToastLength.Long).Show();
-            
+            }catch (Exception){
+                showMessage("Error : Finishing the game.\n");
             }
             
         }
 
+        /// <summary>
+        ///     Initiates a parse object, which is the current user
+        ///     only then we can update the user's score.
+        /// </summary>
+        /// <returns></returns>
         private async Task saveScore()
         {
-           
             try{
+                // Query to get the current user.
                 var query1 = from currentUser in ParseObject.GetQuery("Users")
                              where currentUser.Get<string>("Email") == MainActivity.player.Email
                              select currentUser;
+                //  Activate query.
                 IEnumerable<ParseObject> resultsCurrent = await query1.FindAsync();
-                var ElementTop = resultsCurrent.ElementAt(0);
+                //  Take the value.
+                var userVar = resultsCurrent.ElementAt(0);
                 
-              // string s = ElementTop.Get<string>("objectId");
-                string s = ElementTop.ObjectId;
+                //  By object id, we can receive the parse object,
+                //      and then update its score.
+                string s = userVar.ObjectId;
                 ParseQuery<ParseObject> query = ParseObject.GetQuery("Users");
+                //  Get the parse object - for current user.
                 ParseObject parseUser = await query.GetAsync(s);
+                // Update the score.
                 parseUser["Score"] = Int32.Parse(score.Text);
+                
+                //  Save changes.
                 await parseUser.SaveAsync();
             }catch(Exception){
-                Toast.MakeText(this, "Error : Finishing the game.\n", ToastLength.Long).Show();
+                showMessage("Error while trying to finish and update the score.");
             }
 
         }
@@ -377,7 +423,7 @@ namespace Leonardo
 
                 checkNextMove();
             }catch (Exception e){
-                throw new Exception("Error : Game Simulation.\n" + e.Message);
+                showMessage("Error in game simulation");
             }
         }
         /// <summary>
@@ -386,22 +432,17 @@ namespace Leonardo
         private async void checkNextMove()
         {
             int cnt = 0;
-            for (int i = 0; i < SIZE; i++)
-            {
-                for (int j = 0; j < SIZE; j++)
-                {
-                    if (buttonsArray[i, j].Shape != "blank")
-                    {
+            for (int i = 0; i < SIZE; i++){
+                for (int j = 0; j < SIZE; j++){
+                    if (buttonsArray[i, j].Shape != "blank"){
                         cnt++;
-                    }
-                    else
-                    {
+                    }else{
                         break;
                     }
                 }
-            }// if all bored is taken by cards.
-            if (cnt == SIZE * SIZE)
-            {
+            } 
+            // if all bored is taken by cards.
+            if (cnt == SIZE * SIZE){
                 await gameOver();
             }
         }
@@ -412,10 +453,10 @@ namespace Leonardo
         /// </summary>
         private void buttonsClicks()
         {
-            try{
-                
+            try{   
                for (int i = 0; i < SIZE; i++){
                    for (int j = 0; j < SIZE; j++) {
+                       // Closure, so we need new variables.
                        int ii = i, jj = j;
                        gameImgButtons[i, j].Click += (sender, e) =>
                        {
@@ -424,11 +465,9 @@ namespace Leonardo
                    }
                }
         
-            }
-            catch (Exception e){
-                throw new Exception("Error : Buttons click listener.\n" + e.Message);
-            }
-           
+            }catch (Exception){
+                showMessage("Error in clicking the button");
+            } 
         }
         
         /// <summary>
@@ -440,18 +479,18 @@ namespace Leonardo
         /// <param name="delegateIndex"></param>
         private void onCardClick(int i,int j, int delegateIndex)
         {
-            /*Sound*/
+            // Activate sound
             sp.Play(_soundPushButton, 1, 1, 0, 0, 1);
-            /*Sound*/
+            
             buttonsArray[i, j].setWithoutImgButton(outerImage);
             setImage(gameImgButtons[i, j], buttonsArray[i, j].ToString());
             gameImgButtons[i, j].Enabled = false; // Disable the button.
-            // Copy configurations from button 17 to [i,j] - needed for game rules.
+            // Copy configurations from outer button to [i,j] - needed for game rules.
             randomNextCard();
         }
 
         /// <summary>
-        ///     Setting a button with her view image.
+        ///     Setting a button with her image view.
         /// </summary>
         /// <param name="btn"></param>
         /// <param name="shape"></param>
