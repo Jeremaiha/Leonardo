@@ -20,7 +20,6 @@ namespace Leonardo
     {
 
         // Define fields.
-      //  ImageButton imageButton;
         string shape;
         string color;
         int amount;
@@ -30,7 +29,6 @@ namespace Leonardo
         /// </summary>
         public Card()
         {
-         //   imageButton = null;
             shape = "";
             color = "";
             amount = 0;
@@ -43,7 +41,6 @@ namespace Leonardo
         /// <param name="card"></param>
         public Card(Card card)
         {
-         //   imageButton = card.imageButton;
             shape = card.shape;
             color = card.color;
             amount = card.amount;
@@ -56,21 +53,14 @@ namespace Leonardo
         /// <param name="shp">Shape</param>
         /// <param name="clr">Color</param>
         /// <param name="amnt">Amount</param>
-        public Card(/*ImageButton ib, */string shp, string clr, int amnt)
+        public Card(string shp, string clr, int amnt)
         {
-            //imageButton = ib;
             shape = shp;
             color = clr;
             amount = amnt;
         }
-
-        // Define properties.
-     /*   public ImageButton ImageButton
-        {
-            get { return imageButton; }
-            set { imageButton = value; }
-        }
-       */ public string Shape
+        // Properties
+        public string Shape
         {
             get { return shape; }
             set { shape = value; }
@@ -96,6 +86,11 @@ namespace Leonardo
             this.amount = card.amount;
         }
 
+        /// <summary>
+        ///     Returns a string in the following structure :
+        ///         <color>_<shape>_<amount>
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return color + "_" + shape + "_" + amount;
