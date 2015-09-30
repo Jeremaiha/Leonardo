@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Media;
 using Parse;
 using System.Threading.Tasks;
+using Android.Graphics;
 
 namespace Leonardo
 {
@@ -27,6 +28,7 @@ namespace Leonardo
         int _gameOver;
         /*Sound*/
         Card  outerImage;   // Image Button 17
+        ImageButton outerButton;
         Card[,] buttonsArray;
         
         // An array of delegates to hold all cards initialization.
@@ -40,7 +42,10 @@ namespace Leonardo
 
         GameRules gameRules; // Holds the game board, and all its rules.
         TextView score,cardsLeft;
-       
+
+        TableLayout gameBoard;
+        ImageButton[,] gameImgButtons;
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -54,7 +59,7 @@ namespace Leonardo
             _singleRowOrColumn = sp2.Load(this, Resource.Raw.singleRowOrColumn, 1);
             _gameOver = sp3.Load(this, Resource.Raw.gameOver, 1);
             /*Sound*/
-            // Create your application here
+
             // Layout initialisation
             SetContentView(Resource.Layout.Game);
             //  Call the initiation of all buttons method.
@@ -70,12 +75,58 @@ namespace Leonardo
             try{
                 initiateButtonsArray();
                 initiateSetOfImages();
-         
 
-                gameRules = new GameRules(buttonsArray,SIZE);
+
+                gameRules = new GameRules(buttonsArray, gameImgButtons, SIZE);
                 score = FindViewById<TextView>(Resource.Id.scoreTextView);
                 cardsLeft = FindViewById<TextView>(Resource.Id.cardsLeftTextView);
-            }catch (Exception e){
+
+                // New Game board
+                var metrics = Resources.DisplayMetrics;
+                var widthInDp = metrics.WidthPixels;
+                var heightInDp = metrics.HeightPixels;
+                gameBoard = (TableLayout)FindViewById(Resource.Id.boardTable);
+                TableRow.LayoutParams layoutParams = new TableRow.LayoutParams((widthInDp / 4), (widthInDp / 4));
+                TableRow tableRow1 = new TableRow(this);
+                TableRow tableRow2 = new TableRow(this);
+                TableRow tableRow3 = new TableRow(this);
+                TableRow tableRow4 = new TableRow(this);
+
+                bool flag = false;
+                for (int i = 0; i < SIZE; i++){
+                    
+                    flag = !flag;
+                    for (int j = 0; j < SIZE; j++){
+                        gameImgButtons[i, j].SetImageResource(Resource.Drawable.blank);
+                        gameImgButtons[i, j].LayoutParameters = layoutParams;
+                        if (flag){
+                            if ((j % 2) == 0){
+                                gameImgButtons[i, j].SetBackgroundColor(Color.Black);
+                            }else{
+                                gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
+                            }
+                        }else{
+                            if ((j % 2) != 0){
+                                gameImgButtons[i, j].SetBackgroundColor(Color.Black);
+                            }else{
+                                gameImgButtons[i, j].SetBackgroundColor(Color.Gray);
+                            }
+                        }
+
+                    }
+                    tableRow1.AddView(gameImgButtons[0, i], i);
+                    tableRow2.AddView(gameImgButtons[1, i], i);
+                    tableRow3.AddView(gameImgButtons[2, i], i);
+                    tableRow4.AddView(gameImgButtons[3, i], i);
+                }
+                // Add rows to table
+                gameBoard.AddView(tableRow1, 0);
+                gameBoard.AddView(tableRow2, 1);
+                gameBoard.AddView(tableRow3, 2);
+                gameBoard.AddView(tableRow4, 3);
+                //outerButton.LayoutParameters = layoutParams;
+
+               }catch (Exception e){
                 throw new Exception("Error : Initiating everything.\n" + e.Message);
             }
           
@@ -106,43 +157,43 @@ namespace Leonardo
                 // Green
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "cherry", "green", i + 1);
+                    gameCards[localCnt] = new Card("cherry", "green", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "mushroom", "green", i + 1);
+                    gameCards[localCnt] = new Card( "mushroom", "green", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "straw", "green", i + 1);
+                    gameCards[localCnt] = new Card("straw", "green", i + 1);
                 }
 
                 // Red
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "cherry", "red", i + 1);
+                    gameCards[localCnt] = new Card("cherry", "red", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "mushroom", "red", i + 1);
+                    gameCards[localCnt] = new Card("mushroom", "red", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "straw", "red", i + 1);
+                    gameCards[localCnt] = new Card("straw", "red", i + 1);
                 }
 
                 // Yellow
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "cherry", "yellow", i + 1);
+                    gameCards[localCnt] = new Card("cherry", "yellow", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "mushroom", "yellow", i + 1);
+                    gameCards[localCnt] = new Card("mushroom", "yellow", i + 1);
                 }
                 for (int i = 0; i < 4; i++, localCnt++)
                 {
-                    gameCards[localCnt] = new Card(null, "straw", "yellow", i + 1);
+                    gameCards[localCnt] = new Card("straw", "yellow", i + 1);
                 }
             }
             catch (Exception e){
@@ -163,16 +214,32 @@ namespace Leonardo
                         ImageButton btnImage = new ImageButton(this);
                         var s = "imageButton" + (i * SIZE + j +1);
                         int rid = Resources.GetIdentifier(s, "id", this.PackageName);
-                        buttonsArray[i, j] = new Card(FindViewById<ImageButton>(rid), "blank", "white", 0);
-            
+                        buttonsArray[i, j] = new Card( "blank", "white", 0);
+                        
                     }
                 }
-            
-                outerImage = new Card(FindViewById<ImageButton>(Resource.Id.imageButton17), "blank", "white", 0);
-                
+
+                var metrics = Resources.DisplayMetrics;
+                var widthInDp = metrics.WidthPixels;
+                var heightInDp = metrics.HeightPixels;
+
+                outerImage = new Card("blank", "white", 0);
+                outerButton = FindViewById<ImageButton>(Resource.Id.outerImgBtn);
+                outerButton.SetImageResource(Resource.Drawable.blank);
+               // outerButton.SetPadding(widthInDp / 4, 0, widthInDp / 4, 0);
+                gameImgButtons = new ImageButton[SIZE, SIZE];
+//                gameImgButtons.
+                for (int i = 0; i < SIZE; i++)
+                {
+                    for (int j = 0; j < SIZE; j++)
+                    {
+                        gameImgButtons[i, j] = new ImageButton(this);
+                    }
+                }
+
                 for (int i = 0; i < SIZE; i++){
                     for (int j = 0; j < SIZE; j++){
-                        buttonsArray[i, j].ImageButton.SetImageResource(Resource.Drawable.blank);
+                        gameImgButtons[i, j].SetImageResource(Resource.Drawable.blank);
                     }
                 }
 
@@ -209,7 +276,7 @@ namespace Leonardo
 
                 // Set the rest values of the 17'th button.
                 outerImage.setWithoutImgButton(gameCards[randomNumber]);
-                setImage(outerImage.ImageButton,outerImage.ToString());
+                setImage(outerButton,outerImage.ToString());
 
                 // Start all game rules validations.
                 randomNumber = gameRules.simulateAllRules();
@@ -326,7 +393,7 @@ namespace Leonardo
                for (int i = 0; i < SIZE; i++){
                    for (int j = 0; j < SIZE; j++) {
                        int ii = i, jj = j;
-                       buttonsArray[i, j].ImageButton.Click += (sender, e) =>
+                       gameImgButtons[i, j].Click += (sender, e) =>
                        {
                            onCardClick(ii, jj, globalIndex);
                        };
@@ -353,8 +420,8 @@ namespace Leonardo
             sp.Play(_soundPushButton, 1, 1, 0, 0, 1);
             /*Sound*/
             buttonsArray[i, j].setWithoutImgButton(outerImage);
-            setImage(buttonsArray[i, j].ImageButton, buttonsArray[i, j].ToString());
-            buttonsArray[i, j].ImageButton.Enabled = false; // Disable the button.
+            setImage(gameImgButtons[i, j], buttonsArray[i, j].ToString());
+            gameImgButtons[i, j].Enabled = false; // Disable the button.
             // Copy configurations from button 17 to [i,j] - needed for game rules.
             randomNextCard();
         }

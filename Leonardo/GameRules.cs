@@ -19,6 +19,7 @@ namespace Leonardo
     public class GameRules
     {
         Card[,] gameBoard;
+        ImageButton[,] gameImages;
         int SIZE;
 
         /// <summary>
@@ -26,8 +27,9 @@ namespace Leonardo
         /// </summary>
         /// <param name="arrayOfButtons"></param>
         /// <param name="newSize"></param>
-        public GameRules(Card[,] arrayOfButtons, int newSize){
+        public GameRules(Card[,] arrayOfButtons,ImageButton[,] arrayOfImgs,int newSize){
             gameBoard = arrayOfButtons;
+            gameImages = arrayOfImgs;
             SIZE = newSize;
         }
 
@@ -183,11 +185,11 @@ namespace Leonardo
         /// <param name="j"></param>
         private void blankOnIandJ(int i,int j)
         {
-            gameBoard[i, j].ImageButton.SetImageResource(Resource.Drawable.blank);
+            gameImages[i, j].SetImageResource(Resource.Drawable.blank);
             gameBoard[i, j].Shape = "blank";
             gameBoard[i, j].Color = "white";
             gameBoard[i, j].Amount = 0;
-            gameBoard[i, j].ImageButton.Enabled = true;
+            gameImages[i, j].Enabled = true;
         }
 
         /// <summary>
