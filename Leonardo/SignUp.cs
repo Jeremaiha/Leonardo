@@ -87,7 +87,8 @@ namespace Leonardo
                     sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
 
                     // All details must me entered.
-                    if (checkEmptyBoxes(name, email, password)){ // 
+                    if (checkEmptyBoxes(name, email, password)){
+                        Finish();
                         return;
                     }
 
