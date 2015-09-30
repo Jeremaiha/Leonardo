@@ -67,7 +67,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn.cs" />
     <Compile Include="SignUp.cs" />
-    <Compile Include="SoundController.cs" />
     <Compile Include="TopScore.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
