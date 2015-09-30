@@ -43,4 +43,9 @@
         android:layout_height="54.5dp"
         android:id="@+id/how2playBtn"
         android:layout_gravity="center" />
+    <Button
+        android:text="TOP 10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top10Btn" />
 </LinearLayout>

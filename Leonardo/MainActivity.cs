@@ -15,83 +15,86 @@ namespace Leonardo
     [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        // A static user, which will later on contain the current user which 
+        //  logged on. Will help us to update his score too.
         public static User player;
-        /*Sound*/
-        public static int STREAM_MUSIC = 0x00000003;
+
+        // Sound variables.
         SoundPool sp;
         int SoundPushButton;
-        /*Sound*/
-        private TextView registeredUser;
-        private static string registrationString = "Unregistered";
-        private static int userScore = 0;
-
-  
+        
+        /// <summary>
+        ///     Responsible to initialize : 
+        ///     View.
+        ///     Sound clicks.
+        ///     Buttons clicks (Action Listeners). 
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             try
             {
                 base.OnCreate(bundle);
                 SetContentView(Resource.Layout.Main);
-                /*Sound*/
-                Stream st = new Stream();
-                sp = new SoundPool(1, st, 0);
-                SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
-                /*Sound*/
+
+                // Sound initialization.
+                loadSound();
+
+                // Point to the current user.     
                 player = User.CurrentUser;
-
-
-                // If data was sent, the new user name is replaced.
-          //      registeredUser = FindViewById<TextView>(Resource.Id.textView1);
-            //    registeredUser.Text = registrationString;
-
 
                 // Instantiate the events.
                 buttonsClicks();
-               
             
-            }catch(Exception e){
-                throw new Exception("Error : In MainActivity.\n" + e.Message);
+            }catch(Exception){
+                showMessage("Error : In MainActivity.\n");
+                Finish();
             }
             
         }
-        
-     
 
+        /// <summary>
+        ///     Loads the sound variables, 
+        ///     which will later on activate the sound on a click.
+        /// </summary>
+        private void loadSound()
+        {
+            Stream st = new Stream();
+            sp = new SoundPool(1, st, 0);
+            SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
+        }
         
         /// <summary>
-        ///     Buttons clicks events initialization.
+        ///     Assign action listeners to the buttons : 
+        ///         Sign In - To sign in.
+        ///         Sign Up - To sign up.
         /// </summary>
         private void buttonsClicks(){
 
             Button signInButton = FindViewById<Button>(Resource.Id.button1);
             signInButton.Click += delegate
             {
-                /*Sound*/
-                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
-                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1); // Activate sound.
                 StartActivity(typeof(SignIn));
             };
 
             Button signUpButton = FindViewById<Button>(Resource.Id.button2);
             signUpButton.Click += delegate
             {
-                /*Sound*/
-                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
-                /*Sound*/
+                sp.Play(SoundPushButton, 1, 1, 0, 0, 1); // Activate sound.
                 StartActivity(typeof(SignUp));
-            };
-
-            Button Top10Button = FindViewById<Button>(Resource.Id.button3);
-            Top10Button.Click += delegate
-            {
-                /*Sound*/
-                sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
-                /*Sound*/
-                StartActivity(typeof(TopScore));
             };
 
         }
 
+        /// <summary>
+        ///     Gets a string and shows a basic toast message.
+        /// </summary>
+        /// <param name="s"></param>
+        public void showMessage(string s)
+        {
+            Toast.MakeText(this, s, ToastLength.Long).Show();
+        }
 
     }
 }

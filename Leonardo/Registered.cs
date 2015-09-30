@@ -37,6 +37,11 @@ namespace Leonardo
                 ImageButton playImgBtn = FindViewById<ImageButton>(Resource.Id.playImgBtn);
                 playButtonClick(playImgBtn);
 
+                Button Top10Button = FindViewById<Button>(Resource.Id.top10Btn);
+                Top10Button.Click += delegate
+                {
+                    StartActivity(typeof(TopScore));
+                };
             }
             catch (Exception)
             {

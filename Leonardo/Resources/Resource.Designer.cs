@@ -288,9 +288,6 @@ namespace Leonardo
 			// aapt resource value: 0x7f070018
 			public const int button2 = 2131165208;
 			
-			// aapt resource value: 0x7f070019
-			public const int button3 = 2131165209;
-			
 			// aapt resource value: 0x7f070024
 			public const int buttonFacebookLogIn = 2131165220;
 			
@@ -315,8 +312,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070022
 			public const int editTextPass = 2131165218;
 			
-			// aapt resource value: 0x7f07001c
-			public const int how2playBtn = 2131165212;
+			// aapt resource value: 0x7f07001b
+			public const int how2playBtn = 2131165211;
 			
 			// aapt resource value: 0x7f070015
 			public const int imageView1 = 2131165205;
@@ -360,8 +357,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070014
 			public const int playImgBtn = 2131165204;
 			
-			// aapt resource value: 0x7f07001a
-			public const int registeredLabel = 2131165210;
+			// aapt resource value: 0x7f070019
+			public const int registeredLabel = 2131165209;
 			
 			// aapt resource value: 0x7f070007
 			public const int scoreTextView = 2131165191;
@@ -372,8 +369,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070023
 			public const int signInBtn = 2131165219;
 			
-			// aapt resource value: 0x7f07001b
-			public const int signOutBtn = 2131165211;
+			// aapt resource value: 0x7f07001a
+			public const int signOutBtn = 2131165210;
 			
 			// aapt resource value: 0x7f07002a
 			public const int signUpBtn = 2131165226;
@@ -428,6 +425,9 @@ namespace Leonardo
 			
 			// aapt resource value: 0x7f07001d
 			public const int textViewSignIn = 2131165213;
+			
+			// aapt resource value: 0x7f07001c
+			public const int top10Btn = 2131165212;
 			
 			static Id()
 			{
