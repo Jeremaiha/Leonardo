@@ -156,11 +156,10 @@ namespace Leonardo
                 gameBoard.AddView(tableRow2, 1);
                 gameBoard.AddView(tableRow3, 2);
                 gameBoard.AddView(tableRow4, 3);
-                //outerButton.LayoutParameters = layoutParams;
 
-               }catch (Exception e){
-                throw new Exception("Error : Initiating everything.\n" + e.Message);
-            }
+               }catch (Exception){
+                   showMessage("Error in creating the layout");
+               }
           
         }
 
@@ -177,8 +176,7 @@ namespace Leonardo
                 numOfCards = new int[NUM_CARDS];
 
                 // Initialize amount  -  Responsible for amount of cards per type.
-                for (int i = 0; i < NUM_CARDS; i++)
-                {
+                for (int i = 0; i < NUM_CARDS; i++){
                     numOfCards[i] = 4 * NUM_PACKETS;
                 }
 
@@ -229,7 +227,7 @@ namespace Leonardo
                 }
             }
             catch (Exception e){
-                throw new Exception("Error : Initiating images.\n" + e.Message);
+                showMessage("Error in assiging cards.");
             }
             
         }
@@ -239,45 +237,39 @@ namespace Leonardo
         /// </summary>
         private void initiateButtonsArray(){
             try{
-
+                // Allocate the array of cards, which contains the properties.
                 buttonsArray = new Card[SIZE, SIZE];
+                // Instantiate with white properties.
                 for (int i = 0; i < SIZE; i++){
                     for (int j = 0; j < SIZE; j++){
-                        ImageButton btnImage = new ImageButton(this);
-                        var s = "imageButton" + (i * SIZE + j +1);
-                        int rid = Resources.GetIdentifier(s, "id", this.PackageName);
-                        buttonsArray[i, j] = new Card( "blank", "white", 0);
-                        
+                       buttonsArray[i, j] = new Card( "blank", "white", 0); 
                     }
                 }
-
-                var metrics = Resources.DisplayMetrics;
-                var widthInDp = metrics.WidthPixels;
-                var heightInDp = metrics.HeightPixels;
-
+                
+                // Initialize the button 
                 outerImage = new Card("blank", "white", 0);
                 outerButton = FindViewById<ImageButton>(Resource.Id.outerImgBtn);
                 outerButton.SetImageResource(Resource.Drawable.blank);
-               // outerButton.SetPadding(widthInDp / 4, 0, widthInDp / 4, 0);
+               
+                // Allocate the two dimensional array of image buttons.
                 gameImgButtons = new ImageButton[SIZE, SIZE];
-//                gameImgButtons.
-                for (int i = 0; i < SIZE; i++)
-                {
-                    for (int j = 0; j < SIZE; j++)
-                    {
+
+                //  Initialize Image buttons array.
+                for (int i = 0; i < SIZE; i++){
+                    for (int j = 0; j < SIZE; j++){
                         gameImgButtons[i, j] = new ImageButton(this);
                     }
                 }
 
+                // Set all images with the blank image.
                 for (int i = 0; i < SIZE; i++){
                     for (int j = 0; j < SIZE; j++){
                         gameImgButtons[i, j].SetImageResource(Resource.Drawable.blank);
                     }
                 }
-
             }
-            catch (Exception e){
-                throw new Exception("Error : Initiating all buttons.\n" + e.Message);
+            catch (Exception){
+                showMessage("Something went wrong in game initialization");
             }
             
     }
