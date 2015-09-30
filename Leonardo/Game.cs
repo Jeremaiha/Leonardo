@@ -21,51 +21,83 @@ namespace Leonardo
     public class Game : Activity
     {
         const int SIZE = 4;
-        /*Sound*/
+
+        //  Sound variables.
         SoundPool sp,sp2,sp3;
         int _soundPushButton;
         int _singleRowOrColumn;
         int _gameOver;
-        /*Sound*/
-        Card  outerImage;   // Image Button 17
-        ImageButton outerButton;
-        Card[,] buttonsArray;
+        // End of sound variables.
         
-        // An array of delegates to hold all cards initialization.
-        const int NUM_CARDS =  (3 * 4 * 3);//Amount of all cards(3 shapes, 4 cards and 3 colors)
-        const int NUM_PACKETS = 2;
+        // OuterButton - Displays the next card.
+        Card  outerImage;   
+        ImageButton outerButton;
+        
+        //  All buttons. - MVC is separation.
+        Card[,] buttonsArray;
+        TableLayout gameBoard;          // Contains the image buttons.
+        ImageButton[,] gameImgButtons;  // ImageButtons which are created in the code.
 
-        Card[] gameCards;// Array of all possible cards
-        int[] numOfCards;//Amount of each card in the game
+        //Amount of all cards(3 shapes, 4 cards and 3 colors)
+        const int NUM_CARDS =  (3 * 4 * 3);
+        const int NUM_PACKETS = 2;  // How many packets you want in the game.
+
+        Card[] gameCards;   // Array of all possible cards
+        int[] numOfCards;   //Amount of each card in the game
         int numberOfCards = NUM_CARDS * NUM_PACKETS; // Substract each time when Random function is activated
-        int globalIndex;// To know which delegate is active in current time
+        int globalIndex;   // To know which delegate is active in current time
 
         GameRules gameRules; // Holds the game board, and all its rules.
-        TextView score,cardsLeft;
-
-        TableLayout gameBoard;
-        ImageButton[,] gameImgButtons;
-
-
+        TextView score,cardsLeft; // Shows score and cards left in the game.
+        
+        /// <summary>
+        ///     Responsible to initiate all variables, views and so on.
+        ///     Calls the Simulate method.
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            /*Sound*/
+            try
+            {
+                // Layout initialisation
+                base.OnCreate(bundle);
+                SetContentView(Resource.Layout.Game);
+            
+                // Activate sound.
+                loadSounds(); 
+            
+                //  Call the initiation of all buttons method.
+                initiateAll();
+
+                simulate();
+            }catch(Exception){
+                showMessage("Something went wrong while trying to play.");
+            }
+            
+        }
+
+        /// <summary>
+        ///     Gets a string and shows a basic toast message.
+        /// </summary>
+        /// <param name="s"></param>
+        public void showMessage(string s)
+        {
+            Toast.MakeText(this, s, ToastLength.Long).Show();
+        }
+
+        /// <summary>
+        ///     Loads all sound variables.
+        /// </summary>
+        private void loadSounds()
+        {
             Stream st = new Stream();
             sp = new SoundPool(1, st, 100);
             sp2 = new SoundPool(1, st, 100);
-            sp3 = new SoundPool(1,st,100);
+            sp3 = new SoundPool(1, st, 100);
             _soundPushButton = sp.Load(this, Resource.Raw.buttonDown, 1);
             _singleRowOrColumn = sp2.Load(this, Resource.Raw.singleRowOrColumn, 1);
             _gameOver = sp3.Load(this, Resource.Raw.gameOver, 1);
-            /*Sound*/
 
-            // Layout initialisation
-            SetContentView(Resource.Layout.Game);
-            //  Call the initiation of all buttons method.
-            initiateAll();
-
-            simulate();
         }
 
         /// <summary>
