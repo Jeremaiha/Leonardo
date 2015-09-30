@@ -33,7 +33,6 @@ namespace Leonardo
             SIZE = newSize;
         }
 
-
         /// <summary>
         ///     Simulate all rules.
         /// </summary>
@@ -56,38 +55,34 @@ namespace Leonardo
         /// </summary>
         /// <returns></returns>
         public int checkRowsColumnsDiagonals(){
+            // Variables.
             int rowCnt, columnCnt,right2leftDiagonal,left2rightDiagonal ,finalSum=0;
             bool temp = false;
+
+            // Assign values for diagonals.
             right2leftDiagonal = checkRight2LeftDiagonal();
             left2rightDiagonal = checkLeft2RightDiagonal();
 
+            // Check combos.
             for (int i = 0; i < SIZE; i++ ){ // for each row.
                 rowCnt = checkRow(i);                    
-                for (int j = 0; j < SIZE; j++){
+                for (int j = 0; j < SIZE; j++){ // for each column
                     columnCnt = checkColumn(j);
-                    // combo
-                    if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0 && right2leftDiagonal>0){
-                        blankRow(i);
-                        blankColumn(j);
-                        blankRight2LeftDiagonal();
-                        blankLeft2RightDiagonal();
-                        finalSum += (rowCnt + columnCnt + left2rightDiagonal + right2leftDiagonal) * 2;
-                        left2rightDiagonal = 0;
-                        right2leftDiagonal = 0;
-                    }
-                    else if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0){
+                    // Full Triapod
+                    if (rowCnt > 0 && columnCnt > 0 && left2rightDiagonal > 0){
                         blankRow(i);
                         blankColumn(j);
                         blankLeft2RightDiagonal();
                         finalSum += (rowCnt + columnCnt + left2rightDiagonal) * 2;
                         left2rightDiagonal = 0;
-                    }
+                    }// Full triapod
                     else if (rowCnt > 0 && columnCnt > 0 && right2leftDiagonal > 0){
                         blankRow(i);
                         blankColumn(j);
                         blankRight2LeftDiagonal();
                         finalSum += (rowCnt + columnCnt + right2leftDiagonal) * 2;
                         right2leftDiagonal = 0;
+                    //  Column and a row.
                     }else if (rowCnt > 0 && columnCnt > 0){
                         blankRow(i);
                         blankColumn(j);
@@ -102,7 +97,7 @@ namespace Leonardo
                 }
             }
       
-            //check left columns without rows.
+            // Check left columns, without rows.
             for (int j = 0; j < SIZE; j++){ // for each column.
                 columnCnt = checkColumn(j);
                 if(columnCnt != 0){
@@ -110,8 +105,9 @@ namespace Leonardo
                     finalSum += columnCnt;
                 }
             }
+            // End of checking.
 
-            // check if there are diagonals left.
+            // Check if any diagonals are left after everything.
             if (right2leftDiagonal > 0){
                 // if there was a row and a diagonal.
                 if(temp){
@@ -122,13 +118,14 @@ namespace Leonardo
                 blankRight2LeftDiagonal();
             }
             if (left2rightDiagonal > 0){
+                // if there was a row and a diagonal.
                 if (temp){
                     finalSum += (left2rightDiagonal * 2);
                 }else{
                     finalSum += (left2rightDiagonal);
                 } blankLeft2RightDiagonal();
             }
-
+            // End of checking the left diagonals.
 
             return finalSum;
         }
@@ -224,7 +221,7 @@ namespace Leonardo
                 }
             }
             if (cnt == 3)
-            { //Successfull row.
+            { //Successfull column.
                 sum += 50;
                 columnSuccess += 1;
             }
@@ -239,7 +236,7 @@ namespace Leonardo
                 }
             }
             if (cnt == 3)
-            { //Successfull row.
+            { //Successfull column.
                 sum += 50;
                 columnSuccess += 1;
             }
@@ -254,7 +251,7 @@ namespace Leonardo
                 }
             }
             if (cnt == 3)
-            { //Successfull row.
+            { //Successfull column.
                 sum += 50;
                 columnSuccess += 1;
             }
@@ -383,7 +380,7 @@ namespace Leonardo
                     cnt++;
                 }
             }
-            if (cnt == 3){ //Successfull row.
+            if (cnt == 3){ //Successfull diagonal.
                 sum += 50;
                 diagonalSuccess += 1;
             }
