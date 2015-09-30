@@ -25,103 +25,152 @@ namespace Leonardo
         // Sound variables.
         SoundPool sp;
         int SoundPushButton;
+        
+        // Textviews.
         private TextView FirstColumn;
         private TextView SecondColumn;
+        
+        // Amount of accounts to display.
         int top = 10;
+
+        /// <summary>
+        ///     Responsible for showing all top 10 and an option 
+        ///         to find yourself in the score table.
+        /// </summary>
+        /// <param name="bundle"></param>
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.TopScore);
+            
             // Sound initialization.
+            loadSound();
+            
+            // Assign the button and columns
+            Button WhereAreU = FindViewById<Button>(Resource.Id.buttonWhereAreU);
+            assignColumns();
+            
+            //Shows all top 10.
+            GetTop10();
+            
+            // Find yourself in the score table!
+            WhereAreUClick(WhereAreU);
+        }
+
+        /// <summary>
+        ///     Assign columns text views.
+        /// </summary>
+        private void assignColumns()
+        {
+            FirstColumn = FindViewById<TextView>(Resource.Id.TextView3);
+            SecondColumn = FindViewById<TextView>(Resource.Id.TextView4);
+        }
+
+        /// <summary>
+        ///     Load all sounds.
+        /// </summary>
+        private void loadSound()
+        {
             Stream st = new Stream();
             sp = new SoundPool(1, st, 0);
             SoundPushButton = sp.Load(this, Resource.Raw.clickInMenu, 1);
-            // Assign the button and columns
-            Button WhereAreU = FindViewById<Button>(Resource.Id.buttonWhereAreU);
-            FirstColumn = FindViewById<TextView>(Resource.Id.TextView3);
-            SecondColumn = FindViewById<TextView>(Resource.Id.TextView4);
-            //Shows data from DB
-            GetTop10();
-            // button click
-            WhereAreUClick(WhereAreU);
         }
+
         /// <summary>
         ///     Get ordered data from DB
         ///     and show it in table
         /// </summary>
         private async void GetTop10()
         {
-            try
-            {
+            try{
+                // Query which takes all top 10 scores.
                 var query = (from Users in ParseObject.GetQuery("Users")
                              orderby Users.Get<string>("Score") descending,
                              Users.Get<string>("Name"), Users.Get<int>("Score")
                              select Users).Limit(top);
-                //save the result of query into list
+                // Activate the query.
                 IEnumerable<ParseObject> results = await query.FindAsync();
-                int cnt = 3;
+                
+                int cnt = 3; // Textviews begin from 3, the iteration is moving with it.
                 //loop on elements of list and printing them
-                for (int i = 0; i < top; i++)
-                {
+                for (int i = 0; i < top; i++){
+                    // Point to the element
                     var Element = results.ElementAt(i);
-                    string FC = "TextView" + cnt;
-                    string SC = "TextView" + (cnt + 1);
-                    int rid_1 = Resources.GetIdentifier(FC, "id", this.PackageName);
-                    int rid_2 = Resources.GetIdentifier(SC, "id", this.PackageName);
-                    cnt += 2;
+                    // Point to the id of the views.
+                    int rid_1 = Resources.GetIdentifier("TextView" + cnt, "id", this.PackageName);
+                    int rid_2 = Resources.GetIdentifier("TextView" + (cnt + 1), "id", this.PackageName);
+                    
+                    // Go to the next text view row.
+                    cnt += 2;   
+
+                    // Textviews assignment
                     FirstColumn = FindViewById<TextView>(rid_1);
-                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name))
-                    {
+                    // Mark yourself in red if it found you.
+                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name)){
                         FirstColumn.SetTextColor(Android.Graphics.Color.Red);
                     }
+                    // Value assignment
                     FirstColumn.Text = Element.Get<String>("Name");
                     SecondColumn = FindViewById<TextView>(rid_2);
                     SecondColumn.Text = Element.Get<int>("Score").ToString();
                 }
-            }
-            catch (FormatException)
-            {
+            }catch (FormatException){
                 throw new FormatException();
+            }catch (Exception){
+                var callDialog = new AlertDialog.Builder(this);
+                callDialog.SetMessage("Error in getting top 10.");
+                callDialog.Show();
             }
         }//GetTop10
+         
         /// <summary>
         ///     Get ordered data from DB
+        ///     Done for the beauty of order.
+        ///     See yourself if you're in the low 10.
         /// </summary>
         private async void GetLow10()
         {
-            try
-            {
+            try{
+                //  Takes 10 low scores.
                 var query = (from Users in ParseObject.GetQuery("Users")
                              orderby Users.Get<string>("Score") ascending,
                              Users.Get<string>("Name"), Users.Get<int>("Score")
                              select Users).Limit(top);
-                //save results of query in list
+                // Activate query
                 IEnumerable<ParseObject> results = await query.FindAsync();
-                int cnt = 3;
+                
+                int cnt = 3;    // Textview begins from 3.
+                
                 //loop on elements of list
-                for (int i = 0; i < top; i++)
-                {
+                for (int i = 0; i < top; i++){
+                    // Point to the current element.
                     var Element = results.ElementAt(i);
-                    string FC = "TextView" + cnt;
-                    string SC = "TextView" + (cnt + 1);
-                    int rid_1 = Resources.GetIdentifier(FC, "id", this.PackageName);
-                    int rid_2 = Resources.GetIdentifier(SC, "id", this.PackageName);
-                    cnt += 2;
+                    //  Assign textview with its id's.
+                    int rid_1 = Resources.GetIdentifier("TextView" + cnt, "id", this.PackageName);
+                    int rid_2 = Resources.GetIdentifier("TextView" + (cnt + 1), "id", this.PackageName);
+
+                    cnt += 2;   // Next textview row.
+
                     FirstColumn = FindViewById<TextView>(rid_1);
-                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name))
-                    {
+                    //  Color yourself in red.
+                    if (Element.Get<String>("Name").Equals(MainActivity.player.Name)){
                         FirstColumn.SetTextColor(Android.Graphics.Color.Red);
                     }
+                    //  Assign values.
                     FirstColumn.Text = Element.Get<String>("Name");
                     SecondColumn = FindViewById<TextView>(rid_2);
                     SecondColumn.Text = Element.Get<int>("Score").ToString();
                 }
-            }
-            catch (FormatException)
-            {
+            }catch (FormatException){
                 throw new FormatException();
+            }catch (Exception){
+                var callDialog = new AlertDialog.Builder(this);
+                callDialog.SetMessage("Error in getting low 10.");
+                callDialog.Show();
             }
+
         }//GetLow10
+        
         /// <summary>
         /// Gets data from DB and shows palce of current user in table
         /// after clicking "Where am I" button on screen
@@ -135,9 +184,9 @@ namespace Leonardo
                 {
                     // play button click sound.
                     sp.Play(SoundPushButton, 1, 1, 0, 0, 1);
+                    
                     //Check if user is already registered
-                    if (MainActivity.player.Email == null)
-                    {
+                    if (MainActivity.player.Email == null){
                         //If no show message
                         var callDialog = new AlertDialog.Builder(this);
                         callDialog.SetMessage("Sign In, Please!");
@@ -151,6 +200,7 @@ namespace Leonardo
                     IEnumerable<ParseObject> resultsCurrent = await queryCurrentPayer.FindAsync();
                     var ElementCurrent = resultsCurrent.ElementAt(0);
                     int currentPlayerScore = ElementCurrent.Get<int>("Score");
+                    
                     //If have no score - show message
                     if (currentPlayerScore == 0)
                     {
@@ -174,15 +224,15 @@ namespace Leonardo
                                        select Users).Limit(2);
                     IEnumerable<ParseObject> resultsTop = await queryTop.FindAsync();
                     IEnumerable<ParseObject> resultsBottom = await queryBottom.FindAsync();
-                    if (resultsTop.Count() < 2)
-                    {
+                    // If you're in top
+                    if (resultsTop.Count() < 2){
                         var callDialog = new AlertDialog.Builder(this);
                         callDialog.SetMessage("Congratulations! Your are in TOP!");
                         callDialog.Show();
                         return;
                     }
-                    if (resultsBottom.Count() == 0)
-                    {
+                    // If you're last.
+                    if (resultsBottom.Count() == 0){
                         GetLow10();//Show the wrost scores
                         var callDialog = new AlertDialog.Builder(this);
                         callDialog.SetMessage("Oops! You are the last.");
@@ -190,8 +240,7 @@ namespace Leonardo
                         return;
                     }
                     //Clear table
-                    for (int i = 3; i < 23; i++)
-                    {
+                    for (int i = 3; i < 23; i++){
                         string FC = "TextView" + i;
                         int rid = Resources.GetIdentifier(FC, "id", this.PackageName);
                         FirstColumn = FindViewById<TextView>(rid);
@@ -201,6 +250,10 @@ namespace Leonardo
                     int cnt = 3;
                     int rid_temp;
                     int index;
+
+                    // Print all users above, yourself and below you in an order.
+                    
+                    // higher scores than current.
                     for (index = 1; index >= 0; index--)
                     {
                         var ElementTop = resultsTop.ElementAt(index);
@@ -222,6 +275,7 @@ namespace Leonardo
                     SecondColumn.SetTextColor(Android.Graphics.Color.Red);
                     SecondColumn.Text = ElementCurrent.Get<int>("Score").ToString();
                     cnt += 2;
+                    
                     //show lower scores
                     for (index = 0; index < resultsBottom.Count(); index++)
                     {

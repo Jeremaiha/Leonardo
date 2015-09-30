@@ -255,7 +255,7 @@ namespace Leonardo
                     gameCards[localCnt] = new Card("straw", "yellow", i + 1);
                 }
             }
-            catch (Exception e){
+            catch (Exception){
                 showMessage("Error in assiging cards.");
             }
             
@@ -422,7 +422,7 @@ namespace Leonardo
                 buttonsClicks();
 
                 checkNextMove();
-            }catch (Exception e){
+            }catch (Exception){
                 showMessage("Error in game simulation");
             }
         }
