@@ -18,7 +18,7 @@ using System.Threading;
 
 namespace Leonardo
 {
-    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo::Sign Up")]
     public class SignUp : Activity
     {
         private bool problemOccured;    // if a problem is occured later on, variable is set to be true.

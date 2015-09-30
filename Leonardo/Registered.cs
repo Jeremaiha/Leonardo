@@ -13,7 +13,7 @@ using Android.Content.PM;
 
 namespace Leonardo
 {
-    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Registered")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo::Registered")]
 
     public class Registered : Activity
     {
@@ -28,6 +28,11 @@ namespace Leonardo
 
                 Button signOutBtn = FindViewById<Button>(Resource.Id.signOutBtn);
                 signOutClick(signOutBtn);
+
+
+                Button how2playBtn = FindViewById<Button>(Resource.Id.how2playBtn);
+                how2playBtnClick(how2playBtn);
+
 
                 ImageButton playImgBtn = FindViewById<ImageButton>(Resource.Id.playImgBtn);
                 playButtonClick(playImgBtn);
@@ -68,6 +73,21 @@ namespace Leonardo
 
             };
          }
+        private void how2playBtnClick(Button how2playBtn)
+        {
+            how2playBtn.Click += (sender, e) =>
+            {
+                try
+                {
+                    StartActivity(typeof(HowToPlay));
+                }
+                catch (Exception)
+                {
+                    showMessage("An error has occured while going to 'How to play' activity");
+                }
+
+            };
+        }
 
         private void clearUser()
         {

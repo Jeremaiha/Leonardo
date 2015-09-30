@@ -90,94 +90,118 @@ namespace Leonardo
 			public const int Icon = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int leonardo_title = 2130837519;
+			public const int img1 = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int logo = 2130837520;
+			public const int img2 = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int monoandroidsplash = 2130837521;
+			public const int img3 = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int play = 2130837522;
+			public const int img4 = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int play_icon_small = 2130837523;
+			public const int img5 = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int red_cherry_1 = 2130837524;
+			public const int img6 = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int red_cherry_2 = 2130837525;
+			public const int leonardo_title = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int red_cherry_3 = 2130837526;
+			public const int leonardo_title_old = 2130837526;
 			
 			// aapt resource value: 0x7f020017
-			public const int red_cherry_4 = 2130837527;
+			public const int logo = 2130837527;
 			
 			// aapt resource value: 0x7f020018
-			public const int red_mushroom_1 = 2130837528;
+			public const int monoandroidsplash = 2130837528;
 			
 			// aapt resource value: 0x7f020019
-			public const int red_mushroom_2 = 2130837529;
+			public const int play = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int red_mushroom_3 = 2130837530;
+			public const int play_icon_small = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int red_mushroom_4 = 2130837531;
+			public const int red_cherry_1 = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int red_straw_1 = 2130837532;
+			public const int red_cherry_2 = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int red_straw_2 = 2130837533;
+			public const int red_cherry_3 = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int red_straw_3 = 2130837534;
+			public const int red_cherry_4 = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int red_straw_4 = 2130837535;
+			public const int red_mushroom_1 = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int x = 2130837536;
+			public const int red_mushroom_2 = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int yellow_cherry_1 = 2130837537;
+			public const int red_mushroom_3 = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int yellow_cherry_2 = 2130837538;
+			public const int red_mushroom_4 = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int yellow_cherry_3 = 2130837539;
+			public const int red_straw_1 = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int yellow_cherry_4 = 2130837540;
+			public const int red_straw_2 = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int yellow_mushroom_1 = 2130837541;
+			public const int red_straw_3 = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int yellow_mushroom_2 = 2130837542;
+			public const int red_straw_4 = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int yellow_mushroom_3 = 2130837543;
+			public const int Tripod = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int yellow_mushroom_4 = 2130837544;
+			public const int x = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int yellow_straw_1 = 2130837545;
+			public const int yellow_cherry_1 = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int yellow_straw_2 = 2130837546;
+			public const int yellow_cherry_2 = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int yellow_straw_3 = 2130837547;
+			public const int yellow_cherry_3 = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int yellow_straw_4 = 2130837548;
+			public const int yellow_cherry_4 = 2130837548;
+			
+			// aapt resource value: 0x7f02002d
+			public const int yellow_mushroom_1 = 2130837549;
+			
+			// aapt resource value: 0x7f02002e
+			public const int yellow_mushroom_2 = 2130837550;
+			
+			// aapt resource value: 0x7f02002f
+			public const int yellow_mushroom_3 = 2130837551;
+			
+			// aapt resource value: 0x7f020030
+			public const int yellow_mushroom_4 = 2130837552;
+			
+			// aapt resource value: 0x7f020031
+			public const int yellow_straw_1 = 2130837553;
+			
+			// aapt resource value: 0x7f020032
+			public const int yellow_straw_2 = 2130837554;
+			
+			// aapt resource value: 0x7f020033
+			public const int yellow_straw_3 = 2130837555;
+			
+			// aapt resource value: 0x7f020034
+			public const int yellow_straw_4 = 2130837556;
 			
 			static Drawable()
 			{
@@ -192,104 +216,104 @@ namespace Leonardo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070037
-			public const int TextView1 = 2131165239;
-			
-			// aapt resource value: 0x7f070041
-			public const int TextView10 = 2131165249;
-			
-			// aapt resource value: 0x7f070043
-			public const int TextView11 = 2131165251;
-			
-			// aapt resource value: 0x7f070044
-			public const int TextView12 = 2131165252;
-			
-			// aapt resource value: 0x7f070046
-			public const int TextView13 = 2131165254;
-			
-			// aapt resource value: 0x7f070047
-			public const int TextView14 = 2131165255;
-			
-			// aapt resource value: 0x7f070049
-			public const int TextView15 = 2131165257;
+			// aapt resource value: 0x7f070040
+			public const int TextView1 = 2131165248;
 			
 			// aapt resource value: 0x7f07004a
-			public const int TextView16 = 2131165258;
+			public const int TextView10 = 2131165258;
 			
 			// aapt resource value: 0x7f07004c
-			public const int TextView17 = 2131165260;
+			public const int TextView11 = 2131165260;
 			
 			// aapt resource value: 0x7f07004d
-			public const int TextView18 = 2131165261;
+			public const int TextView12 = 2131165261;
 			
 			// aapt resource value: 0x7f07004f
-			public const int TextView19 = 2131165263;
-			
-			// aapt resource value: 0x7f070038
-			public const int TextView2 = 2131165240;
+			public const int TextView13 = 2131165263;
 			
 			// aapt resource value: 0x7f070050
-			public const int TextView20 = 2131165264;
+			public const int TextView14 = 2131165264;
 			
-			// aapt resource value: 0x7f070039
-			public const int TextView3 = 2131165241;
+			// aapt resource value: 0x7f070052
+			public const int TextView15 = 2131165266;
 			
-			// aapt resource value: 0x7f07003a
-			public const int TextView4 = 2131165242;
+			// aapt resource value: 0x7f070053
+			public const int TextView16 = 2131165267;
 			
-			// aapt resource value: 0x7f07003b
-			public const int TextView5 = 2131165243;
+			// aapt resource value: 0x7f070055
+			public const int TextView17 = 2131165269;
 			
-			// aapt resource value: 0x7f07003c
-			public const int TextView6 = 2131165244;
+			// aapt resource value: 0x7f070056
+			public const int TextView18 = 2131165270;
 			
-			// aapt resource value: 0x7f07003d
-			public const int TextView7 = 2131165245;
+			// aapt resource value: 0x7f070058
+			public const int TextView19 = 2131165272;
 			
-			// aapt resource value: 0x7f07003e
-			public const int TextView8 = 2131165246;
+			// aapt resource value: 0x7f070041
+			public const int TextView2 = 2131165249;
 			
-			// aapt resource value: 0x7f070040
-			public const int TextView9 = 2131165248;
+			// aapt resource value: 0x7f070059
+			public const int TextView20 = 2131165273;
 			
-			// aapt resource value: 0x7f070020
-			public const int absoluteLayout1 = 2131165216;
+			// aapt resource value: 0x7f070042
+			public const int TextView3 = 2131165250;
 			
-			// aapt resource value: 0x7f070021
-			public const int button1 = 2131165217;
+			// aapt resource value: 0x7f070043
+			public const int TextView4 = 2131165251;
 			
-			// aapt resource value: 0x7f070022
-			public const int button2 = 2131165218;
+			// aapt resource value: 0x7f070044
+			public const int TextView5 = 2131165252;
 			
-			// aapt resource value: 0x7f070023
-			public const int button3 = 2131165219;
+			// aapt resource value: 0x7f070045
+			public const int TextView6 = 2131165253;
 			
-			// aapt resource value: 0x7f07002f
-			public const int buttonFacebookLogIn = 2131165231;
+			// aapt resource value: 0x7f070046
+			public const int TextView7 = 2131165254;
 			
-			// aapt resource value: 0x7f070036
-			public const int buttonWhereAreU = 2131165238;
+			// aapt resource value: 0x7f070047
+			public const int TextView8 = 2131165255;
+			
+			// aapt resource value: 0x7f070049
+			public const int TextView9 = 2131165257;
+			
+			// aapt resource value: 0x7f07002a
+			public const int absoluteLayout1 = 2131165226;
+			
+			// aapt resource value: 0x7f07002b
+			public const int button1 = 2131165227;
+			
+			// aapt resource value: 0x7f07002c
+			public const int button2 = 2131165228;
+			
+			// aapt resource value: 0x7f07002d
+			public const int button3 = 2131165229;
+			
+			// aapt resource value: 0x7f070038
+			public const int buttonFacebookLogIn = 2131165240;
+			
+			// aapt resource value: 0x7f07003f
+			public const int buttonWhereAreU = 2131165247;
 			
 			// aapt resource value: 0x7f07001e
 			public const int cardsLeftTextView = 2131165214;
 			
-			// aapt resource value: 0x7f070032
-			public const int editText1 = 2131165234;
+			// aapt resource value: 0x7f07003b
+			public const int editText1 = 2131165243;
+			
+			// aapt resource value: 0x7f07003c
+			public const int editText2 = 2131165244;
+			
+			// aapt resource value: 0x7f07003d
+			public const int editText3 = 2131165245;
 			
 			// aapt resource value: 0x7f070033
-			public const int editText2 = 2131165235;
+			public const int editTextEmail = 2131165235;
 			
-			// aapt resource value: 0x7f070034
-			public const int editText3 = 2131165236;
+			// aapt resource value: 0x7f070036
+			public const int editTextPass = 2131165238;
 			
-			// aapt resource value: 0x7f07002a
-			public const int editTextEmail = 2131165226;
-			
-			// aapt resource value: 0x7f07002d
-			public const int editTextPass = 2131165229;
-			
-			// aapt resource value: 0x7f070027
-			public const int how2playBtn = 2131165223;
+			// aapt resource value: 0x7f070030
+			public const int how2playBtn = 2131165232;
 			
 			// aapt resource value: 0x7f070002
 			public const int imageButton1 = 2131165186;
@@ -351,8 +375,32 @@ namespace Leonardo
 			// aapt resource value: 0x7f07000c
 			public const int imageButton9 = 2131165196;
 			
+			// aapt resource value: 0x7f070029
+			public const int imageView1 = 2131165225;
+			
 			// aapt resource value: 0x7f07001f
-			public const int imageView1 = 2131165215;
+			public const int img1 = 2131165215;
+			
+			// aapt resource value: 0x7f070022
+			public const int img2 = 2131165218;
+			
+			// aapt resource value: 0x7f070023
+			public const int img3 = 2131165219;
+			
+			// aapt resource value: 0x7f070024
+			public const int img4 = 2131165220;
+			
+			// aapt resource value: 0x7f070025
+			public const int img5 = 2131165221;
+			
+			// aapt resource value: 0x7f070026
+			public const int img6 = 2131165222;
+			
+			// aapt resource value: 0x7f070027
+			public const int img7 = 2131165223;
+			
+			// aapt resource value: 0x7f070021
+			public const int linLayout2 = 2131165217;
 			
 			// aapt resource value: 0x7f070016
 			public const int linearLayout1 = 2131165206;
@@ -360,26 +408,29 @@ namespace Leonardo
 			// aapt resource value: 0x7f07001c
 			public const int linearLayout2 = 2131165212;
 			
-			// aapt resource value: 0x7f07002b
-			public const int linearLayout3 = 2131165227;
+			// aapt resource value: 0x7f070034
+			public const int linearLayout3 = 2131165236;
 			
-			// aapt resource value: 0x7f070025
-			public const int playImgBtn = 2131165221;
+			// aapt resource value: 0x7f070028
+			public const int playImgBtn = 2131165224;
 			
-			// aapt resource value: 0x7f070024
-			public const int registeredLabel = 2131165220;
+			// aapt resource value: 0x7f07002e
+			public const int registeredLabel = 2131165230;
 			
 			// aapt resource value: 0x7f070018
 			public const int scoreTextView = 2131165208;
 			
-			// aapt resource value: 0x7f07002e
-			public const int signInBtn = 2131165230;
+			// aapt resource value: 0x7f070020
+			public const int scroll = 2131165216;
 			
-			// aapt resource value: 0x7f070026
-			public const int signOutBtn = 2131165222;
+			// aapt resource value: 0x7f070037
+			public const int signInBtn = 2131165239;
 			
-			// aapt resource value: 0x7f070035
-			public const int signUpBtn = 2131165237;
+			// aapt resource value: 0x7f07002f
+			public const int signOutBtn = 2131165231;
+			
+			// aapt resource value: 0x7f07003e
+			public const int signUpBtn = 2131165246;
 			
 			// aapt resource value: 0x7f070000
 			public const int tableLayout1 = 2131165184;
@@ -387,8 +438,8 @@ namespace Leonardo
 			// aapt resource value: 0x7f070001
 			public const int tableRow1 = 2131165185;
 			
-			// aapt resource value: 0x7f07004e
-			public const int tableRow10 = 2131165262;
+			// aapt resource value: 0x7f070057
+			public const int tableRow10 = 2131165271;
 			
 			// aapt resource value: 0x7f070006
 			public const int tableRow2 = 2131165190;
@@ -399,26 +450,26 @@ namespace Leonardo
 			// aapt resource value: 0x7f070010
 			public const int tableRow4 = 2131165200;
 			
-			// aapt resource value: 0x7f07003f
-			public const int tableRow5 = 2131165247;
-			
-			// aapt resource value: 0x7f070042
-			public const int tableRow6 = 2131165250;
-			
-			// aapt resource value: 0x7f070045
-			public const int tableRow7 = 2131165253;
-			
 			// aapt resource value: 0x7f070048
-			public const int tableRow8 = 2131165256;
+			public const int tableRow5 = 2131165256;
 			
 			// aapt resource value: 0x7f07004b
-			public const int tableRow9 = 2131165259;
+			public const int tableRow6 = 2131165259;
 			
-			// aapt resource value: 0x7f070030
-			public const int textView1 = 2131165232;
+			// aapt resource value: 0x7f07004e
+			public const int tableRow7 = 2131165262;
 			
-			// aapt resource value: 0x7f070031
-			public const int textView3 = 2131165233;
+			// aapt resource value: 0x7f070051
+			public const int tableRow8 = 2131165265;
+			
+			// aapt resource value: 0x7f070054
+			public const int tableRow9 = 2131165268;
+			
+			// aapt resource value: 0x7f070039
+			public const int textView1 = 2131165241;
+			
+			// aapt resource value: 0x7f07003a
+			public const int textView3 = 2131165242;
 			
 			// aapt resource value: 0x7f070017
 			public const int textView4 = 2131165207;
@@ -426,14 +477,14 @@ namespace Leonardo
 			// aapt resource value: 0x7f07001d
 			public const int textView5 = 2131165213;
 			
-			// aapt resource value: 0x7f070029
-			public const int textViewName = 2131165225;
+			// aapt resource value: 0x7f070032
+			public const int textViewName = 2131165234;
 			
-			// aapt resource value: 0x7f07002c
-			public const int textViewPass = 2131165228;
+			// aapt resource value: 0x7f070035
+			public const int textViewPass = 2131165237;
 			
-			// aapt resource value: 0x7f070028
-			public const int textViewSignIn = 2131165224;
+			// aapt resource value: 0x7f070031
+			public const int textViewSignIn = 2131165233;
 			
 			static Id()
 			{
@@ -519,6 +570,33 @@ namespace Leonardo
 			// aapt resource value: 0x7f050000
 			public const int Hello = 2131034112;
 			
+			// aapt resource value: 0x7f050002
+			public const int rule1 = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int rule2 = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int rule3 = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int rule4 = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int rule5 = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int rule6 = 2131034119;
+			
+			// aapt resource value: 0x7f050008
+			public const int rule7 = 2131034120;
+			
+			// aapt resource value: 0x7f050009
+			public const int rule8 = 2131034121;
+			
+			// aapt resource value: 0x7f05000a
+			public const int rule9 = 2131034122;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -533,7 +611,10 @@ namespace Leonardo
 		{
 			
 			// aapt resource value: 0x7f060000
-			public const int Mono_Android_Theme_Splash = 2131099648;
+			public const int CodeFont = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int Mono_Android_Theme_Splash = 2131099649;
 			
 			static Style()
 			{

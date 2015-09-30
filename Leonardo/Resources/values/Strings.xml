@@ -2,4 +2,79 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">Leonardo</string>
+  <string name="rule1">
+    <b>
+      Use the finger to put the active card on the board.\n
+      The game begins with 72 cards that gradually run out.\n
+      Cards can appear in <u>3 different shapes</u>.
+    </b>
+  </string>
+  <string name="rule2">
+    <b>
+      Cards can appear in <u>3 different colors</u>.
+    </b>
+  </string>
+  <string name="rule3">
+    <b>
+      Cards can appear in <u>4 different quantities</u>.
+    </b>
+  </string>
+  <string name="rule4">
+    <b>
+      <u>The object of the game</u>:\n
+      To position the cards in the matrix in a way that creates\n
+      as many commonalities as possible.
+      A line that has at least one
+      commonality will disappear.\n
+      <u>Same color</u>
+    </b>
+  </string>
+  <string name="rule5">
+    <b>
+      <u>Same shape</u>
+    </b>
+  </string>
+  <string name="rule6">
+    <b>
+      <u>Same quantity</u>
+    </b>
+  </string>
+  <string name="rule7">
+    <b>
+      <u>The challenge</u>:\n
+      Achieving one or even two commonalties is pretty\n
+      easy, but the real challenge strive for multiple\n
+      commonalties. The best tactic is the "Tripod"\n
+      <u>The Tripod</u>:\n
+      The tripod tactic lets you close at least 3
+      commonalties at the same time.
+    </b>\n
+  </string>
+  <string name="rule8">
+    <b>
+      <u>Here is how</u>:
+      This Tripod is closed with one red cherry card.\n
+      1. Focus on the quantity and place the cards in their columns.\n
+      2. Leave the top left square empty and wait for a "One" to close the Tripod.\n
+      Cleaning up To create multiple commonalties,\n
+      you often need to gamble and wait for the right card.\n
+      A card that doesnot support the Tripod should be placed in the blank zone.\n
+      As the matrix gets full, and a Tripod is NOT achieved,\n
+      you need to abandon the Tripod tactic and clean the matrix anyway you can.\n
+      This will help you get ready for the next attempt at a Tripod.\n
+      <u>Improvisation</u>:\n
+      Although the Tripod is the most promising tactic, you will\n
+      need to open your eyes (and your mind) to special situations\n
+      where a different tactic should be used. \n
+      You will become aware of it as you play.\n
+      The game ends when the matrix is full,\n
+      or when you run out of cards.
+    </b>\n
+  </string>
+  <string name="rule9">
+    <b>
+      <u>You are ready to play !</u>
+    </b>
+  </string>
+
 </resources>

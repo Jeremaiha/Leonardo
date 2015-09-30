@@ -1,7 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
+    android:layout_height="fill_parent"
+    tools:actionBarNavMode="tabs"
+    android:background="#ffffff">
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="match_parent"
+        android:layout_height="99.7dp"
+        android:src="@drawable/leonardo_title_old" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll">
+        <LinearLayout
+            android:id="@+id/linLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule1" />
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img1" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule2" />
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img2" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule3" />
+            <ImageView
+                android:id="@+id/img3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img3" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule4" />
+            <ImageView
+                android:id="@+id/img4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img4" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule5" />
+            <ImageView
+                android:id="@+id/img5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img5" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule6" />
+            <ImageView
+                android:id="@+id/img6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img6" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule7" />
+            <ImageView
+                android:id="@+id/img7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/Tripod" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule8" />
+            <TextView
+                style="@style/CodeFont"
+                android:text="@string/rule9" />
+            <ImageButton
+                android:src="@drawable/play"
+                android:layout_width="wrap_content"
+                android:layout_height="80.4dp"
+                android:id="@+id/playImgBtn"
+                android:layout_gravity="center"
+                android:layout_marginLeft="0.0dp"
+                android:background="#ffffff" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

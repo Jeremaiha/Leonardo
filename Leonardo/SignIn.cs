@@ -16,7 +16,7 @@ using System.Json;
 using Parse;
 namespace Leonardo
 {
-    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo:Sign In")]
     public class SignIn : Activity
     {
         bool userExists;

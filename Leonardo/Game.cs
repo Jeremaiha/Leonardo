@@ -10,11 +10,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Media;
+using Parse;
+using System.Threading.Tasks;
 
 namespace Leonardo
 {
 
-    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo::Game")]
     public class Game : Activity
     {
         const int SIZE = 4;
@@ -45,9 +47,9 @@ namespace Leonardo
             base.OnCreate(bundle);
             /*Sound*/
             Stream st = new Stream();
-            sp = new SoundPool(1, st, 0);
-            sp2 = new SoundPool(1, st, 0);
-            sp3 = new SoundPool(1,st,0);
+            sp = new SoundPool(1, st, 100);
+            sp2 = new SoundPool(1, st, 100);
+            sp3 = new SoundPool(1,st,100);
             _soundPushButton = sp.Load(this, Resource.Raw.buttonDown, 1);
             _singleRowOrColumn = sp2.Load(this, Resource.Raw.singleRowOrColumn, 1);
             _gameOver = sp3.Load(this, Resource.Raw.gameOver, 1);
@@ -184,7 +186,7 @@ namespace Leonardo
         /// <summary>
         ///     Is responsible for giving us the next random card from the possible cards.
         /// </summary>
-        private void randomNextCard(){
+        private async void randomNextCard(){
             try{
                 Random random = new Random();
                 int randomNumber;
@@ -193,7 +195,7 @@ namespace Leonardo
                     numberOfCards--;
                 }else{
                     // Game ended, show scores.
-                    gameOver();
+                    await gameOver();
                     return;
                 }
 
@@ -216,7 +218,7 @@ namespace Leonardo
                     sp2.Play(_singleRowOrColumn, 1, 1, 0, 0, 1);
                     /*Sound*/
                 }
-                score.Text = (Int32.Parse(score.Text.ToString()) + randomNumber).ToString();
+                score.Text = (Int32.Parse(score.Text) + randomNumber).ToString();
                 checkNextMove();
             }catch (Exception e){
                 throw new Exception("Error : Next random card.\n" + e.Message);
@@ -230,11 +232,11 @@ namespace Leonardo
         ///     When the game finishes, data is stored in the database.
         ///     Goes back to the starting screen.
         /// </summary>
-        private void gameOver(){
+        private async Task gameOver(){
             try{
                 /*Sound*/
 
-                sp3.Play(_gameOver, 1, 1, 0, 0, 1);
+                sp3.Play(_gameOver, 100, 100, 0, 0, 100);
                 /*Sound*/
                 var callDialog = new AlertDialog.Builder(this);
                 callDialog.SetMessage("Game Over.\nYour Score is : " + score.Text);
@@ -242,13 +244,64 @@ namespace Leonardo
                     base.OnBackPressed();
                 });
                 callDialog.Show();
-                
+                await saveScore();
             }catch (Exception e){
-                throw new Exception("Error : Finishing the game.\n" + e.Message);
+                Toast.MakeText(this, "Error : Finishing the game.\n", ToastLength.Long).Show();
+            
             }
             
         }
 
+        private async Task saveScore()
+        {
+            /*
+            var privateNote = new ParseObject("Users");
+            
+            privateNote["Score"] = Int32.Parse(score.Text);
+            await privateNote.SaveAsync();
+        
+             */
+            /*
+            var query1 = from currentUser in ParseObject.GetQuery("Users")
+                         where currentUser.Get<string>("Email").Equals(MainActivity.player.Email)
+                         
+                         select currentUser;
+            */
+
+           // IEnumerable<ParseObject> resultsCurrent = await queryCurrentPayer.FindAsync();
+           /*
+            ParseObject parseUser = new ParseObject("Users");
+            parseUser.Remove(MainActivity.player.Email);
+            await parseUser.SaveAsync();
+
+            var user = new ParseObject("Users")
+            {
+                { "Name", MainActivity.player.Name },
+                { "Email", MainActivity.player.Email},
+                { "Password",MainActivity.player.Password } ,
+            };
+            user["Score"] = Int32.Parse(score.Text);
+            await user.SaveAsync();
+        */
+            try
+            {
+                var query1 = from currentUser in ParseObject.GetQuery("Users")
+                             where currentUser.Get<string>("Email") == MainActivity.player.Email
+                             select currentUser;
+                IEnumerable<ParseObject> resultsCurrent = await query1.FindAsync();
+                var ElementTop = resultsCurrent.ElementAt(0);
+                
+              // string s = ElementTop.Get<string>("objectId");
+                string s = ElementTop.ObjectId;
+                ParseQuery<ParseObject> query = ParseObject.GetQuery("Users");
+                ParseObject parseUser = await query.GetAsync(s);
+                parseUser["Score"] = Int32.Parse(score.Text);
+                await parseUser.SaveAsync();
+            }catch(Exception){
+                Toast.MakeText(this, "Error : Finishing the game.\n", ToastLength.Long).Show();
+            }
+
+            }
    
         /// <summary>
         ///     Simulates for the first time the random card.
@@ -268,7 +321,7 @@ namespace Leonardo
         /// <summary>
         ///     Check if the game board is playable.
         /// </summary>
-        private void checkNextMove()
+        private async void checkNextMove()
         {
             int cnt = 0;
             for (int i = 0; i < SIZE; i++)
@@ -287,7 +340,7 @@ namespace Leonardo
             }// if all bored is taken by cards.
             if (cnt == SIZE * SIZE)
             {
-                gameOver();
+                await gameOver();
             }
         }
 

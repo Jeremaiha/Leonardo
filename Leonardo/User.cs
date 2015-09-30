@@ -48,7 +48,9 @@ namespace Leonardo
         {
             get { return instantiated; }
             set { instantiated = value; }
-        } 
+        }
+
+        public ParseObject ParseCurrentUser { get; set; }
 
         // Singelton
         private static User currentUser;

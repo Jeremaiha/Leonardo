@@ -18,7 +18,7 @@ using System.Threading;
 
 namespace Leonardo
 {
-    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo : TOP 10")]
+    [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo::TOP 10")]
     public class TopScore : Activity
     {
         // Sound variables.
@@ -114,7 +114,7 @@ namespace Leonardo
 
                     var queryTop = (from Users in ParseObject.GetQuery("Users")
                                     where Users.Get<int>("Score") > 50//MainActivity.player.Score
-                                    orderby Users.Get<string>("Score") descending,
+                                    orderby Users.Get<string>("Score") ascending,
                                     Users.Get<string>("Name"), Users.Get<int>("Score")
                                     select Users).Limit(2);
 
@@ -131,7 +131,8 @@ namespace Leonardo
 
 
                     var queryBottom = (from Users in ParseObject.GetQuery("Users")
-                                       where Users.Get<int>("Score") < 50//MainActivity.player.Score
+                                       where Users.Get<int>("Score") <= 50//MainActivity.player.Score
+                                       where Users.Get<string>("Email") != MainActivity.player.Email
                                        orderby Users.Get<string>("Score") descending,
                                        Users.Get<string>("Name"), Users.Get<int>("Score")
                                        select Users).Limit(2);
@@ -155,7 +156,7 @@ namespace Leonardo
                     int cnt = 3;
                     int rid_temp;
                     int index;
-                    for (index = 0; index < 2; index++)
+                    for (index = 1; index >= 0; index--)
                     {
                         var ElementTop = resultsTop.ElementAt(index);
                         rid_temp = Resources.GetIdentifier("TextView" + (cnt), "id", this.PackageName);
