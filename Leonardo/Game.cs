@@ -254,37 +254,8 @@ namespace Leonardo
 
         private async Task saveScore()
         {
-            /*
-            var privateNote = new ParseObject("Users");
-            
-            privateNote["Score"] = Int32.Parse(score.Text);
-            await privateNote.SaveAsync();
-        
-             */
-            /*
-            var query1 = from currentUser in ParseObject.GetQuery("Users")
-                         where currentUser.Get<string>("Email").Equals(MainActivity.player.Email)
-                         
-                         select currentUser;
-            */
-
-           // IEnumerable<ParseObject> resultsCurrent = await queryCurrentPayer.FindAsync();
-           /*
-            ParseObject parseUser = new ParseObject("Users");
-            parseUser.Remove(MainActivity.player.Email);
-            await parseUser.SaveAsync();
-
-            var user = new ParseObject("Users")
-            {
-                { "Name", MainActivity.player.Name },
-                { "Email", MainActivity.player.Email},
-                { "Password",MainActivity.player.Password } ,
-            };
-            user["Score"] = Int32.Parse(score.Text);
-            await user.SaveAsync();
-        */
-            try
-            {
+           
+            try{
                 var query1 = from currentUser in ParseObject.GetQuery("Users")
                              where currentUser.Get<string>("Email") == MainActivity.player.Email
                              select currentUser;
@@ -301,7 +272,7 @@ namespace Leonardo
                 Toast.MakeText(this, "Error : Finishing the game.\n", ToastLength.Long).Show();
             }
 
-            }
+        }
    
         /// <summary>
         ///     Simulates for the first time the random card.
