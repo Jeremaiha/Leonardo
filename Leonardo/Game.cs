@@ -20,7 +20,7 @@ namespace Leonardo
     [Activity(ConfigurationChanges = ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait, Label = "Leonardo::Game")]
     public class Game : Activity
     {
-        const int SIZE = 4;
+        const int SIZE = 4;//Screen size
 
         //  Sound variables.
         SoundPool sp,sp2,sp3;
@@ -361,7 +361,7 @@ namespace Leonardo
         private async Task gameOver(){
             try{
                 // Activate sound/
-                sp3.Play(_gameOver, 100, 100, 0, 0, 100);
+                sp3.Play(_gameOver, 1, 1, 0, 0, 1);
                 
                 // Show a big message with the score the user got, and that the game is over now.
                 var callDialog = new AlertDialog.Builder(this);
